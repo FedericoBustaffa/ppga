@@ -14,7 +14,7 @@ class ToolBox:
     def set_generation(self, func, *args, **kwargs) -> None:
         self.generation_func = partial(func, *args, **kwargs)
 
-    def generate(self, population_size) -> list[Individual]:
+    def generate(self, population_size: int) -> list[Individual]:
         population = [self.generation_func() for _ in range(population_size)]
         return [Individual(i) for i in population]
 
