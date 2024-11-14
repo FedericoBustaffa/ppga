@@ -6,5 +6,5 @@ setup(
     packages=find_packages(),
     url="https://github.com/FedericoBustaffa/ppga",
     author="FedericoBustaffa",
-    install_requires=["psutil", "colorama", "psutil"],
+    install_requires=["psutil", "colorama", "numpy"],
 )
