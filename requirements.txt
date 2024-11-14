@@ -1,0 +1,12 @@
+pyarrow
+scikit-learn
+colorama
+numpy
+matplotlib
+pandas
+deap
+scoop
+ipykernel
+notebook
+jupyterlab
+jupyterlab-fonts
