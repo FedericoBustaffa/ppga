@@ -34,7 +34,7 @@ def task(
         rqueue.put((offsprings, evals))
 
 
-class Worker:
+class Worker(mp.Process):
     def __init__(
         self,
         toolbox: ToolBox,
@@ -45,12 +45,10 @@ class Worker:
         self.rqueue = mp.Queue()
         self.squeue = mp.Queue()
 
-        self.worker = mp.Process(
+        super().__init__(
             target=task,
             args=[self.rqueue, self.squeue, toolbox, cxpb, mutpb, log_level],
         )
-
-        self.worker.start()
 
     def send(self, chunk: list | None = None) -> None:
         self.squeue.put(chunk)
@@ -58,7 +56,7 @@ class Worker:
     def recv(self):
         return self.rqueue.get()
 
-    def join(self) -> None:
+    def join(self, timeout: float | None = None) -> None:
         self.squeue.put(None)
         self.squeue.close()
         self.squeue.join_thread()
@@ -66,4 +64,4 @@ class Worker:
         self.rqueue.close()
         self.rqueue.join_thread()
 
-        self.worker.join()
+        super().join(timeout)

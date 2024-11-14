@@ -87,15 +87,20 @@ def pcustom(
 
     # only use the physical cores
     workers_num = psutil.cpu_count(logical=False)
+    assert workers_num is not None
 
     # dinamically resize the chunksize
     if population_size < workers_num:
+        logger.warning(
+            f"workers initialized: {population_size} out of {workers_num} cores"
+        )
         workers_num = population_size
-        logger.warning(f"workers initialized: {workers_num} out of {psutil.cpu_count(logical=False)} cores")
 
     chunksize = population_size // workers_num
     carry = population_size % workers_num
     workers = [Worker(toolbox, cxpb, mutpb, log_level) for _ in range(workers_num)]
+    for w in workers:
+        w.start()
 
     population = toolbox.generate(population_size)
 
