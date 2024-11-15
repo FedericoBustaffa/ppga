@@ -90,7 +90,7 @@ def main(argv: list[str]):
         mutpb=0.2,
         max_generations=G,
         hall_of_fame=hof,
-        log_level=log.WARNING,
+        log_level=log.DEBUG,
     )
 
     value, weight = show_solution(best[0].chromosome, items)
@@ -101,7 +101,17 @@ def main(argv: list[str]):
 
     # parallel execution
     hof.clear()
-    pbest = parallel.run(toolbox, N, 0.2, 0.8, 0.2, G, hof, log.INFO)
+    # pbest = parallel.run(toolbox, N, 0.2, 0.8, 0.2, G, hof, log.INFO)
+    pbest, pstats = algorithms.pelitist(
+        toolbox=toolbox,
+        population_size=N,
+        keep=0.2,
+        cxpb=0.8,
+        mutpb=0.2,
+        max_generations=G,
+        hall_of_fame=hof,
+        log_level=log.DEBUG,
+    )
 
     value, weight = show_solution(pbest[0].chromosome, items)
     logger.info(f"queue best solution: ({value:.3f}, {weight:.3f})")
