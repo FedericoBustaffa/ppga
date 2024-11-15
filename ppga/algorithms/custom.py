@@ -2,6 +2,7 @@ import numpy as np
 import psutil
 
 from ppga import log
+from ppga.algorithms.handler import Handler
 from ppga.algorithms.reproduction import reproduction
 from ppga.algorithms.worker import Worker
 from ppga.base import HallOfFame, Statistics, ToolBox
@@ -98,9 +99,9 @@ def pcustom(
 
     chunksize = population_size // workers_num
     carry = population_size % workers_num
-    workers = [Worker(toolbox, cxpb, mutpb, log_level) for _ in range(workers_num)]
-    for w in workers:
-        w.start()
+    handlers = [Handler(toolbox, cxpb, mutpb, log_level) for _ in range(workers_num)]
+    for h in handlers:
+        h.start()
 
     population = toolbox.generate(population_size)
 
@@ -110,15 +111,15 @@ def pcustom(
         chosen = toolbox.select(population, population_size)
 
         for i in range(carry):
-            workers[i].send(chosen[i * chunksize : i * chunksize + chunksize + 1])
+            handlers[i].send(chosen[i * chunksize : i * chunksize + chunksize + 1])
 
         for i in range(carry, workers_num, 1):
-            workers[i].send(chosen[i * chunksize : i * chunksize + chunksize])
+            handlers[i].send(chosen[i * chunksize : i * chunksize + chunksize])
 
         offsprings.clear()
         evals = []
-        for w in workers:
-            offsprings_chunk, worker_evals = w.recv()
+        for h in handlers:
+            offsprings_chunk, worker_evals = h.recv()
             offsprings.extend(offsprings_chunk)
             evals.append(worker_evals)
 
@@ -131,7 +132,7 @@ def pcustom(
         if hall_of_fame is not None:
             hall_of_fame.update(population)
 
-    for w in workers:
-        w.join()
+    for h in handlers:
+        h.join()
 
     return population, stats
