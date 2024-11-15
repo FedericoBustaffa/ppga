@@ -21,7 +21,7 @@ def evaluate(chromosome, items: list[Item], capacity: float) -> tuple:
         weight += chromosome[i] * items[i].weight
 
     if weight > capacity:
-        return 1 / value, weight
+        return 0.0, weight
     else:
         return value, weight
 

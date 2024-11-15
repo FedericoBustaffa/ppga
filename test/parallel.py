@@ -1,5 +1,7 @@
 import random
 
+import pipeline
+
 from ppga import base, log
 
 
@@ -36,6 +38,12 @@ def evaluate(
     return offsprings
 
 
+def map_reduce(
+    toolbox: base.ToolBox, chosen: list[base.Individual], cxpb: float, mutpb: float
+) -> list[base.Individual]:
+    return []
+
+
 def run(
     toolbox: base.ToolBox,
     n: int,
@@ -50,9 +58,10 @@ def run(
 
     for g in range(generations):
         chosen = toolbox.select(population, n)
-        offsprings = crossover(toolbox, chosen, cxpb)
-        offsprings = mutation(toolbox, offsprings, mutpb)
-        offsprings = evaluate(toolbox, offsprings)
+        offsprings = map_reduce(toolbox, chosen, cxpb, mutpb)
+        # offsprings = crossover(toolbox, chosen, cxpb)
+        # offsprings = mutation(toolbox, offsprings, mutpb)
+        # offsprings = evaluate(toolbox, offsprings)
         population = toolbox.replace(population, offsprings)
 
         hof.update(population)
