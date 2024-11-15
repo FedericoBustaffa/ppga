@@ -7,8 +7,8 @@ from ppga.base.toolbox import ToolBox
 
 
 def task(
-    rqueue: mpq.Queue,
-    squeue: mpq.Queue,
+    rqueue: mpq.JoinableQueue,
+    squeue: mpq.JoinableQueue,
     toolbox: ToolBox,
     cxpb: float,
     mutpb: float,
@@ -17,6 +17,7 @@ def task(
     logger = log.getCoreLogger(log_level)
     while True:
         parents = squeue.get()
+        squeue.task_done()
         if parents is None:
             break
 
@@ -42,8 +43,8 @@ class Worker(mp.Process):
         mutpb: float,
         log_level: str | int = log.INFO,
     ) -> None:
-        self.rqueue = mp.Queue()
-        self.squeue = mp.Queue()
+        self.rqueue = mp.JoinableQueue()
+        self.squeue = mp.JoinableQueue()
 
         super().__init__(
             target=task,
@@ -54,14 +55,17 @@ class Worker(mp.Process):
         self.squeue.put(chunk)
 
     def recv(self):
-        return self.rqueue.get()
+        result = self.rqueue.get()
+        self.rqueue.task_done()
+
+        return result
 
     def join(self, timeout: float | None = None) -> None:
         self.squeue.put(None)
-        self.squeue.close()
-        self.squeue.join_thread()
 
-        self.rqueue.close()
-        self.rqueue.join_thread()
+        # self.squeue.close()
+        # self.rqueue.close()
+        # self.squeue.join_thread()
+        # self.rqueue.join_thread()
 
         super().join(timeout)

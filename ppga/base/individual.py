@@ -11,7 +11,7 @@ class Individual:
         if not isinstance(self.chromosome, np.ndarray):
             self.chromosome = np.array(self.chromosome)
 
-        self.values = ()
+        self.values = tuple()
         self.fitness = 0.0
 
     @property

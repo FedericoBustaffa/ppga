@@ -2,8 +2,7 @@ import numpy as np
 import psutil
 
 from ppga import log
-from ppga.algorithms.handler import Handler
-from ppga.algorithms.reproduction import reproduction
+from ppga.algorithms.utility import evaluation, reproduction
 from ppga.algorithms.worker import Worker
 from ppga.base import HallOfFame, Statistics, ToolBox
 
@@ -41,6 +40,11 @@ def custom(
         # perform crossover and mutation
         offsprings = reproduction(chosen, toolbox, cxpb, mutpb)
 
+        invalid = [i for i in offsprings if i.invalid]
+        logger.debug(f"invalids: {len(invalid)}")
+        evaluation(invalid, toolbox)
+        logger.debug(f"invalids: {len(invalid)}")
+
         # evaluate the individuals with invalid fitness
         evals = 0
         for i in range(len(offsprings)):
@@ -77,7 +81,6 @@ def pcustom(
     stats = Statistics()
 
     logger = log.getCoreLogger(log_level)
-    logger.debug("init values")
     logger.debug(f"population_size: {population_size}")
     logger.debug(f"keep: {keep}")
     logger.debug(f"crossover rate: {cxpb}")
@@ -99,7 +102,8 @@ def pcustom(
 
     chunksize = population_size // workers_num
     carry = population_size % workers_num
-    handlers = [Handler(toolbox, cxpb, mutpb, log_level) for _ in range(workers_num)]
+
+    handlers = [Worker(toolbox, cxpb, mutpb, log_level) for _ in range(workers_num)]
     for h in handlers:
         h.start()
 
