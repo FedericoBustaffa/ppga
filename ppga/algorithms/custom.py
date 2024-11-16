@@ -84,8 +84,10 @@ def pcustom(
 
         couples = batch.mating(chosen)
 
-        # new API
-        offsprings = pool.map(batch.cx_mut_eval, couples, toolbox, cxpb, mutpb)
+        # pool map
+        offsprings = pool.map(
+            func=batch.cx_mut_eval, iterable=couples, args=(toolbox, cxpb, mutpb)
+        )
 
         # perform a total replacement
         population = toolbox.replace(population, offsprings)

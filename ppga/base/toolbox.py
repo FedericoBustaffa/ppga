@@ -1,5 +1,6 @@
 import copy
 from functools import partial
+from typing import Callable
 
 from ppga.base.individual import Individual
 
@@ -11,14 +12,14 @@ class ToolBox:
     def set_weights(self, weights: tuple) -> None:
         self.weights = weights
 
-    def set_generation(self, func, *args, **kwargs) -> None:
+    def set_generation(self, func: Callable, *args, **kwargs) -> None:
         self.generation_func = partial(func, *args, **kwargs)
 
     def generate(self, population_size: int) -> list[Individual]:
         population = [self.generation_func() for _ in range(population_size)]
         return [Individual(i) for i in population]
 
-    def set_selection(self, func, *args, **kwargs) -> None:
+    def set_selection(self, func: Callable, *args, **kwargs) -> None:
         self.selection_func = func
         self.selection_args = args
         self.selection_kwargs = kwargs
@@ -30,7 +31,7 @@ class ToolBox:
             population, population_size, *self.selection_args, **self.selection_kwargs
         )
 
-    def set_crossover(self, func, *args, **kwargs) -> None:
+    def set_crossover(self, func: Callable, *args, **kwargs) -> None:
         self.crossover_func = func
         self.crossover_args = args
         self.crossover_kwargs = kwargs
@@ -45,7 +46,7 @@ class ToolBox:
 
         return Individual(offspring1), Individual(offspring2)
 
-    def set_mutation(self, func, *args, **kwargs) -> None:
+    def set_mutation(self, func: Callable, *args, **kwargs) -> None:
         self.mutation_func = func
         self.mutation_args = args
         self.mutation_kwargs = kwargs
@@ -57,7 +58,7 @@ class ToolBox:
 
         return individual
 
-    def set_evaluation(self, func, *args, **kwargs) -> None:
+    def set_evaluation(self, func: Callable, *args, **kwargs) -> None:
         self.evaluation_func = func
         self.evaluation_args = args
         self.evaluation_kwargs = kwargs
@@ -75,7 +76,7 @@ class ToolBox:
 
         return individual
 
-    def set_replacement(self, func, *args, **kwargs) -> None:
+    def set_replacement(self, func: Callable, *args, **kwargs) -> None:
         self.replacement_func = func
         self.replacement_args = args
         self.replacement_kwargs = kwargs

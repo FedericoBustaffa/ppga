@@ -1,3 +1,5 @@
+from typing import Any, Callable, Iterable, Mapping
+
 import psutil
 
 from ppga import log
@@ -17,10 +19,17 @@ class Pool:
         for w in self.workers:
             w.start()
 
-    def map(self, func, iterable, *args):
+    def map(
+        self,
+        func: Callable,
+        iterable,
+        args: Iterable[Any] = (),
+        kwargs: Mapping[str, Any] = {},
+    ):
         # dinamically resize the chunksize
         assert self.cores is not None
         workers_num = self.cores
+
         if len(iterable) < self.cores:
             workers_num = len(iterable)
 
@@ -34,6 +43,7 @@ class Pool:
                     func,
                     iterable[i * chunksize : i * chunksize + chunksize + 1],
                     args,
+                    kwargs,
                 )
             )
 
@@ -43,6 +53,7 @@ class Pool:
                     func,
                     iterable[i * chunksize : i * chunksize + chunksize],
                     args,
+                    kwargs,
                 )
             )
 

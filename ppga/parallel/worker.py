@@ -9,21 +9,14 @@ def compute(
     recv_q: mpq.JoinableQueue,
     log_level: str | int = log.INFO,
 ):
-    logger = log.getCoreLogger(log_level)
     while True:
         task = send_q.get()
         send_q.task_done()
         if task is None:
-            logger.debug("received termination object")
             break
 
-        func, chunk, args = task
-        logger.debug(f"{chunk}")
-        result = []
-        for i, elem in enumerate(chunk):
-            result.extend(func(elem, *args))
-
-        recv_q.put(result)
+        func, chunk, args, kwargs = task
+        recv_q.put(func(chunk, *args, **kwargs))
 
 
 class Worker(mp.Process):
