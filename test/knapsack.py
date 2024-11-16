@@ -108,7 +108,7 @@ def main(argv: list[str]):
         mutpb=0.2,
         max_generations=G,
         hall_of_fame=hof,
-        log_level=log.WARNING,
+        log_level=log.DEBUG,
     )
 
     value, weight = show_solution(pbest[0].chromosome, items)

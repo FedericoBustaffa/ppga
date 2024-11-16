@@ -2,9 +2,9 @@ import numpy as np
 import psutil
 
 from ppga import log
-from ppga.algorithms.utility import crossover, cx_mut_eval, evaluation, mating, mutation
-from ppga.algorithms.worker import Worker
+from ppga.algorithms import batch
 from ppga.base import HallOfFame, Statistics, ToolBox
+from ppga.parallel import Pool, Worker
 
 
 def custom(
@@ -29,16 +29,16 @@ def custom(
         chosen = toolbox.select(population, population_size)
 
         # create couples
-        couples = mating(chosen)
+        couples = batch.mating(chosen)
 
         # perform crossover
-        offsprings = crossover(couples, toolbox, cxpb)
+        offsprings = batch.crossover(couples, toolbox, cxpb)
 
         # # perform mutation
-        offsprings = mutation(offsprings, toolbox, mutpb)
+        offsprings = batch.mutation(offsprings, toolbox, mutpb)
 
         # # evaluate offsprings
-        offsprings = evaluation(offsprings, toolbox)
+        offsprings = batch.evaluation(offsprings, toolbox)
         evals = len(offsprings)
 
         # replace the old population
@@ -72,24 +72,9 @@ def pcustom(
 
     logger = log.getCoreLogger(log_level)
 
+    pool = Pool(False, log_level)
+
     # only use the physical cores
-    workers_num = psutil.cpu_count(logical=False)
-    assert workers_num is not None
-
-    # dinamically resize the chunksize
-    if population_size < workers_num:
-        logger.warning(
-            f"workers initialized: {population_size} out of {workers_num} cores"
-        )
-        workers_num = population_size
-
-    chunksize = population_size // workers_num
-    carry = population_size % workers_num
-
-    handlers = [Worker(toolbox, cxpb, mutpb, log_level) for _ in range(workers_num)]
-    for h in handlers:
-        h.start()
-
     population = toolbox.generate(population_size)
 
     logger.info(f"\t{'gen':15s}{'mean evals/worker':15s}")
@@ -97,29 +82,20 @@ def pcustom(
     for g in range(max_generations):
         chosen = toolbox.select(population, population_size)
 
-        for i in range(carry):
-            handlers[i].send(chosen[i * chunksize : i * chunksize + chunksize + 1])
+        couples = batch.mating(chosen)
 
-        for i in range(carry, workers_num, 1):
-            handlers[i].send(chosen[i * chunksize : i * chunksize + chunksize])
-
-        offsprings.clear()
-        evals = []
-        for h in handlers:
-            offsprings_chunk, worker_evals = h.recv()
-            offsprings.extend(offsprings_chunk)
-            evals.append(worker_evals)
+        # new API
+        offsprings = pool.map(batch.cx_mut_eval, couples, toolbox, cxpb, mutpb)
 
         # perform a total replacement
         population = toolbox.replace(population, offsprings)
 
         stats.update(population)
-        logger.info(f"\t{g:<15d}{np.mean(evals):<15f}")
+        logger.info(f"\t{g:<15d}{np.mean(len(offsprings)):<15f}")
 
         if hall_of_fame is not None:
             hall_of_fame.update(population)
 
-    for h in handlers:
-        h.join()
+    pool.join()
 
     return population, stats
