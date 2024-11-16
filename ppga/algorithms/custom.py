@@ -1,10 +1,9 @@
-import numpy as np
-import psutil
+from tqdm import tqdm
 
 from ppga import log
 from ppga.algorithms import batch
 from ppga.base import HallOfFame, Statistics, ToolBox
-from ppga.parallel import Pool, Worker
+from ppga.parallel import Pool
 
 
 def custom(
@@ -18,31 +17,38 @@ def custom(
     log_level: str | int = log.WARNING,
 ):
     stats = Statistics()
+
     logger = log.getCoreLogger(log_level)
 
     # generate the initial population
     population = toolbox.generate(population_size)
+    logger.debug(f"generated individuals: {len(population)}")
 
-    logger.info(f"\t{'gen':15s}{'evals':15s}")
-    for g in range(max_generations):
+    for g in tqdm(range(max_generations), ncols=80):
         # select individuals for reproduction
         chosen = toolbox.select(population, population_size)
+        logger.debug(f"selected individuals: {len(chosen)}")
 
         # create couples
         couples = batch.mating(chosen)
+        logger.debug(f"couples generated: {len(couples)}")
 
         # perform crossover
         offsprings = batch.crossover(couples, toolbox, cxpb)
+        logger.debug(f"offsprings generated: {len(offsprings)}")
 
         # # perform mutation
         offsprings = batch.mutation(offsprings, toolbox, mutpb)
+        logger.debug(f"offsprings after mutation: {len(offsprings)}")
 
         # # evaluate offsprings
         offsprings = batch.evaluation(offsprings, toolbox)
         evals = len(offsprings)
+        logger.debug(f"offsprings evaluated: {evals}")
 
         # replace the old population
         population = toolbox.replace(population, offsprings)
+        logger.debug(f"population size: {len(population)}")
 
         # update the Hall of Fame if present
         if hall_of_fame is not None:
@@ -51,9 +57,6 @@ def custom(
         # update the stats
         stats.update(population)
         stats.update_evals(evals)
-
-        # display current generation and number of evaluations
-        logger.info(f"\t{g:<15d}{evals:<15d}")
 
     return population, stats
 
@@ -76,24 +79,27 @@ def pcustom(
 
     # only use the physical cores
     population = toolbox.generate(population_size)
+    logger.debug(f"generated individuals: {len(population)}")
 
-    logger.info(f"\t{'gen':15s}{'mean evals/worker':15s}")
     offsprings = []
-    for g in range(max_generations):
+    for g in tqdm(range(max_generations), ncols=80):
         chosen = toolbox.select(population, population_size)
+        logger.debug(f"selected individuals: {len(chosen)}")
 
         couples = batch.mating(chosen)
+        logger.debug(f"couples generated: {len(couples)}")
 
         # pool map
         offsprings = pool.map(
             func=batch.cx_mut_eval, iterable=couples, args=(toolbox, cxpb, mutpb)
         )
+        logger.debug(f"offsprings generated: {len(offsprings)}")
 
         # perform a total replacement
         population = toolbox.replace(population, offsprings)
+        logger.debug(f"population size: {len(population)}")
 
         stats.update(population)
-        logger.info(f"\t{g:<15d}{np.mean(len(offsprings)):<15f}")
 
         if hall_of_fame is not None:
             hall_of_fame.update(population)

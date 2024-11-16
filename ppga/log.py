@@ -3,7 +3,10 @@ import sys
 
 from colorama import Back, Fore
 
-FMT = "[{levelname}] {name}: {message}"
+DATE = Fore.GREEN + "{asctime}" + Fore.RESET + " | "
+FILE = Fore.CYAN + "{filename}:{lineno}" + Fore.RESET + " | "
+NAME = Fore.RESET + "{name} " + Fore.RESET
+FMT = "[{levelname}]: {message}"
 
 
 DEBUG = logging.DEBUG
@@ -24,6 +27,7 @@ levels = {
 
 logging.addLevelName(15, "SUCCESS")
 
+
 FORMATS = {
     logging.DEBUG: Fore.CYAN + FMT + Fore.RESET,
     SUCCESS: Fore.GREEN + FMT + Fore.RESET,
@@ -38,7 +42,11 @@ class ColorFormatter(logging.Formatter):
     """Formatter the provides colors through colorama module"""
 
     def format(self, record: logging.LogRecord) -> str:
-        formatter = logging.Formatter(FORMATS[record.levelno], style="{")
+        formatter = logging.Formatter(
+            fmt=DATE + FILE + NAME + FORMATS[record.levelno],
+            datefmt="%d-%m-%Y - %H:%M:%S",
+            style="{",
+        )
         return formatter.format(record)
 
 
@@ -62,7 +70,7 @@ core_logger.addHandler(handler)
 
 user_logger = Logger("USER", INFO)
 formatter = ColorFormatter()
-handler = logging.StreamHandler()
+handler = logging.StreamHandler(sys.stdout)
 handler.setLevel(INFO)
 handler.setFormatter(formatter)
 user_logger.addHandler(handler)
@@ -72,16 +80,12 @@ def getCoreLogger(level: str | int = WARNING) -> Logger:
     """Returns the core logger with the given level set on all handlers"""
     if isinstance(level, str):
         level = levels[level]
-    setCoreLevel(level)
 
-    return core_logger
-
-
-def setCoreLevel(level: str | int) -> None:
-    """Set the core logger log level"""
+    core_logger.setLevel(level)
     for h in core_logger.handlers:
         h.setLevel(level)
-    core_logger.setLevel(level)
+
+    return core_logger
 
 
 def getLogger(level: str | int = INFO) -> Logger:

@@ -83,12 +83,12 @@ def main(argv: list[str]):
     best, stats = algorithms.elitist(
         toolbox=toolbox,
         population_size=N,
-        keep=0.2,
+        keep=0.5,
         cxpb=0.8,
         mutpb=0.2,
         max_generations=G,
         hall_of_fame=hof,
-        log_level=log.DEBUG,
+        log_level=argv[4].upper(),
     )
 
     value, weight = show_solution(hof[0].chromosome, items)
@@ -103,12 +103,12 @@ def main(argv: list[str]):
     pbest, pstats = algorithms.pelitist(
         toolbox=toolbox,
         population_size=N,
-        keep=0.2,
+        keep=0.5,
         cxpb=0.8,
         mutpb=0.2,
         max_generations=G,
         hall_of_fame=hof,
-        log_level=log.DEBUG,
+        log_level=argv[4].upper(),
     )
 
     value, weight = show_solution(pbest[0].chromosome, items)
