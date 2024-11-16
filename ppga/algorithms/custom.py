@@ -2,7 +2,7 @@ import numpy as np
 import psutil
 
 from ppga import log
-from ppga.algorithms.utility import evaluation, reproduction
+from ppga.algorithms.utility import crossover, cx_mut_eval, evaluation, mating, mutation
 from ppga.algorithms.worker import Worker
 from ppga.base import HallOfFame, Statistics, ToolBox
 
@@ -20,15 +20,6 @@ def custom(
     stats = Statistics()
     logger = log.getCoreLogger(log_level)
 
-    logger.debug("init values")
-    logger.debug(f"population_size: {population_size}")
-    logger.debug(f"keep: {keep}")
-    logger.debug(f"crossover rate: {cxpb}")
-    logger.debug(f"mutation rate: {mutpb}")
-    logger.debug(f"max generations: {max_generations}")
-    if hall_of_fame is None:
-        logger.debug("hall of fame not initialized")
-
     # generate the initial population
     population = toolbox.generate(population_size)
 
@@ -37,22 +28,20 @@ def custom(
         # select individuals for reproduction
         chosen = toolbox.select(population, population_size)
 
-        # perform crossover and mutation
-        offsprings = reproduction(chosen, toolbox, cxpb, mutpb)
+        # create couples
+        couples = mating(chosen)
 
-        invalid = [i for i in offsprings if i.invalid]
-        logger.debug(f"invalids: {len(invalid)}")
-        evaluation(invalid, toolbox)
-        logger.debug(f"invalids: {len(invalid)}")
+        # perform crossover
+        offsprings = crossover(couples, toolbox, cxpb)
 
-        # evaluate the individuals with invalid fitness
-        evals = 0
-        for i in range(len(offsprings)):
-            if offsprings[i].invalid:
-                offsprings[i] = toolbox.evaluate(offsprings[i])
-                evals += 1
+        # # perform mutation
+        offsprings = mutation(offsprings, toolbox, mutpb)
 
-        # elitist replacement
+        # # evaluate offsprings
+        offsprings = evaluation(offsprings, toolbox)
+        evals = len(offsprings)
+
+        # replace the old population
         population = toolbox.replace(population, offsprings)
 
         # update the Hall of Fame if present
@@ -63,6 +52,7 @@ def custom(
         stats.update(population)
         stats.update_evals(evals)
 
+        # display current generation and number of evaluations
         logger.info(f"\t{g:<15d}{evals:<15d}")
 
     return population, stats
@@ -81,13 +71,6 @@ def pcustom(
     stats = Statistics()
 
     logger = log.getCoreLogger(log_level)
-    logger.debug(f"population_size: {population_size}")
-    logger.debug(f"keep: {keep}")
-    logger.debug(f"crossover rate: {cxpb}")
-    logger.debug(f"mutation rate: {mutpb}")
-    logger.debug(f"max generations: {max_generations}")
-    if hall_of_fame is None:
-        logger.debug("hall of fame not initialized")
 
     # only use the physical cores
     workers_num = psutil.cpu_count(logical=False)

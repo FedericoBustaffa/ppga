@@ -1,8 +1,6 @@
 import random
 import sys
 
-import parallel
-
 from ppga import algorithms, base, log, tools
 
 
@@ -93,11 +91,11 @@ def main(argv: list[str]):
         log_level=log.DEBUG,
     )
 
-    value, weight = show_solution(best[0].chromosome, items)
+    value, weight = show_solution(hof[0].chromosome, items)
     logger.info(f"sequential best solution: ({value:.3f}, {weight:.3f})")
-    logger.info(f"sequential best fitnes: {best[0].fitness}")
+    logger.info(f"sequential best fitnes: {hof[0].fitness}")
     for i, ind in enumerate(hof):
-        logger.debug(f"{i}. {ind.values}")
+        logger.info(f"{i}. {ind.values}")
 
     # parallel execution
     hof.clear()
@@ -110,14 +108,14 @@ def main(argv: list[str]):
         mutpb=0.2,
         max_generations=G,
         hall_of_fame=hof,
-        log_level=log.DEBUG,
+        log_level=log.WARNING,
     )
 
     value, weight = show_solution(pbest[0].chromosome, items)
     logger.info(f"queue best solution: ({value:.3f}, {weight:.3f})")
     logger.info(f"queue best fitness: {pbest[0].fitness}")
     for i, ind in enumerate(hof):
-        logger.debug(f"{i}. {ind.values}")
+        logger.info(f"{i}. {ind.values}")
 
 
 if __name__ == "__main__":

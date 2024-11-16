@@ -28,7 +28,7 @@ def task(
 
         evals = 0
         for i in range(len(offsprings)):
-            if offsprings[i].invalid:
+            if not offsprings[i].valid:
                 offsprings[i] = toolbox.evaluate(offsprings[i])
                 evals += 1
 

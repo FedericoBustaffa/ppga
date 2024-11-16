@@ -66,9 +66,12 @@ class ToolBox:
         individual.values = self.evaluation_func(
             individual.chromosome, *self.evaluation_args, **self.evaluation_kwargs
         )
+
         individual.fitness = sum(
             [v * w for v, w in zip(individual.values, self.weights)]
         )
+
+        individual.valid = True
 
         return individual
 

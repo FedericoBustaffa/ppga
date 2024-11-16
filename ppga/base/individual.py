@@ -11,12 +11,9 @@ class Individual:
         if not isinstance(self.chromosome, np.ndarray):
             self.chromosome = np.array(self.chromosome)
 
-        self.values = tuple()
+        self.values = ()
         self.fitness = 0.0
-
-    @property
-    def invalid(self) -> bool:
-        return self.values == ()
+        self.valid = False
 
     def __hash__(self) -> int:
         return hash((tuple(self.chromosome), self.values, self.fitness))
@@ -30,17 +27,17 @@ class Individual:
 
     def __lt__(self, other) -> bool:
         assert isinstance(other, Individual)
-        if self.invalid:
+        if not self.valid:
             return True
-        elif other.invalid:
+        elif not other.valid:
             return False
         return self.fitness < other.fitness
 
     def __gt__(self, other) -> bool:
         assert isinstance(other, Individual)
-        if self.invalid:
+        if not self.valid:
             return False
-        elif other.invalid:
+        elif not other.valid:
             return True
         return self.fitness > other.fitness
 
