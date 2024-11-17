@@ -7,7 +7,6 @@ from ppga import log
 def compute(
     send_q: mpq.JoinableQueue,
     recv_q: mpq.JoinableQueue,
-    log_level: str | int = log.INFO,
 ):
     while True:
         task = send_q.get()
@@ -20,13 +19,13 @@ def compute(
 
 
 class Worker(mp.Process):
-    def __init__(self, log_level: str | int = log.WARNING) -> None:
+    def __init__(self) -> None:
         self.send_q = mp.JoinableQueue()
         self.recv_q = mp.JoinableQueue()
 
         super().__init__(
             target=compute,
-            args=[self.send_q, self.recv_q, log_level],
+            args=[self.send_q, self.recv_q],
         )
 
     def send(self, chunk) -> None:

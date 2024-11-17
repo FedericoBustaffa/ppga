@@ -7,15 +7,13 @@ from ppga.parallel.worker import Worker
 
 
 class Pool:
-    def __init__(
-        self, logical: bool = False, log_level: str | int = log.WARNING
-    ) -> None:
+    def __init__(self, logical: bool = False) -> None:
         self.cores = psutil.cpu_count(logical)
         assert self.cores is not None
 
-        self.logger = log.getCoreLogger(log_level)
+        self.logger = log.getCoreLogger()
 
-        self.workers = [Worker(log_level) for _ in range(self.cores)]
+        self.workers = [Worker() for _ in range(self.cores)]
         for w in self.workers:
             w.start()
 

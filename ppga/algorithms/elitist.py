@@ -1,4 +1,4 @@
-from ppga import log, tools
+from ppga import tools
 from ppga.algorithms.custom import custom, pcustom
 from ppga.base import HallOfFame, ToolBox
 
@@ -11,7 +11,6 @@ def elitist(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | HallOfFame = None,
-    log_level: str | int = log.WARNING,
 ):
     toolbox.set_replacement(tools.elitist, keep=keep)
 
@@ -23,7 +22,6 @@ def elitist(
         mutpb,
         max_generations,
         hall_of_fame,
-        log_level,
     )
 
 
@@ -35,7 +33,6 @@ def pelitist(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | HallOfFame = None,
-    log_level: str | int = log.WARNING,
 ):
     toolbox.set_replacement(tools.elitist, keep=keep)
 
@@ -47,5 +44,4 @@ def pelitist(
         mutpb,
         max_generations,
         hall_of_fame,
-        log_level,
     )

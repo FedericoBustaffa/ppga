@@ -14,11 +14,10 @@ def custom(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | HallOfFame = None,
-    log_level: str | int = log.WARNING,
 ):
     stats = Statistics()
 
-    logger = log.getCoreLogger(log_level)
+    logger = log.getCoreLogger()
 
     # generate the initial population
     population = toolbox.generate(population_size)
@@ -69,13 +68,12 @@ def pcustom(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | HallOfFame = None,
-    log_level: str | int = log.WARNING,
 ):
     stats = Statistics()
 
-    logger = log.getCoreLogger(log_level)
+    logger = log.getCoreLogger()
 
-    pool = Pool(False, log_level)
+    pool = Pool(False)
 
     # only use the physical cores
     population = toolbox.generate(population_size)

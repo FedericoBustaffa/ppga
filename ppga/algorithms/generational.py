@@ -1,4 +1,4 @@
-from ppga import log, tools
+from ppga import tools
 from ppga.algorithms.custom import custom, pcustom
 from ppga.base import HallOfFame, ToolBox
 
@@ -10,7 +10,6 @@ def generational(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | HallOfFame = None,
-    log_level: str | int = log.WARNING,
 ):
     toolbox.set_replacement(tools.total)
 
@@ -22,7 +21,6 @@ def generational(
         mutpb=mutpb,
         max_generations=max_generations,
         hall_of_fame=hall_of_fame,
-        log_level=log_level,
     )
 
 
@@ -33,7 +31,6 @@ def pgenerational(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | HallOfFame = None,
-    log_level: str | int = log.WARNING,
 ):
     toolbox.set_replacement(tools.total)
 
@@ -45,5 +42,4 @@ def pgenerational(
         mutpb=mutpb,
         max_generations=max_generations,
         hall_of_fame=hall_of_fame,
-        log_level=log_level,
     )
