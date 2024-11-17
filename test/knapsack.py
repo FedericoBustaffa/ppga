@@ -53,7 +53,7 @@ def main(argv: list[str]):
 
     if len(argv) < 5:
         argv.append("INFO")
-    logger = log.getLogger(argv[4].upper())
+    logger = log.getUserLogger()
 
     items_num = int(argv[1])
     N = int(argv[2])
@@ -88,7 +88,6 @@ def main(argv: list[str]):
         mutpb=0.2,
         max_generations=G,
         hall_of_fame=hof,
-        log_level=argv[4].upper(),
     )
 
     value, weight = show_solution(hof[0].chromosome, items)
@@ -108,7 +107,6 @@ def main(argv: list[str]):
         mutpb=0.2,
         max_generations=G,
         hall_of_fame=hof,
-        log_level=argv[4].upper(),
     )
 
     value, weight = show_solution(pbest[0].chromosome, items)
