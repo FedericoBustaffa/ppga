@@ -1,0 +1,1028 @@
+17-11-2024 - 14:56:52 | knapsack.py:64 | USER [INFO]: capacity: 2.695
+17-11-2024 - 14:56:52 | knapsack.py:69 | USER [INFO]: greedy (value: 3.030, weight: 2.595)
+17-11-2024 - 14:56:52 | custom.py:24 | CORE [DEBUG]: generated individuals: 100
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 132
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 148
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 96
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 96
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 96
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 170
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 163
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 84
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 84
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 163
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 157
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 86
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 86
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 157
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 157
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 72
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 72
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 150
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 151
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 72
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 72
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 151
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 150
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 72
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 72
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 147
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 148
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 148
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 157
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 86
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 86
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 161
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 86
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 86
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 167
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 72
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 72
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 84
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 84
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 163
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 84
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 84
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 70
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 70
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 70
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 150
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 70
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 70
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 70
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 145
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 84
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 84
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 88
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 88
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 168
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 163
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 157
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 155
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 157
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 86
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 86
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 165
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 161
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 84
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 84
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 88
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 88
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 88
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 88
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 171
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 90
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 90
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 90
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 173
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 86
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 86
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 172
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 84
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 84
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 170
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 94
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 94
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 94
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 179
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 84
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 84
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 174
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 88
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 88
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 175
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 88
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 88
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 176
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 163
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 90
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 90
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 90
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 169
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 82
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 82
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 157
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 74
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 74
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 150
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 80
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 80
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 155
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 94
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 94
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 94
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 172
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 76
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 76
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:52 | custom.py:29 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:33 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:37 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:41 | CORE [DEBUG]: offsprings after mutation: 78
+17-11-2024 - 14:56:52 | custom.py:46 | CORE [DEBUG]: offsprings evaluated: 78
+17-11-2024 - 14:56:52 | custom.py:50 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:52 | knapsack.py:94 | USER [INFO]: sequential best solution: (3.030, 2.595)
+17-11-2024 - 14:56:52 | knapsack.py:95 | USER [INFO]: sequential best fitnes: 6.496471073656194
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 0. (np.float64(3.030415834007388), np.float64(2.59477642836597))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 1. (np.float64(2.902722388464091), np.float64(2.3527001541079007))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 2. (np.float64(2.913408545045956), np.float64(2.393714528452119))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 3. (np.float64(2.8074980643938203), np.float64(2.1624724536661333))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 4. (np.float64(2.7857150995026587), np.float64(2.15163825419405))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 5. (np.float64(2.679804618850523), np.float64(1.9203961794080642))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 6. (np.float64(2.690490775432388), np.float64(1.9614105537522826))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 7. (np.float64(2.8814288649579414), np.float64(2.565998173563236))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 8. (np.float64(2.8596459000667798), np.float64(2.5551639740911525))
+17-11-2024 - 14:56:52 | knapsack.py:97 | USER [INFO]: 9. (np.float64(2.562797329889091), np.float64(1.7193342794942135))
+17-11-2024 - 14:56:52 | custom.py:80 | CORE [DEBUG]: generated individuals: 100
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 128
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 148
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 148
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 150
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 68
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 146
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 161
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 92
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 168
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 168
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 92
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 174
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 167
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 167
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 167
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 165
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 161
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:52 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:52 | custom.py:98 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:52 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:52 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 168
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 170
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 167
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 70
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 161
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 150
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 155
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 70
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 148
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 166
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 161
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 90
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 168
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 163
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 156
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 90
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 170
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 92
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 177
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 88
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 176
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 170
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 159
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 70
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 151
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 150
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 155
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 160
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 86
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 168
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 168
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 90
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 171
+17-11-2024 - 14:56:53 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:53 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:53 | custom.py:94 | CORE [DEBUG]: offsprings generated: 78
+17-11-2024 - 14:56:53 | custom.py:98 | CORE [DEBUG]: population size: 164
+17-11-2024 - 14:56:54 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:54 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:54 | custom.py:94 | CORE [DEBUG]: offsprings generated: 72
+17-11-2024 - 14:56:54 | custom.py:98 | CORE [DEBUG]: population size: 154
+17-11-2024 - 14:56:54 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:54 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:54 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:54 | custom.py:98 | CORE [DEBUG]: population size: 153
+17-11-2024 - 14:56:54 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:54 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:54 | custom.py:94 | CORE [DEBUG]: offsprings generated: 76
+17-11-2024 - 14:56:54 | custom.py:98 | CORE [DEBUG]: population size: 152
+17-11-2024 - 14:56:54 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:54 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:54 | custom.py:94 | CORE [DEBUG]: offsprings generated: 82
+17-11-2024 - 14:56:54 | custom.py:98 | CORE [DEBUG]: population size: 158
+17-11-2024 - 14:56:54 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:54 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:54 | custom.py:94 | CORE [DEBUG]: offsprings generated: 84
+17-11-2024 - 14:56:54 | custom.py:98 | CORE [DEBUG]: population size: 163
+17-11-2024 - 14:56:54 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:54 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:54 | custom.py:94 | CORE [DEBUG]: offsprings generated: 80
+17-11-2024 - 14:56:54 | custom.py:98 | CORE [DEBUG]: population size: 162
+17-11-2024 - 14:56:54 | custom.py:85 | CORE [DEBUG]: selected individuals: 100
+17-11-2024 - 14:56:54 | custom.py:88 | CORE [DEBUG]: couples generated: 50
+17-11-2024 - 14:56:54 | custom.py:94 | CORE [DEBUG]: offsprings generated: 74
+17-11-2024 - 14:56:54 | custom.py:98 | CORE [DEBUG]: population size: 155
+17-11-2024 - 14:56:54 | knapsack.py:113 | USER [INFO]: queue best solution: (3.030, 2.595)
+17-11-2024 - 14:56:54 | knapsack.py:114 | USER [INFO]: queue best fitness: 6.496471073656194
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 0. (np.float64(3.030415834007388), np.float64(2.59477642836597))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 1. (np.float64(2.902722388464091), np.float64(2.3527001541079007))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 2. (np.float64(2.913408545045956), np.float64(2.393714528452119))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 3. (np.float64(2.8074980643938203), np.float64(2.1624724536661333))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 4. (np.float64(2.7857150995026587), np.float64(2.15163825419405))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 5. (np.float64(2.9123937200886276), np.float64(2.571479574147231))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 6. (np.float64(2.679804618850523), np.float64(1.9203961794080642))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 7. (np.float64(2.690490775432388), np.float64(1.9614105537522826))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 8. (np.float64(2.562797329889091), np.float64(1.7193342794942135))
+17-11-2024 - 14:56:54 | knapsack.py:116 | USER [INFO]: 9. (np.float64(2.728439618789962), np.float64(2.226647216523307))
