@@ -25,11 +25,11 @@ def custom(
 
     for g in tqdm(range(max_generations), ncols=80):
         # select individuals for reproduction
-        chosen = toolbox.select(population, population_size)
-        logger.debug(f"selected individuals: {len(chosen)}")
+        selected = toolbox.select(population, population_size)
+        logger.debug(f"selected individuals: {len(selected)}")
 
         # create couples
-        couples = batch.mating(chosen)
+        couples = batch.mating(selected)
         logger.debug(f"couples generated: {len(couples)}")
 
         # perform crossover
@@ -81,10 +81,10 @@ def pcustom(
 
     offsprings = []
     for g in tqdm(range(max_generations), ncols=80):
-        chosen = toolbox.select(population, population_size)
-        logger.debug(f"selected individuals: {len(chosen)}")
+        selected = toolbox.select(population, population_size)
+        logger.debug(f"selected individuals: {len(selected)}")
 
-        couples = batch.mating(chosen)
+        couples = batch.mating(selected)
         logger.debug(f"couples generated: {len(couples)}")
 
         # pool map
