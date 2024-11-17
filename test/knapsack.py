@@ -54,6 +54,7 @@ def main(argv: list[str]):
     if len(argv) < 5:
         argv.append("INFO")
     logger = log.getUserLogger()
+    logger.setLevel(argv[4].upper())
 
     items_num = int(argv[1])
     N = int(argv[2])
@@ -80,6 +81,7 @@ def main(argv: list[str]):
     hof = base.HallOfFame(10)
 
     # sequential execution
+    log.setLevel(argv[4].upper())
     best, stats = algorithms.elitist(
         toolbox=toolbox,
         population_size=N,

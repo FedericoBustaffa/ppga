@@ -8,14 +8,21 @@ def compute(
     send_q: mpq.JoinableQueue,
     recv_q: mpq.JoinableQueue,
 ):
+    logger = log.getCoreLogger()
+    process = mp.current_process()
+    logger.debug(f"{process.name} started")
+
     while True:
         task = send_q.get()
         send_q.task_done()
         if task is None:
+            logger.debug(f"{process.name} received termination chunk")
             break
 
         func, chunk, args, kwargs = task
         recv_q.put(func(chunk, *args, **kwargs))
+
+    logger.debug(f"{process.name} terminated")
 
 
 class Worker(mp.Process):
@@ -39,4 +46,6 @@ class Worker(mp.Process):
 
     def join(self, timeout: float | None = None) -> None:
         self.send_q.put(None)
+        self.send_q.join()
+        self.recv_q.join()
         super().join(timeout)
