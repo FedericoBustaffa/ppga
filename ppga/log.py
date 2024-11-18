@@ -7,9 +7,12 @@ TIME = "%(asctime)s"
 FILE = "%(filename)s:%(lineno)d"
 FMT = "[%(levelname)s]: %(message)s"
 
+logging.addLevelName(25, "BENCHMARK")
+
 FORMATS = {
     logging.DEBUG: Fore.CYAN + FMT + Fore.RESET,
     logging.INFO: Fore.RESET + FMT + Fore.RESET,
+    25: Fore.GREEN + FMT + Fore.RESET,
     logging.WARNING: Fore.YELLOW + FMT + Fore.RESET,
     logging.ERROR: Fore.RED + FMT + Fore.RESET,
     logging.CRITICAL: Back.RED + Fore.RESET + FMT + Fore.RESET + Back.RESET,
@@ -49,8 +52,9 @@ def setup():
     file_handler.setFormatter(formatter)
 
     benchmark_handler = logging.FileHandler("logs/benchmark.log")
-    benchmark_handler.setLevel(logging.INFO)
+    benchmark_handler.setLevel("BENCHMARK")
     benchmark_handler.setFormatter(formatter)
+    benchmark_handler.addFilter(lambda record: record.levelname == "BENCHMARK")
 
     stdout_handler = logging.StreamHandler(sys.stdout)
     stdout_handler.setLevel(logging.DEBUG)
