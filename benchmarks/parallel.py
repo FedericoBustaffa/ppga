@@ -101,8 +101,8 @@ def main(argv: list[str]) -> None:
 
     start = time.perf_counter()
     parallel_run(toolbox, int(argv[2]), int(argv[3]))
-    stime = time.perf_counter() - start
-    logger.log(25, f"stime: {stime} seconds")
+    ptime = time.perf_counter() - start
+    logger.log(25, f"ptime: {ptime} seconds")
 
 
 if __name__ == "__main__":

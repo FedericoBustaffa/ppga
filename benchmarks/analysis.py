@@ -1,12 +1,7 @@
 import numpy as np
+import sys
 
-
-def main():
-    file = open("logs/benchmark.log", "r")
-    lines = file.readlines()
-    file.close()
-
-    lines.sort(key=lambda x: x.split(" ")[-3])
+def sequential_analysis():
     times = {
         "generation": [],
         "selection": [],
@@ -15,8 +10,28 @@ def main():
         "evaluation": [],
         "replacement": [],
         "stime": [],
+    }
+
+def parallel_analysis():
+    times = {
+        "generation": [],
+        "selection": [],
+        "crossover": [],
+        "mutation": [],
+        "evaluation": [],
+        "replacement": [],
+        "ptime": [],
         "parallel": [],
     }
+
+
+def main(argv: list[str]):
+
+    file = open("logs/benchmark.log", "r")
+    lines = file.readlines()
+    file.close()
+
+    lines.sort(key=lambda x: x.split(" ")[-3])
 
     for line in lines:
         words = line.split(" ")
@@ -30,4 +45,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
