@@ -1,9 +1,6 @@
 import random
 
-from ppga import log
 from ppga.base import Individual, ToolBox
-
-logger = log.getCoreLogger()
 
 
 def mating(population: list[Individual]) -> list[tuple[Individual, Individual]]:

@@ -16,7 +16,6 @@ def custom(
     hall_of_fame: None | HallOfFame = None,
 ):
     stats = Statistics()
-
     logger = log.getCoreLogger()
 
     # generate the initial population
@@ -67,19 +66,18 @@ def pcustom(
     cxpb: float = 0.8,
     mutpb: float = 0.2,
     max_generations: int = 50,
-    hall_of_fame: None | HallOfFame = None,
+    hall_of_fame: HallOfFame | None = None,
 ):
     stats = Statistics()
-
     logger = log.getCoreLogger()
 
-    pool = Pool(False)
-
     # only use the physical cores
+    pool = Pool(logical=False)
+
+    # generate the initial population
     population = toolbox.generate(population_size)
     logger.debug(f"generated individuals: {len(population)}")
 
-    offsprings = []
     for g in tqdm(range(max_generations), ncols=80):
         selected = toolbox.select(population, population_size)
         logger.debug(f"selected individuals: {len(selected)}")
