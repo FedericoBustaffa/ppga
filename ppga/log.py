@@ -44,9 +44,13 @@ def setup():
 
     color_formatter = ColorFormatter()
 
-    file_handler = logging.FileHandler("log.log")
+    file_handler = logging.FileHandler("logs/log.log")
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
+
+    benchmark_handler = logging.FileHandler("logs/benchmark.log")
+    benchmark_handler.setLevel(logging.INFO)
+    benchmark_handler.setFormatter(formatter)
 
     stdout_handler = logging.StreamHandler(sys.stdout)
     stdout_handler.setLevel(logging.DEBUG)
@@ -55,11 +59,13 @@ def setup():
     core_logger = logging.getLogger("CORE")
     core_logger.setLevel(logging.DEBUG)
     core_logger.addHandler(file_handler)
+    core_logger.addHandler(benchmark_handler)
     core_logger.addHandler(stdout_handler)
 
     user_logger = logging.getLogger("USER")
     user_logger.setLevel(logging.DEBUG)
     user_logger.addHandler(file_handler)
+    user_logger.addHandler(benchmark_handler)
     user_logger.addHandler(stdout_handler)
 
 
