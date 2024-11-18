@@ -56,13 +56,3 @@ def cx_uniform(father, mother, indpb: float = 0.5) -> tuple:
             offspring2[i] = father[i]
 
     return offspring1, offspring2
-
-
-if __name__ == "__main__":
-    father = random.choice([i for i in range(10)], size=10, replace=False)
-    mother = random.choice([i for i in range(10)], size=10, replace=False)
-
-    print(father, mother)
-
-    o1, o2 = cx_uniform(father, mother)
-    print(o1, o2)

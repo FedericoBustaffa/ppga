@@ -38,9 +38,3 @@ def mut_gaussian(chromosome, sigma, alpha: float, indpb: float = 0.2):
             chromosome[i] = random.normal(loc=x, scale=sigma[i] * alpha)
 
     return chromosome
-
-
-if __name__ == "__main__":
-    chromosome = np.array([i for i in range(10)])
-    print(chromosome)
-    print(mut_rotation(chromosome))
