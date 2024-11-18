@@ -19,6 +19,9 @@ def evaluate(chromosome, items: list[Item], capacity: float) -> tuple:
         value += chromosome[i] * items[i].value
         weight += chromosome[i] * items[i].weight
 
+    for _ in range(50000):
+        random.random()
+
     if weight > capacity:
         return 0.0, weight
     else:
@@ -78,7 +81,6 @@ def main(argv: list[str]):
     toolbox.set_crossover(tools.cx_uniform)
     toolbox.set_mutation(tools.mut_bitflip)
     toolbox.set_evaluation(evaluate, items, capacity)
-    toolbox.set_replacement(tools.elitist)
 
     # hall of fame for keep best individuals
     hof = base.HallOfFame(10)
