@@ -70,6 +70,7 @@ def main(argv: list[str]):
     value, weight = show_solution(solution, items)
     logger.info(f"greedy (value: {value:.3f}, weight: {weight:.3f})")
 
+    # setup the toolbox
     toolbox = base.ToolBox()
     toolbox.set_weights(weights=(3.0, -1.0))
     toolbox.set_generation(tools.gen_repetition, (0, 1), len(items))
@@ -79,6 +80,7 @@ def main(argv: list[str]):
     toolbox.set_evaluation(evaluate, items, capacity)
     toolbox.set_replacement(tools.elitist)
 
+    # hall of fame for keep best individuals
     hof = base.HallOfFame(10)
 
     # sequential execution
