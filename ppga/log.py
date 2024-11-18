@@ -1,7 +1,11 @@
 import logging
+import logging.handlers
 import sys
 
 from colorama import Back, Fore
+
+# variable for setting up only one time
+setted = False
 
 TIME = "%(asctime)s"
 FILE = "%(filename)s:%(lineno)d"
@@ -34,9 +38,6 @@ class ColorFormatter(logging.Formatter):
         return formatter.format(record)
 
 
-setted = False
-
-
 def setup():
     global setted
     setted = True
@@ -51,7 +52,7 @@ def setup():
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
 
-    benchmark_handler = logging.FileHandler("logs/benchmark.log")
+    benchmark_handler = logging.FileHandler("logs/benchmark.log", mode="w")
     benchmark_handler.setLevel("BENCHMARK")
     benchmark_handler.setFormatter(formatter)
     benchmark_handler.addFilter(lambda record: record.levelname == "BENCHMARK")
@@ -73,10 +74,6 @@ def setup():
     user_logger.addHandler(stdout_handler)
 
 
-if not setted:
-    setup()
-
-
 def setLevel(level: str | int):
     logger = logging.getLogger("CORE")
     logger.setLevel(level)
@@ -90,3 +87,7 @@ def getCoreLogger() -> logging.Logger:
 def getUserLogger() -> logging.Logger:
     """Provides a logger for the user with the given log level"""
     return logging.getLogger("USER")
+
+
+if not setted:
+    setup()
