@@ -53,10 +53,12 @@ def setup():
     stdout_handler.setFormatter(color_formatter)
 
     core_logger = logging.getLogger("CORE")
+    core_logger.setLevel(logging.DEBUG)
     core_logger.addHandler(file_handler)
     core_logger.addHandler(stdout_handler)
 
     user_logger = logging.getLogger("USER")
+    user_logger.setLevel(logging.DEBUG)
     user_logger.addHandler(file_handler)
     user_logger.addHandler(stdout_handler)
 
