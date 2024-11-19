@@ -1,3 +1,5 @@
+import datetime as dt
+import json
 import logging
 import logging.handlers
 import os
@@ -32,27 +34,40 @@ class ColorFormatter(logging.Formatter):
             + Fore.CYAN
             + FILE
             + Fore.RESET
-            + " | %(name)s "
+            + " | %(name)s %(processName)s "
             + FORMATS[record.levelno],
             datefmt=Fore.GREEN + "%d-%m-%Y - %H:%M:%S" + Fore.RESET,
         )
         return formatter.format(record)
 
 
+class JsonFormatter(logging.Formatter):
+    def format(self, record: logging.LogRecord) -> str:
+        records = {
+            "timestamp": dt.datetime.fromtimestamp(
+                record.created, tz=dt.timezone.utc
+            ).isoformat(),
+            "logger": record.name,
+            "process_name": record.processName,
+            "level": record.levelname,
+            "message": record.getMessage(),
+        }
+
+        return json.dumps(records, default=str)
+
+
 def setup():
     global setted
     setted = True
-    formatter = logging.Formatter(
-        fmt=TIME + " | " + FILE + " | %(name)s " + FMT,
-        datefmt="%d-%m-%Y - %H:%M:%S",
-    )
 
+    # formatters
+    formatter = JsonFormatter()
     color_formatter = ColorFormatter()
 
     if "logs" not in os.listdir():
         os.mkdir("logs")
 
-    file_handler = logging.FileHandler(filename="logs/log.log", mode="w")
+    file_handler = logging.FileHandler(filename="logs/log.json", mode="w")
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
 
