@@ -1,5 +1,6 @@
 import logging
 import logging.handlers
+import os
 import sys
 
 from colorama import Back, Fore
@@ -48,14 +49,12 @@ def setup():
 
     color_formatter = ColorFormatter()
 
-    file_handler = logging.FileHandler("logs/log.log")
+    if "logs" not in os.listdir():
+        os.mkdir("logs")
+
+    file_handler = logging.FileHandler(filename="logs/log.log", mode="w")
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
-
-    benchmark_handler = logging.FileHandler("logs/benchmark.log", mode="w")
-    benchmark_handler.setLevel("BENCHMARK")
-    benchmark_handler.setFormatter(formatter)
-    benchmark_handler.addFilter(lambda record: record.levelname == "BENCHMARK")
 
     stdout_handler = logging.StreamHandler(sys.stdout)
     stdout_handler.setLevel(logging.DEBUG)
@@ -64,13 +63,11 @@ def setup():
     core_logger = logging.getLogger("CORE")
     core_logger.setLevel(logging.DEBUG)
     core_logger.addHandler(file_handler)
-    core_logger.addHandler(benchmark_handler)
     core_logger.addHandler(stdout_handler)
 
     user_logger = logging.getLogger("USER")
     user_logger.setLevel(logging.DEBUG)
     user_logger.addHandler(file_handler)
-    user_logger.addHandler(benchmark_handler)
     user_logger.addHandler(stdout_handler)
 
 
