@@ -13,83 +13,69 @@ def read_file() -> list[dict]:
 
     data = []
     for line in lines:
-        data.append(json.loads(line))
+        if "BENCHMARK" in line:
+            data.append(json.loads(line))
 
     return data
 
 
-def parse_values(lines: list[str], times: dict[str, list]):
+def parse_values(lines: list[dict]):
+    stats = dict()
     for line in lines:
-        words = line.split(" ")
-        key = words[-3].removesuffix(":")
-        times[key].append(float(line.split(" ")[-2]))
+        process = line["process_name"]
+        key = line["field"].removesuffix(":")
 
-    return times
+        try:
+            proc_stats = stats[process]
+        except KeyError:
+            stats.update({process: {}})
+            proc_stats = stats[process]
+
+        try:
+            proc_stats[key].append(float(line["time"]))
+        except KeyError:
+            proc_stats.update({key: []})
+            proc_stats[key].append(float(line["time"]))
+
+    return stats
 
 
 def simulate_seq(argv: list[str]):
     sequential.main(argv)
 
-    times = {
-        "generation": [],
-        "selection": [],
-        "crossover": [],
-        "mutation": [],
-        "evaluation": [],
-        "replacement": [],
-        "stime": [],
-    }
+    lines = read_file()
+    stats = parse_values(lines)["MainProcess"]
 
-    data = read_file()
-    times = parse_values(data, times)
-
-    for key in times.keys():
-        print(f"total {key} time: {np.sum(times[key])} s")
-        print(f"mean {key} time: {np.mean(times[key]) * 1000.0} ms")
-        print("-" * 50)
-
-    return times
-
-
-def parse_values_p(lines: list, times: dict[str, list]):
-    workers = []
-
-    for line in lines:
-        words = line.split(" ")
-        key = words[-3].removesuffix(":")
-        try:
-            times[key].append(float(line.split(" ")[-2]))
-        except KeyError:
-            pass
-
-    return times
+    return stats
 
 
 def simulate_par(argv: list[str]):
     parallel.main(argv)
 
-    times = {
-        "generation": [],
-        "selection": [],
-        "crossover": [],
-        "mutation": [],
-        "evaluation": [],
-        "replacement": [],
-        "parallel": [],
-        "ptime": [],
-    }
-
     lines = read_file()
-    times = parse_values_p(lines, times)
+    stats = parse_values(lines)
 
-    return times
+    return stats
 
 
 def main(argv: list[str]):
-    stimes = simulate_seq(argv)
-    # ptimes = simulate_par(argv)
+    stats = simulate_seq(argv)
+    pstats = simulate_par(argv)
+
+    print("-" * 15, "SEQUENTIAL", "-" * 15)
+    for key in stats.keys():
+        print(f"total {key} time: {np.sum(stats[key])} s")
+        print(f"mean {key} time: {np.mean(stats[key]) * 1000.0} ms")
+        print("-" * 50)
+
+    print("-" * 15, "PARALLEL", "-" * 15)
+    for worker in pstats.keys():
+        print("-" * 15, worker, "-" * 15)
+        for key in pstats[worker].keys():
+            print(f"total {key} time: {np.sum(pstats[worker][key])} s")
+            print(f"mean {key} time: {np.mean(pstats[worker][key]) * 1000.0} ms")
+            print("-" * 50)
 
 
 if __name__ == "__main__":
     main(sys.argv)
-)
