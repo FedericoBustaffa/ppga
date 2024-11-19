@@ -43,15 +43,32 @@ class ColorFormatter(logging.Formatter):
 
 class JsonFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
-        records = {
-            "timestamp": dt.datetime.fromtimestamp(
-                record.created, tz=dt.timezone.utc
-            ).isoformat(),
-            "logger": record.name,
-            "process_name": record.processName,
-            "level": record.levelname,
-            "message": record.getMessage(),
-        }
+        if record.levelname == "BENCHMARK":
+            message = record.getMessage()
+            words = message.split(" ")
+            field = words[-3]
+            elapsed_time = words[-2]
+
+            records = {
+                "timestamp": dt.datetime.fromtimestamp(
+                    record.created, tz=dt.timezone.utc
+                ).isoformat(),
+                "logger": record.name,
+                "process_name": record.processName,
+                "level": record.levelname,
+                "field": field,
+                "time": elapsed_time,
+            }
+        else:
+            records = {
+                "timestamp": dt.datetime.fromtimestamp(
+                    record.created, tz=dt.timezone.utc
+                ).isoformat(),
+                "logger": record.name,
+                "process_name": record.processName,
+                "level": record.levelname,
+                "message": record.getMessage(),
+            }
 
         return json.dumps(records, default=str)
 
