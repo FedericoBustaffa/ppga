@@ -1,18 +1,35 @@
+import json
 import sys
 
 import numpy as np
+import parallel
+import sequential
 
 
-def read_file() -> list[str]:
-    file = open("logs/benchmark.log", "r")
+def read_file() -> list[dict]:
+    file = open("logs/log.json", "r")
     lines = file.readlines()
-    lines.sort(key=lambda x: x.split(" ")[-3])
     file.close()
 
-    return lines
+    data = []
+    for line in lines:
+        data.append(json.loads(line))
+
+    return data
 
 
-def sequential_analysis():
+def parse_values(lines: list[str], times: dict[str, list]):
+    for line in lines:
+        words = line.split(" ")
+        key = words[-3].removesuffix(":")
+        times[key].append(float(line.split(" ")[-2]))
+
+    return times
+
+
+def simulate_seq(argv: list[str]):
+    sequential.main(argv)
+
     times = {
         "generation": [],
         "selection": [],
@@ -23,19 +40,34 @@ def sequential_analysis():
         "stime": [],
     }
 
-    lines = read_file()
-    for line in lines:
-        words = line.split(" ")
-        key = words[-3].removesuffix(":")
-        times[key].append(float(line.split(" ")[-2]))
+    data = read_file()
+    times = parse_values(data, times)
 
     for key in times.keys():
         print(f"total {key} time: {np.sum(times[key])} s")
         print(f"mean {key} time: {np.mean(times[key]) * 1000.0} ms")
         print("-" * 50)
 
+    return times
 
-def parallel_analysis():
+
+def parse_values_p(lines: list, times: dict[str, list]):
+    workers = []
+
+    for line in lines:
+        words = line.split(" ")
+        key = words[-3].removesuffix(":")
+        try:
+            times[key].append(float(line.split(" ")[-2]))
+        except KeyError:
+            pass
+
+    return times
+
+
+def simulate_par(argv: list[str]):
+    parallel.main(argv)
+
     times = {
         "generation": [],
         "selection": [],
@@ -43,26 +75,21 @@ def parallel_analysis():
         "mutation": [],
         "evaluation": [],
         "replacement": [],
-        "ptime": [],
         "parallel": [],
+        "ptime": [],
     }
 
     lines = read_file()
-    for line in lines:
-        words = line.split(" ")
-        key = words[-3].removesuffix(":")
-        times[key].append(float(line.split(" ")[-2]))
+    times = parse_values_p(lines, times)
 
-    for key in times.keys():
-        print(f"total {key} time: {np.sum(times[key])} s")
-        print(f"mean {key} time: {np.mean(times[key]) * 1000.0} ms")
-        print("-" * 50)
+    return times
 
 
 def main(argv: list[str]):
-    sequential_analysis()
-    # parallel_analysis()
+    stimes = simulate_seq(argv)
+    # ptimes = simulate_par(argv)
 
 
 if __name__ == "__main__":
     main(sys.argv)
+)

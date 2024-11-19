@@ -1,5 +1,4 @@
 import logging
-import multiprocessing as mp
 import random
 import sys
 import time
@@ -10,7 +9,7 @@ from ppga import base, log, parallel, tools
 from ppga.algorithms import batch
 
 
-def ptask(couples, toolbox):
+def ptask(couples: list, toolbox: base.ToolBox):
     logger = log.getUserLogger()
 
     # crossover
@@ -21,7 +20,7 @@ def ptask(couples, toolbox):
             offspring1, offspring2 = toolbox.crossover(father, mother)
             offsprings.extend([toolbox.clone(offspring1), toolbox.clone(offspring2)])
             cx_time = time.perf_counter() - start
-            logger.log(25, f"{mp.current_process().name} crossover: {cx_time} seconds")
+            logger.log(25, f"crossover: {cx_time} seconds")
 
     # mutation
     for i, ind in enumerate(offsprings):
@@ -29,14 +28,14 @@ def ptask(couples, toolbox):
             start = time.perf_counter()
             offsprings[i] = toolbox.mutate(ind)
             mut_time = time.perf_counter() - start
-            logger.log(25, f"{mp.current_process().name} mutation: {mut_time} seconds")
+            logger.log(25, f"mutation: {mut_time} seconds")
 
     # evaluation
     for i, ind in enumerate(offsprings):
         start = time.perf_counter()
         offsprings[i] = toolbox.evaluate(ind)
         eval_time = time.perf_counter() - start
-        logger.log(25, f"{mp.current_process().name} evaluation: {eval_time} seconds")
+        logger.log(25, f"evaluation: {eval_time} seconds")
 
     return offsprings
 
