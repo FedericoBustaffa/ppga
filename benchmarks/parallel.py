@@ -20,7 +20,7 @@ def ptask(couples: list, toolbox: base.ToolBox):
             offspring1, offspring2 = toolbox.crossover(father, mother)
             offsprings.extend([toolbox.clone(offspring1), toolbox.clone(offspring2)])
             cx_time = time.perf_counter() - start
-            logger.log(25, f"crossover: {cx_time} seconds")
+            logger.log(15, f"crossover: {cx_time} seconds")
 
     # mutation
     for i, ind in enumerate(offsprings):
@@ -28,14 +28,14 @@ def ptask(couples: list, toolbox: base.ToolBox):
             start = time.perf_counter()
             offsprings[i] = toolbox.mutate(ind)
             mut_time = time.perf_counter() - start
-            logger.log(25, f"mutation: {mut_time} seconds")
+            logger.log(15, f"mutation: {mut_time} seconds")
 
     # evaluation
     for i, ind in enumerate(offsprings):
         start = time.perf_counter()
         offsprings[i] = toolbox.evaluate(ind)
         eval_time = time.perf_counter() - start
-        logger.log(25, f"evaluation: {eval_time} seconds")
+        logger.log(15, f"evaluation: {eval_time} seconds")
 
     return offsprings
 
@@ -49,14 +49,14 @@ def parallel_run(toolbox: base.ToolBox, pop_size: int, max_gens: int):
     start = time.perf_counter()
     population = toolbox.generate(pop_size)
     gen_time = time.perf_counter() - start
-    logger.log(25, f"generation: {gen_time} seconds")
+    logger.log(15, f"generation: {gen_time} seconds")
 
     for g in range(max_gens):
         # selection
         start = time.perf_counter()
         selected = toolbox.select(population, pop_size)
         sel_time = time.perf_counter() - start
-        logger.log(25, f"selection: {sel_time} seconds")
+        logger.log(15, f"selection: {sel_time} seconds")
 
         # mating
         couples = batch.mating(selected)
@@ -65,13 +65,13 @@ def parallel_run(toolbox: base.ToolBox, pop_size: int, max_gens: int):
         start = time.perf_counter()
         offsprings = pool.map(ptask, couples, args=[toolbox])
         parallel_time = time.perf_counter() - start
-        logger.log(25, f"parallel: {parallel_time} seconds")
+        logger.log(15, f"parallel: {parallel_time} seconds")
 
         # replacement
         start = time.perf_counter()
         population = toolbox.replace(population, offsprings)
         replace_time = time.perf_counter() - start
-        logger.log(25, f"replacement: {replace_time} seconds")
+        logger.log(15, f"replacement: {replace_time} seconds")
 
     pool.join()
 
@@ -82,7 +82,7 @@ def main(argv: list[str]) -> None:
         exit(1)
 
     logger = log.getUserLogger()
-    logger.setLevel(logging.INFO)
+    logger.setLevel(15)
 
     items_num = int(argv[1])
 
@@ -101,7 +101,7 @@ def main(argv: list[str]) -> None:
     start = time.perf_counter()
     parallel_run(toolbox, int(argv[2]), int(argv[3]))
     ptime = time.perf_counter() - start
-    logger.log(25, f"ptime: {ptime} seconds")
+    logger.log(15, f"ptime: {ptime} seconds")
 
 
 if __name__ == "__main__":
