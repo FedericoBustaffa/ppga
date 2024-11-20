@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 
 import pandas as pd
@@ -30,18 +31,28 @@ def parse_values(lines: list[dict]) -> pd.DataFrame:
 
 
 def main(argv: list[str]):
+    # backups results dir
+    if "results" not in os.listdir("."):
+        os.mkdir("results")
+
     # sequential simulation
     sequential.main(argv)
     lines = read_file("logs/sequential.json")
     stats = parse_values(lines)
+    stats.to_csv("results/sequential.csv", header=True, index=False)
 
     # parallel simulation
     parallel.main(argv)
     lines = read_file("logs/parallel.json")
     pstats = parse_values(lines)
+    pstats.to_csv("results/parallel.csv", header=True, index=False)
 
-    print(stats)
-    print(pstats)
+    stime = stats[stats["field"] == "stime"]["time"].sum()
+    ptime = pstats[pstats["field"] == "ptime"]["time"].sum()
+
+    print(f"sequential time: {stime} seconds")
+    print(f"parallel time: {ptime} seconds")
+    print(f"speed up: {stime / ptime}")
 
 
 if __name__ == "__main__":
