@@ -1,7 +1,7 @@
 import json
 import sys
 
-import numpy as np
+import pandas as pd
 import parallel
 import sequential
 
@@ -19,25 +19,14 @@ def read_file(filepath: str) -> list[dict]:
     return data
 
 
-def parse_values(lines: list[dict]) -> dict:
-    stats = dict()
+def parse_values(lines: list[dict]) -> pd.DataFrame:
+    stats = {"process_name": [], "field": [], "time": []}
     for line in lines:
-        process = line["process_name"]
-        key = line["field"].removesuffix(":")
+        stats["process_name"].append(line["process_name"])
+        stats["field"].append(line["field"])
+        stats["time"].append(line["time"])
 
-        try:
-            proc_stats = stats[process]
-        except KeyError:
-            stats.update({process: {}})
-            proc_stats = stats[process]
-
-        try:
-            proc_stats[key].append(float(line["time"]))
-        except KeyError:
-            proc_stats.update({key: []})
-            proc_stats[key].append(float(line["time"]))
-
-    return stats
+    return pd.DataFrame(stats)
 
 
 def main(argv: list[str]):
@@ -51,21 +40,8 @@ def main(argv: list[str]):
     lines = read_file("logs/parallel.json")
     pstats = parse_values(lines)
 
-    print("-" * 15, "SEQUENTIAL", "-" * 15)
-    for worker in stats.keys():
-        print("-" * 15, worker, "-" * 15)
-        for key in stats[worker].keys():
-            print(
-                f"{key.upper()} - total: {np.sum(stats[worker][key])} s, mean: {np.mean(stats[worker][key])} s"
-            )
-
-    print("-" * 15, "PARALLEL", "-" * 15)
-    for worker in pstats.keys():
-        print("-" * 15, worker, "-" * 15)
-        for key in pstats[worker].keys():
-            print(
-                f"{key.upper()} - total: {np.sum(pstats[worker][key])} s, mean: {np.mean(pstats[worker][key])} s"
-            )
+    print(stats)
+    print(pstats)
 
 
 if __name__ == "__main__":
