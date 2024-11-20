@@ -10,7 +10,6 @@ from colorama import Back, Fore
 # variable for setting up only one time
 setted = False
 
-TIME = "%(asctime)s"
 FILE = "%(filename)s:%(lineno)d"
 FMT = "[%(levelname)s]: %(message)s"
 
@@ -29,8 +28,7 @@ FORMATS = {
 class ColorFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
         formatter = logging.Formatter(
-            fmt=TIME
-            + " | "
+            fmt="%(asctime)s | "
             + Fore.CYAN
             + FILE
             + Fore.RESET
@@ -79,12 +77,15 @@ def setup():
 
     # formatters
     color_formatter = ColorFormatter()
-    json_formatter = JsonFormatter()
+    json_formatter = logging.Formatter(
+        fmt="%(asctime)s | %(filename)s:%(lineno)d | %(name)s %(processName)s | [%(levelname)s]: %(message)s",
+        datefmt="%d-%m-%Y - %H:%M:%S",
+    )
 
     if "logs" not in os.listdir():
         os.mkdir("logs")
 
-    file_handler = logging.FileHandler(filename="logs/log.json", mode="w")
+    file_handler = logging.FileHandler(filename="logs/log.log", mode="w")
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(json_formatter)
 
@@ -98,8 +99,8 @@ def setup():
     core_logger.addHandler(stdout_handler)
 
     user_logger = logging.getLogger("USER")
-    user_logger.setLevel(logging.WARNING)
-    user_logger.addHandler(file_handler)
+    user_logger.setLevel(logging.INFO)
+    # user_logger.addHandler(file_handler)
     user_logger.addHandler(stdout_handler)
 
 
