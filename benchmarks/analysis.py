@@ -55,17 +55,17 @@ def main(argv: list[str]):
     for worker in stats.keys():
         print("-" * 15, worker, "-" * 15)
         for key in stats[worker].keys():
-            print(f"total {key} time: {np.sum(stats[worker][key])} s")
-            print(f"mean {key} time: {np.mean(stats[worker][key])} s")
-            print("-" * 50)
+            print(
+                f"{key.upper()} - total: {np.sum(stats[worker][key])} s, mean: {np.mean(stats[worker][key])} s"
+            )
 
     print("-" * 15, "PARALLEL", "-" * 15)
     for worker in pstats.keys():
         print("-" * 15, worker, "-" * 15)
         for key in pstats[worker].keys():
-            print(f"total {key} time: {np.sum(pstats[worker][key])} s")
-            print(f"mean {key} time: {np.mean(pstats[worker][key])} s")
-            print("-" * 50)
+            print(
+                f"{key.upper()} - total: {np.sum(pstats[worker][key])} s, mean: {np.mean(pstats[worker][key])} s"
+            )
 
 
 if __name__ == "__main__":
