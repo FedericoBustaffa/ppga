@@ -98,7 +98,7 @@ def main(argv: list[str]):
         hall_of_fame=hof,
     )
     stime = time.perf_counter() - start
-    logger.log(25, f"stime: {stime} seconds")
+    logger.log(15, f"stime: {stime} seconds")
 
     value, weight = show_solution(hof[0].chromosome, items)
     logger.info(f"sequential best solution: ({value:.3f}, {weight:.3f})")
@@ -119,8 +119,8 @@ def main(argv: list[str]):
         hall_of_fame=hof,
     )
     ptime = time.perf_counter() - start
-    logger.log(25, f"ptime: {ptime} seconds")
-    logger.log(25, f"speed up: {stime / ptime}")
+    logger.log(15, f"ptime: {ptime} seconds")
+    logger.log(15, f"speed up: {stime / ptime}")
 
     value, weight = show_solution(pbest[0].chromosome, items)
     logger.info(f"queue best solution: ({value:.3f}, {weight:.3f})")
