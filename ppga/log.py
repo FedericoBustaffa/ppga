@@ -54,8 +54,8 @@ class JsonFormatter(logging.Formatter):
                 "logger": record.name,
                 "process_name": record.processName,
                 "level": record.levelname,
-                "field": field,
-                "time": elapsed_time,
+                "field": field.removesuffix(":"),
+                "time": float(elapsed_time),
             }
         else:
             records = {
@@ -100,7 +100,6 @@ def setup():
 
     user_logger = logging.getLogger("USER")
     user_logger.setLevel(logging.INFO)
-    # user_logger.addHandler(file_handler)
     user_logger.addHandler(stdout_handler)
 
 
