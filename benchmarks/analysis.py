@@ -19,7 +19,7 @@ def read_file() -> list[dict]:
     return data
 
 
-def parse_values(lines: list[dict]):
+def parse_values(lines: list[dict]) -> dict:
     stats = dict()
     for line in lines:
         process = line["process_name"]
@@ -40,40 +40,31 @@ def parse_values(lines: list[dict]):
     return stats
 
 
-def simulate_seq(argv: list[str]):
+def main(argv: list[str]):
+    # sequential simulation
     sequential.main(argv)
-
-    lines = read_file()
-    stats = parse_values(lines)["MainProcess"]
-
-    return stats
-
-
-def simulate_par(argv: list[str]):
-    parallel.main(argv)
-
     lines = read_file()
     stats = parse_values(lines)
 
-    return stats
-
-
-def main(argv: list[str]):
-    stats = simulate_seq(argv)
-    pstats = simulate_par(argv)
+    # parallel simulation
+    parallel.main(argv)
+    lines = read_file()
+    pstats = parse_values(lines)
 
     print("-" * 15, "SEQUENTIAL", "-" * 15)
-    for key in stats.keys():
-        print(f"total {key} time: {np.sum(stats[key])} s")
-        print(f"mean {key} time: {np.mean(stats[key]) * 1000.0} ms")
-        print("-" * 50)
+    for worker in stats.keys():
+        print("-" * 15, worker, "-" * 15)
+        for key in stats[worker].keys():
+            print(f"total {key} time: {np.sum(stats[worker][key])} s")
+            print(f"mean {key} time: {np.mean(stats[worker][key])} s")
+            print("-" * 50)
 
     print("-" * 15, "PARALLEL", "-" * 15)
     for worker in pstats.keys():
         print("-" * 15, worker, "-" * 15)
         for key in pstats[worker].keys():
             print(f"total {key} time: {np.sum(pstats[worker][key])} s")
-            print(f"mean {key} time: {np.mean(pstats[worker][key]) * 1000.0} ms")
+            print(f"mean {key} time: {np.mean(pstats[worker][key])} s")
             print("-" * 50)
 
 

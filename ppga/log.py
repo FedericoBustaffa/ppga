@@ -78,27 +78,27 @@ def setup():
     setted = True
 
     # formatters
-    formatter = JsonFormatter()
     color_formatter = ColorFormatter()
+    json_formatter = JsonFormatter()
 
     if "logs" not in os.listdir():
         os.mkdir("logs")
 
     file_handler = logging.FileHandler(filename="logs/log.json", mode="w")
     file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(formatter)
+    file_handler.setFormatter(json_formatter)
 
     stdout_handler = logging.StreamHandler(sys.stdout)
     stdout_handler.setLevel(logging.DEBUG)
     stdout_handler.setFormatter(color_formatter)
 
     core_logger = logging.getLogger("CORE")
-    core_logger.setLevel(logging.DEBUG)
+    core_logger.setLevel(logging.WARNING)
     core_logger.addHandler(file_handler)
     core_logger.addHandler(stdout_handler)
 
     user_logger = logging.getLogger("USER")
-    user_logger.setLevel(logging.DEBUG)
+    user_logger.setLevel(logging.WARNING)
     user_logger.addHandler(file_handler)
     user_logger.addHandler(stdout_handler)
 
