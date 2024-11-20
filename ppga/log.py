@@ -14,12 +14,12 @@ TIME = "%(asctime)s"
 FILE = "%(filename)s:%(lineno)d"
 FMT = "[%(levelname)s]: %(message)s"
 
-logging.addLevelName(25, "BENCHMARK")
+logging.addLevelName(15, "BENCHMARK")
 
 FORMATS = {
     logging.DEBUG: Fore.CYAN + FMT + Fore.RESET,
     logging.INFO: Fore.RESET + FMT + Fore.RESET,
-    25: Fore.GREEN + FMT + Fore.RESET,
+    15: Fore.GREEN + FMT + Fore.RESET,
     logging.WARNING: Fore.YELLOW + FMT + Fore.RESET,
     logging.ERROR: Fore.RED + FMT + Fore.RESET,
     logging.CRITICAL: Back.RED + Fore.RESET + FMT + Fore.RESET + Back.RESET,
