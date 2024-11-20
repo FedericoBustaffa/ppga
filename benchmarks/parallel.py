@@ -84,6 +84,12 @@ def main(argv: list[str]) -> None:
     logger = log.getUserLogger()
     logger.setLevel(15)
 
+    formatter = log.JsonFormatter()
+    handler = logging.FileHandler("logs/parallel.json", mode="w")
+    handler.setFormatter(formatter)
+    handler.setLevel(15)
+    logger.addHandler(handler)
+
     items_num = int(argv[1])
 
     items = [Item(random.random(), random.random()) for _ in range(items_num)]
@@ -102,6 +108,8 @@ def main(argv: list[str]) -> None:
     parallel_run(toolbox, int(argv[2]), int(argv[3]))
     ptime = time.perf_counter() - start
     logger.log(15, f"ptime: {ptime} seconds")
+
+    handler.close()
 
 
 if __name__ == "__main__":

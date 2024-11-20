@@ -70,6 +70,12 @@ def main(argv: list[str]) -> None:
     logger = log.getUserLogger()
     logger.setLevel(15)
 
+    formatter = log.JsonFormatter()
+    handler = logging.FileHandler("logs/sequential.json", mode="w")
+    handler.setFormatter(formatter)
+    handler.setLevel(15)
+    logger.addHandler(handler)
+
     items_num = int(argv[1])
 
     items = [Item(random.random(), random.random()) for _ in range(items_num)]
@@ -88,6 +94,8 @@ def main(argv: list[str]) -> None:
     sequential_run(toolbox, int(argv[2]), int(argv[3]))
     stime = time.perf_counter() - start
     logger.log(15, f"stime: {stime} seconds")
+
+    handler.close()
 
 
 if __name__ == "__main__":

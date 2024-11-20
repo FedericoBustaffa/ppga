@@ -6,8 +6,8 @@ import parallel
 import sequential
 
 
-def read_file() -> list[dict]:
-    file = open("logs/log.json", "r")
+def read_file(filepath: str) -> list[dict]:
+    file = open(filepath, "r")
     lines = file.readlines()
     file.close()
 
@@ -43,12 +43,12 @@ def parse_values(lines: list[dict]) -> dict:
 def main(argv: list[str]):
     # sequential simulation
     sequential.main(argv)
-    lines = read_file()
+    lines = read_file("logs/sequential.json")
     stats = parse_values(lines)
 
     # parallel simulation
     parallel.main(argv)
-    lines = read_file()
+    lines = read_file("logs/parallel.json")
     pstats = parse_values(lines)
 
     print("-" * 15, "SEQUENTIAL", "-" * 15)
