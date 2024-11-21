@@ -83,6 +83,21 @@ def main(argv: list[str]):
     cx_mut_eval = cx_time + mut_time + eval_time
     print(f"pure speed up: {cx_mut_eval / parallel_time}")
 
+    # mean evaluation time
+    eval_st = stats[stats["field"] == "evaluation"]["time"].mean()
+    print(f"mean eval stime: {eval_st} seconds")
+
+    eval_pt = pstats[pstats["field"] == "evaluation"]["time"].mean()
+    print(f"mean eval ptime: {eval_pt} seconds")
+
+    eval_pt_per_worker = (
+        pstats[pstats["field"] == "evaluation"]
+        .groupby(["process_name", "field"])
+        .mean()["time"]
+    )
+    print(f"min mean worker eval time: {eval_pt_per_worker.min()}")
+    print(f"max mean worker eval time: {eval_pt_per_worker.max()}")
+
 
 if __name__ == "__main__":
     main(sys.argv)
