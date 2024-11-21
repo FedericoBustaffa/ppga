@@ -1,6 +1,5 @@
 import json
 import os
-import sys
 
 import pandas as pd
 
@@ -28,7 +27,7 @@ def parse_values(lines: list[dict]) -> pd.DataFrame:
     return pd.DataFrame(stats)
 
 
-def main(argv: list[str]):
+def main():
     # backups results dir
     if "results" not in os.listdir("."):
         os.mkdir("results")
@@ -100,4 +99,4 @@ def main(argv: list[str]):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()
