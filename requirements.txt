@@ -4,4 +4,3 @@ numpy
 psutil
 tqdm
 pytest
-pandas
