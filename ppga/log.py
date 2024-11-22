@@ -55,7 +55,7 @@ class JsonFormatter(logging.Formatter):
                 "process_name": record.processName,
                 "level": record.levelname,
                 "field": field.removesuffix(":"),
-                "time": float(elapsed_time),
+                "time": elapsed_time,
             }
         else:
             records = {
