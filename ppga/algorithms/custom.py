@@ -22,7 +22,7 @@ def custom(
     population = toolbox.generate(population_size)
     logger.debug(f"generated individuals: {len(population)}")
 
-    for g in tqdm(range(max_generations), ncols=80):
+    for g in tqdm(range(max_generations), ncols=80, ascii=True):
         # select individuals for reproduction
         selected = toolbox.select(population, population_size)
         logger.debug(f"selected individuals: {len(selected)}")
@@ -78,7 +78,7 @@ def pcustom(
     population = toolbox.generate(population_size)
     logger.debug(f"generated individuals: {len(population)}")
 
-    for g in tqdm(range(max_generations), ncols=80):
+    for g in tqdm(range(max_generations), ncols=80, ascii=True):
         selected = toolbox.select(population, population_size)
         logger.debug(f"selected individuals: {len(selected)}")
 
