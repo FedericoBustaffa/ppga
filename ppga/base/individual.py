@@ -16,7 +16,7 @@ class Individual:
         self.valid = False
 
     def __hash__(self) -> int:
-        return hash((tuple(self.chromosome), self.values, self.fitness))
+        return hash(tuple(self.chromosome))
 
     def __repr__(self) -> str:
         return f"{self.chromosome}: {self.fitness}"
