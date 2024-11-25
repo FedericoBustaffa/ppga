@@ -1,12 +1,12 @@
-import multiprocessing as mp
-import multiprocessing.queues as mpq
+import queue
+import threading
 
 from ppga import log
 
 
 def compute(
-    send_q: mpq.JoinableQueue,
-    recv_q: mpq.JoinableQueue,
+    send_q: queue.Queue,
+    recv_q: queue.Queue,
 ):
     logger = log.getCoreLogger()
     logger.debug("start")
@@ -24,10 +24,10 @@ def compute(
     logger.debug("terminated")
 
 
-class Worker(mp.Process):
+class Worker(threading.Thread):
     def __init__(self) -> None:
-        self.send_q = mp.JoinableQueue()
-        self.recv_q = mp.JoinableQueue()
+        self.send_q = queue.Queue()
+        self.recv_q = queue.Queue()
 
         super().__init__(
             target=compute,
