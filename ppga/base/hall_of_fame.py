@@ -28,18 +28,9 @@ class HallOfFame:
         return buf
 
     def update(self, population: list[Individual]):
-        print("---------- Before HOF -------")
-        self.hof.extend(population)
-        for i in self.hof:
-            print(i)
-
-        self.hof = sorted([i for i in set(self.hof) if i.fitness != np.nan])[
-            : self.size
-        ]
-
-        print("---------- After HOF -------")
-        for i in self.hof:
-            print(i)
+        self.hof = sorted(
+            [i for i in set(self.hof) if i.fitness != np.nan], reverse=True
+        )[: self.size]
 
     def clear(self):
         self.hof.clear()
