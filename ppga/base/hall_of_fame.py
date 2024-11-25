@@ -33,9 +33,9 @@ class HallOfFame:
         for i in self.hof:
             print(i)
 
-        self.hof = [
-            i for i in sorted(list(set(self.hof)), reverse=True) if i.fitness != np.nan
-        ][: self.size]
+        self.hof = sorted([i for i in set(self.hof) if i.fitness != np.nan])[
+            : self.size
+        ]
 
         print("---------- After HOF -------")
         for i in self.hof:
