@@ -33,7 +33,7 @@ class HallOfFame:
         self.hof = sorted(list(set(self.hof + population)), reverse=True)[: self.size]
 
         print("---------- After HOF -------")
-        for i in self.hof + population:
+        for i in self.hof:
             print(i)
 
     def clear(self):
