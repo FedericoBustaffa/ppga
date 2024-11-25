@@ -26,7 +26,15 @@ class HallOfFame:
         return buf
 
     def update(self, population: list[Individual]):
+        print("---------- Before HOF -------")
+        print(self.hof)
+        print(population)
+
         self.hof = sorted(list(set(self.hof + population)), reverse=True)[: self.size]
+
+        print("---------- After HOF -------")
+        print(self.hof)
+        print(population)
 
     def clear(self):
         self.hof.clear()
