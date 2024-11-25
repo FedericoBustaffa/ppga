@@ -1,3 +1,5 @@
+import numpy as np
+
 from ppga.base.individual import Individual
 
 
@@ -31,7 +33,9 @@ class HallOfFame:
         for i in self.hof:
             print(i)
 
-        self.hof = sorted(list(set(self.hof)), reverse=True)[: self.size]
+        self.hof = [
+            i for i in sorted(list(set(self.hof)), reverse=True) if i.fitness != np.nan
+        ][: self.size]
 
         print("---------- After HOF -------")
         for i in self.hof:
