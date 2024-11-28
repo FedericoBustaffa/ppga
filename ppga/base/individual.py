@@ -33,6 +33,14 @@ class Individual:
             return False
         return self.fitness < other.fitness
 
+    def __le__(self, other) -> bool:
+        assert isinstance(other, Individual)
+        if not self.valid:
+            return True
+        elif not other.valid:
+            return False
+        return self.fitness <= other.fitness
+
     def __gt__(self, other) -> bool:
         assert isinstance(other, Individual)
         if not self.valid:
@@ -41,5 +49,17 @@ class Individual:
             return True
         return self.fitness > other.fitness
 
+    def __ge__(self, other) -> bool:
+        assert isinstance(other, Individual)
+        if not self.valid:
+            return False
+        elif not other.valid:
+            return True
+        return self.fitness >= other.fitness
+
     def __sizeof__(self) -> int:
-        return sys.getsizeof(self.chromosome) + sys.getsizeof(self.fitness)
+        return (
+            sys.getsizeof(self.chromosome)
+            + sys.getsizeof(self.fitness)
+            + sys.getsizeof(self.values)
+        )
