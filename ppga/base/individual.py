@@ -1,4 +1,6 @@
+import json
 import sys
+from typing import Any
 
 import numpy as np
 
@@ -19,7 +21,12 @@ class Individual:
         return hash(tuple(self.chromosome))
 
     def __repr__(self) -> str:
-        return f"{self.chromosome}: {self.fitness}"
+        dict_repr = self.__dict__
+        dict_repr["chromosome"] = dict_repr["chromosome"].tolist()
+        dict_repr["values"] = tuple(dict_repr["values"])
+        dict_repr["fitness"] = float(dict_repr["fitness"])
+
+        return json.dumps(dict_repr, indent=2)
 
     def __eq__(self, other) -> bool:
         assert isinstance(other, Individual)
@@ -63,3 +70,10 @@ class Individual:
             + sys.getsizeof(self.fitness)
             + sys.getsizeof(self.values)
         )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "chromsome": self.chromosome.tolist(),
+            "values": self.values,
+            "fitness": self.fitness,
+        }
