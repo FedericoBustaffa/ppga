@@ -26,12 +26,12 @@ class HallOfFame:
         buf = []
         individual = {"chromosome": None, "values": (), "fitness": 0.0}
         for i, ind in enumerate(self.hof):
-            individual["chromosome"] = ind.chromosome
+            individual["chromosome"] = ind.chromosome.tolist()
             individual["values"] = ind.values
             individual["fitness"] = ind.fitness
             buf.append(individual.copy())
 
-        return json.dumps(buf, indent=2)
+        return json.dumps(buf, indent=2) + "\n"
 
     def update(self, population: list[Individual]):
         self.hof = sorted(
