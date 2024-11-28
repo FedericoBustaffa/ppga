@@ -1,3 +1,5 @@
+import json
+
 import numpy as np
 
 from ppga.base.individual import Individual
@@ -21,11 +23,15 @@ class HallOfFame:
         return len(self.hof)
 
     def __repr__(self) -> str:
-        buf = ""
+        buf = []
+        individual = {"chromosome": None, "values": (), "fitness": 0.0}
         for i, ind in enumerate(self.hof):
-            buf += f"{i+1}. {str(ind.fitness)}\n"
+            individual["chromosome"] = ind.chromosome
+            individual["values"] = ind.values
+            individual["fitness"] = ind.fitness
+            buf.append(individual.copy())
 
-        return buf
+        return json.dumps(buf, indent=2)
 
     def update(self, population: list[Individual]):
         self.hof = sorted(
