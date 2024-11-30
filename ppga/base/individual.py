@@ -73,7 +73,7 @@ class Individual:
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "chromsome": self.chromosome.tolist(),
+            "chromosome": self.chromosome.tolist(),
             "values": self.values,
             "fitness": self.fitness,
         }
