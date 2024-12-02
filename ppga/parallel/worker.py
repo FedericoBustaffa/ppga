@@ -5,15 +5,14 @@ from ppga import log
 
 
 def compute(
-    send_q: mpq.JoinableQueue,
-    recv_q: mpq.JoinableQueue,
+    send_q: mpq.Queue,
+    recv_q: mpq.Queue,
 ):
     logger = log.getCoreLogger()
     logger.debug("start")
 
     while True:
         task = send_q.get()
-        send_q.task_done()
         if task is None:
             logger.debug("received termination chunk")
             break
@@ -26,8 +25,8 @@ def compute(
 
 class Worker(mp.Process):
     def __init__(self) -> None:
-        self.send_q = mp.JoinableQueue()
-        self.recv_q = mp.JoinableQueue()
+        self.send_q = mp.Queue()
+        self.recv_q = mp.Queue()
 
         super().__init__(
             target=compute,
@@ -39,12 +38,9 @@ class Worker(mp.Process):
 
     def recv(self):
         result = self.recv_q.get()
-        self.recv_q.task_done()
 
         return result
 
     def join(self, timeout: float | None = None) -> None:
         self.send_q.put(None)
-        self.send_q.join()
-        self.recv_q.join()
         super().join(timeout)
