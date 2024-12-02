@@ -1,19 +1,18 @@
-import queue
-import threading
+import multiprocessing as mp
+import multiprocessing.queues as mpq
 
 from ppga import log
 
 
 def compute(
-    send_q: queue.Queue,
-    recv_q: queue.Queue,
+    send_q: mpq.Queue,
+    recv_q: mpq.Queue,
 ):
     logger = log.getCoreLogger()
     logger.debug("start")
 
     while True:
         task = send_q.get()
-        send_q.task_done()
         if task is None:
             logger.debug("received termination chunk")
             break
@@ -24,10 +23,10 @@ def compute(
     logger.debug("terminated")
 
 
-class Worker(threading.Thread):
+class Worker(mp.Process):
     def __init__(self) -> None:
-        self.send_q = queue.Queue()
-        self.recv_q = queue.Queue()
+        self.send_q = mp.Queue()
+        self.recv_q = mp.Queue()
 
         super().__init__(
             target=compute,
@@ -39,12 +38,9 @@ class Worker(threading.Thread):
 
     def recv(self):
         result = self.recv_q.get()
-        self.recv_q.task_done()
 
         return result
 
     def join(self, timeout: float | None = None) -> None:
         self.send_q.put(None)
-        self.send_q.join()
-        self.recv_q.join()
         super().join(timeout)

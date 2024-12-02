@@ -1,9 +1,10 @@
+import random
+
 import numpy as np
-from numpy import random
 
 
 def cx_one_point(father, mother) -> tuple:
-    cx_point = random.randint(1, len(father))
+    cx_point = random.randint(1, len(father) - 1)
 
     offspring1 = np.append(father[:cx_point], mother[cx_point:])
     offspring2 = np.append(mother[:cx_point], father[cx_point:])
@@ -27,10 +28,7 @@ def cx_one_point_ordered(father, mother) -> tuple:
 
 
 def cx_two_points(father, mother) -> tuple:
-    cx_point1, cx_point2 = random.choice(
-        [i + 1 for i in range(len(father) - 2)], size=2, replace=False
-    )
-
+    cx_point1, cx_point2 = random.sample([i for i in range(1, len(father) - 1, 1)], k=2)
     if cx_point1 > cx_point2:
         cx_point1, cx_point2 = cx_point2, cx_point1
 

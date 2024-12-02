@@ -1,9 +1,10 @@
-import random
+import numpy as np
+from numpy import random
 
 
 def gen_repetition(values, length: int):
-    return random.choices(values, k=length)
+    return random.choice(values, size=length)
 
 
-def gen_permutation(values):
-    return random.sample(values, k=len(values))
+def gen_permutation(values) -> np.ndarray:
+    return random.permutation(values)

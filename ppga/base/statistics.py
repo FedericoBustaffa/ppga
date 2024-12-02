@@ -11,8 +11,7 @@ class Statistics:
         self.evals = []
 
     def update(self, population: list[Individual]) -> None:
-        valid_pop = [i for i in population if i.valid]
-        scores = [i.fitness for i in valid_pop]
+        scores = [i.fitness for i in population]
 
         # update the fitness trend
         self.best.append(max(scores))

@@ -1,31 +1,29 @@
 import random
 
+import numpy as np
+
 from ppga.base import Individual, ToolBox
 
 
-def mating(population: list[Individual]) -> list[tuple[Individual, Individual]]:
+def mating(population: list[Individual]) -> np.ndarray:
     couples = []
     for i in range(0, len(population), 2):
-        couples.append((population[i], population[i + 1]))
+        couples.append((population[i].chromosome, population[i + 1].chromosome))
 
-    return couples
+    return np.asarray(couples)
 
 
-def crossover(
-    couples: list[tuple[Individual, Individual]], toolbox: ToolBox, cxpb: float
-) -> list[Individual]:
+def crossover(couples: np.ndarray, toolbox: ToolBox, cxpb: float) -> np.ndarray:
     offsprings = []
     for father, mother in couples:
         if random.random() <= cxpb:
             offspring1, offspring2 = toolbox.crossover(father, mother)
-            offsprings.extend([toolbox.clone(offspring1), toolbox.clone(offspring2)])
+            offsprings.extend([offspring1, offspring2])
 
-    return offsprings
+    return np.asarray(offsprings)
 
 
-def mutation(
-    population: list[Individual], toolbox: ToolBox, mutpb: float
-) -> list[Individual]:
+def mutation(population: np.ndarray, toolbox: ToolBox, mutpb: float) -> np.ndarray:
     for i, ind in enumerate(population):
         if random.random() <= mutpb:
             population[i] = toolbox.mutate(ind)
@@ -33,17 +31,20 @@ def mutation(
     return population
 
 
-def evaluation(population: list[Individual], toolbox: ToolBox) -> list[Individual]:
+def evaluation(population: np.ndarray, toolbox: ToolBox) -> list:
+    scores = []
     for i, ind in enumerate(population):
-        if not ind.valid:
-            population[i] = toolbox.evaluate(ind)
+        scores.append(toolbox.evaluate(ind))
 
-    return population
+    return scores
 
 
-def cx_mut_eval(couples, toolbox, cxpb, mutpb):
+def cx_mut_eval(
+    couples: np.ndarray, toolbox: ToolBox, cxpb: float, mutpb: float
+) -> list[Individual]:
     offsprings = crossover(couples, toolbox, cxpb)
     offsprings = mutation(offsprings, toolbox, mutpb)
-    offsprings = evaluation(offsprings, toolbox)
+    evaluations = evaluation(offsprings, toolbox)
+    values, scores = [i[0] for i in evaluations], [i[1] for i in evaluations]
 
-    return offsprings
+    return [Individual(i, v, s) for i, v, s in zip(offsprings, values, scores)]
