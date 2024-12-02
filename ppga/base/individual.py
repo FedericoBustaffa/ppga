@@ -15,7 +15,6 @@ class Individual:
 
         self.values = values
         self.fitness = fitness
-        self.valid = False
 
     def __hash__(self) -> int:
         return hash(tuple(self.chromosome))
@@ -34,33 +33,33 @@ class Individual:
 
     def __lt__(self, other) -> bool:
         assert isinstance(other, Individual)
-        if not self.valid:
+        if self.values == ():
             return True
-        elif not other.valid:
+        elif other.values == ():
             return False
         return self.fitness < other.fitness
 
     def __le__(self, other) -> bool:
         assert isinstance(other, Individual)
-        if not self.valid:
+        if self.values == ():
             return True
-        elif not other.valid:
+        elif other.values == ():
             return False
         return self.fitness <= other.fitness
 
     def __gt__(self, other) -> bool:
         assert isinstance(other, Individual)
-        if not self.valid:
+        if self.values == ():
             return False
-        elif not other.valid:
+        elif other.values == ():
             return True
         return self.fitness > other.fitness
 
     def __ge__(self, other) -> bool:
         assert isinstance(other, Individual)
-        if not self.valid:
+        if self.values == ():
             return False
-        elif not other.valid:
+        elif other.values == ():
             return True
         return self.fitness >= other.fitness
 
