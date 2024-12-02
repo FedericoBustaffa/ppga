@@ -1,6 +1,9 @@
+from multiprocessing import shared_memory
 from typing import Any, Callable, Iterable, Mapping
 
+import numpy as np
 import psutil
+from numpy._core.multiarray import dtype
 
 from ppga import log
 from ppga.parallel.worker import Worker
@@ -21,7 +24,7 @@ class Pool:
     def map(
         self,
         func: Callable,
-        iterable,
+        iterable: np.ndarray,
         args: Iterable[Any] = (),
         kwargs: Mapping[str, Any] = {},
     ) -> list[Any]:
@@ -40,12 +43,20 @@ class Pool:
         chunksize = len(iterable) // workers_num
         carry = len(iterable) % workers_num
 
+        # create the shared memory
+        input_mem = shared_memory.SharedMemory("input", True, iterable.nbytes)
+        input_copy = np.ndarray(iterable.shape, iterable.dtype, input_mem.buf)
+        input_copy[:] = iterable[:]
+
         # mapping chunks to the workers
         for i in range(carry):
             self.workers[i].send(
                 (
                     func,
-                    iterable[i * chunksize : i * chunksize + chunksize + 1],
+                    i * chunksize,
+                    i * chunksize + chunksize + 1,
+                    iterable.shape,
+                    iterable.dtype,
                     args,
                     kwargs,
                 )
@@ -55,7 +66,10 @@ class Pool:
             self.workers[i].send(
                 (
                     func,
-                    iterable[i * chunksize : i * chunksize + chunksize],
+                    i * chunksize,
+                    i * chunksize + chunksize,
+                    iterable.shape,
+                    iterable.dtype,
                     args,
                     kwargs,
                 )
@@ -65,6 +79,9 @@ class Pool:
         result = []
         for i in range(workers_num):
             result.extend(self.workers[i].recv())
+
+        input_mem.close()
+        input_mem.unlink()
 
         return result
 

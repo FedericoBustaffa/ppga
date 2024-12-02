@@ -1,5 +1,8 @@
 import multiprocessing as mp
 import multiprocessing.queues as mpq
+from multiprocessing import shared_memory
+
+import numpy as np
 
 from ppga import log
 
@@ -17,7 +20,9 @@ def compute(
             logger.debug("received termination chunk")
             break
 
-        func, chunk, args, kwargs = task
+        func, index, offset, shape, dtype, args, kwargs = task
+        mem = shared_memory.SharedMemory("input", create=False)
+        chunk = np.ndarray(shape, dtype, mem.buf)
         recv_q.put(func(chunk, *args, **kwargs))
 
     logger.debug("terminated")
