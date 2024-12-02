@@ -6,15 +6,15 @@ import numpy as np
 
 
 class Individual:
-    def __init__(self, chromosome) -> None:
+    def __init__(self, chromosome, values: tuple = (), fitness: float = 0.0) -> None:
         self.chromosome = chromosome
 
         # always converts the chromosome structure to a list
         if not isinstance(self.chromosome, np.ndarray):
             self.chromosome = np.array(self.chromosome)
 
-        self.values = ()
-        self.fitness = 0.0
+        self.values = values
+        self.fitness = fitness
         self.valid = False
 
     def __hash__(self) -> int:

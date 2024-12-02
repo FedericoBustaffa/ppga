@@ -2,6 +2,8 @@ import copy
 from functools import partial
 from typing import Callable
 
+import numpy as np
+
 from ppga.base.individual import Individual
 
 
@@ -36,45 +38,43 @@ class ToolBox:
         self.crossover_args = args
         self.crossover_kwargs = kwargs
 
-    def crossover(self, father: Individual, mother: Individual) -> tuple:
+    def crossover(
+        self, father: np.ndarray, mother: np.ndarray
+    ) -> tuple[np.ndarray, np.ndarray]:
         offspring1, offspring2 = self.crossover_func(
-            father.chromosome,
-            mother.chromosome,
+            father,
+            mother,
             *self.crossover_args,
             **self.crossover_kwargs,
         )
 
-        return Individual(offspring1), Individual(offspring2)
+        return offspring1, offspring2
 
     def set_mutation(self, func: Callable, *args, **kwargs) -> None:
         self.mutation_func = func
         self.mutation_args = args
         self.mutation_kwargs = kwargs
 
-    def mutate(self, individual: Individual) -> Individual:
-        individual.chromosome = self.mutation_func(
-            individual.chromosome, *self.mutation_args, **self.mutation_kwargs
+    def mutate(self, chromosome: np.ndarray) -> np.ndarray:
+        chromosome = self.mutation_func(
+            chromosome, *self.mutation_args, **self.mutation_kwargs
         )
 
-        return individual
+        return chromosome
 
     def set_evaluation(self, func: Callable, *args, **kwargs) -> None:
         self.evaluation_func = func
         self.evaluation_args = args
         self.evaluation_kwargs = kwargs
 
-    def evaluate(self, individual: Individual) -> Individual:
-        individual.values = self.evaluation_func(
-            individual.chromosome, *self.evaluation_args, **self.evaluation_kwargs
+    def evaluate(self, chromosome: np.ndarray) -> tuple[tuple, float]:
+        values = self.evaluation_func(
+            chromosome, *self.evaluation_args, **self.evaluation_kwargs
         )
 
-        individual.fitness = sum(
-            [v * w for v, w in zip(individual.values, self.weights)]
-        )
+        fitness = sum([v * w for v, w in zip(values, self.weights)])
 
-        individual.valid = True
-
-        return individual
+        return (values, fitness)
 
     def set_replacement(self, func: Callable, *args, **kwargs) -> None:
         self.replacement_func = func
