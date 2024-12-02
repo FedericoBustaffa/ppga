@@ -79,8 +79,5 @@ class Pool:
         for w in self.workers:
             w.join(timeout)
 
-        self.input_mem.close()
-        self.input_mem.unlink()
-
         logger = log.getCoreLogger()
         logger.debug("pool joined")

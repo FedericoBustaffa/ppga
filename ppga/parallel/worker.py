@@ -13,7 +13,7 @@ def compute(
 ):
     logger = log.getCoreLogger()
     logger.debug("start")
-    mem = SharedMemory(name="couples", create=False)
+    mem = None
 
     while True:
         task = send_q.get()
@@ -22,9 +22,12 @@ def compute(
             break
 
         func, index, offset, shape, dtype, args, kwargs = task
+        if mem is None:
+            mem = SharedMemory(name="couples", create=False)
         chunk = np.ndarray(shape=shape, dtype=dtype, buffer=mem.buf)
         recv_q.put(func(chunk[index:offset], *args, **kwargs))
-        
+
+    assert isinstance(mem, SharedMemory)
     mem.close()
     logger.debug("terminated")
 
