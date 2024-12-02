@@ -24,6 +24,7 @@ def compute(
         mem = shared_memory.SharedMemory("input", create=False)
         chunk = np.ndarray(shape, dtype, mem.buf)
         recv_q.put(func(chunk, *args, **kwargs))
+        mem.close()
 
     logger.debug("terminated")
 

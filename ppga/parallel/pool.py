@@ -3,7 +3,6 @@ from typing import Any, Callable, Iterable, Mapping
 
 import numpy as np
 import psutil
-from numpy._core.multiarray import dtype
 
 from ppga import log
 from ppga.parallel.worker import Worker
