@@ -1,4 +1,3 @@
-from multiprocessing.shared_memory import SharedMemory
 from typing import Any, Callable, Iterable, Mapping
 
 import numpy as np
@@ -19,9 +18,6 @@ class Pool:
 
         logger = log.getCoreLogger()
         logger.debug(f"pool started with {self.cores} workers")
-
-    def init_mem(self, couples: np.ndarray):
-        self.input_mem = SharedMemory(name="input", create=True, size=couples.nbytes)
 
     def map(
         self,

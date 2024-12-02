@@ -13,6 +13,7 @@ def compute(
 ):
     logger = log.getCoreLogger()
     logger.debug("start")
+    mem = SharedMemory(name="couples", create=False)
 
     while True:
         task = send_q.get()
@@ -21,10 +22,10 @@ def compute(
             break
 
         func, index, offset, shape, dtype, args, kwargs = task
-        mem = SharedMemory(name="input", create=False)
-        chunk = np.ndarray(shape, dtype, mem.buf)
+        chunk = np.ndarray(shape=shape, dtype=dtype, buffer=mem.buf)
         recv_q.put(func(chunk[index:offset], *args, **kwargs))
-
+        
+    mem.close()
     logger.debug("terminated")
 
 
@@ -43,7 +44,6 @@ class Worker(mp.Process):
 
     def recv(self):
         result = self.recv_q.get()
-
         return result
 
     def join(self, timeout: float | None = None) -> None:
