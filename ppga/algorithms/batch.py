@@ -13,19 +13,17 @@ def mating(population: list[Individual]) -> np.ndarray:
     return np.asarray(couples)
 
 
-def crossover(couples: np.ndarray, toolbox: ToolBox, cxpb: float) -> list[np.ndarray]:
+def crossover(couples: np.ndarray, toolbox: ToolBox, cxpb: float) -> np.ndarray:
     offsprings = []
     for father, mother in couples:
         if random.random() <= cxpb:
             offspring1, offspring2 = toolbox.crossover(father, mother)
             offsprings.extend([offspring1, offspring2])
 
-    return offsprings
+    return np.asarray(offsprings)
 
 
-def mutation(
-    population: list[np.ndarray], toolbox: ToolBox, mutpb: float
-) -> list[np.ndarray]:
+def mutation(population: np.ndarray, toolbox: ToolBox, mutpb: float) -> np.ndarray:
     for i, ind in enumerate(population):
         if random.random() <= mutpb:
             population[i] = toolbox.mutate(ind)
@@ -33,7 +31,7 @@ def mutation(
     return population
 
 
-def evaluation(population: list[np.ndarray], toolbox: ToolBox) -> list:
+def evaluation(population: np.ndarray, toolbox: ToolBox) -> list:
     scores = []
     for i, ind in enumerate(population):
         scores.append(toolbox.evaluate(ind))
