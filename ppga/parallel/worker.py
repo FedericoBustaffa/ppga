@@ -1,6 +1,6 @@
 import multiprocessing as mp
 import multiprocessing.queues as mpq
-from multiprocessing import shared_memory
+from multiprocessing.shared_memory import SharedMemory
 
 import numpy as np
 
@@ -21,10 +21,9 @@ def compute(
             break
 
         func, index, offset, shape, dtype, args, kwargs = task
-        mem = shared_memory.SharedMemory("input", create=False)
+        mem = SharedMemory(name="input", create=False)
         chunk = np.ndarray(shape, dtype, mem.buf)
-        recv_q.put(func(chunk, *args, **kwargs))
-        mem.close()
+        recv_q.put(func(chunk[index:offset], *args, **kwargs))
 
     logger.debug("terminated")
 

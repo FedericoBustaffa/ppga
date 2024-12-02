@@ -1,4 +1,4 @@
-from multiprocessing import shared_memory
+from multiprocessing.shared_memory import SharedMemory
 from typing import Any, Callable, Iterable, Mapping
 
 import numpy as np
@@ -19,6 +19,9 @@ class Pool:
 
         logger = log.getCoreLogger()
         logger.debug(f"pool started with {self.cores} workers")
+
+    def init_mem(self, couples: np.ndarray):
+        self.input_mem = SharedMemory(name="input", create=True, size=couples.nbytes)
 
     def map(
         self,
@@ -41,11 +44,6 @@ class Pool:
 
         chunksize = len(iterable) // workers_num
         carry = len(iterable) % workers_num
-
-        # create the shared memory
-        input_mem = shared_memory.SharedMemory("input", True, iterable.nbytes)
-        input_copy = np.ndarray(iterable.shape, iterable.dtype, input_mem.buf)
-        input_copy[:] = iterable[:]
 
         # mapping chunks to the workers
         for i in range(carry):
@@ -79,14 +77,14 @@ class Pool:
         for i in range(workers_num):
             result.extend(self.workers[i].recv())
 
-        input_mem.close()
-        input_mem.unlink()
-
         return result
 
     def join(self, timeout: float | None = None) -> None:
         for w in self.workers:
             w.join(timeout)
+
+        self.input_mem.close()
+        self.input_mem.unlink()
 
         logger = log.getCoreLogger()
         logger.debug("pool joined")
