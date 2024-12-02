@@ -46,8 +46,7 @@ def cx_mut_eval(
 ) -> list[Individual]:
     offsprings = crossover(couples, toolbox, cxpb)
     offsprings = mutation(offsprings, toolbox, mutpb)
-    values, scores = zip(*evaluation(offsprings, toolbox))
+    evaluations = evaluation(offsprings, toolbox)
+    values, scores = [i[0] for i in evaluations], [i[1] for i in evaluations]
 
-    offsprings = [Individual(i, v, s) for i, v, s in zip(offsprings, values, scores)]
-
-    return offsprings
+    return [Individual(i, v, s) for i, v, s in zip(offsprings, values, scores)]

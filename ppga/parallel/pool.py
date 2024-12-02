@@ -24,7 +24,7 @@ class Pool:
         iterable,
         args: Iterable[Any] = (),
         kwargs: Mapping[str, Any] = {},
-    ):
+    ) -> list[Any]:
         logger = log.getCoreLogger()
 
         # dinamically resize the chunksize
