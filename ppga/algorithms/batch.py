@@ -17,9 +17,7 @@ def crossover(couples: np.ndarray, toolbox: ToolBox, cxpb: float) -> list[np.nda
     offsprings = []
     for father, mother in couples:
         if random.random() <= cxpb:
-            offspring1, offspring2 = toolbox.crossover(
-                father.chromosome, mother.chromosome
-            )
+            offspring1, offspring2 = toolbox.crossover(father, mother)
             offsprings.extend([offspring1, offspring2])
 
     return offsprings
@@ -48,7 +46,7 @@ def cx_mut_eval(
 ) -> list[Individual]:
     offsprings = crossover(couples, toolbox, cxpb)
     offsprings = mutation(offsprings, toolbox, mutpb)
-    values, scores = evaluation(offsprings, toolbox)
+    values, scores = zip(*evaluation(offsprings, toolbox))
 
     offsprings = [Individual(i, v, s) for i, v, s in zip(offsprings, values, scores)]
 

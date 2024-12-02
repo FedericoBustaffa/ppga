@@ -2,7 +2,7 @@ from tqdm import tqdm
 
 from ppga import log
 from ppga.algorithms import batch
-from ppga.base import HallOfFame, Statistics, ToolBox
+from ppga.base import HallOfFame, Individual, Statistics, ToolBox
 from ppga.parallel import Pool
 
 
@@ -40,8 +40,9 @@ def custom(
         logger.debug(f"offsprings after mutation: {len(offsprings)}")
 
         # # evaluate offsprings
-        offsprings = batch.evaluation(offsprings, toolbox)
-        evals = len(offsprings)
+        scores = batch.evaluation(offsprings, toolbox)
+        evals = len(scores)
+        offsprings = [Individual(c, s[0], s[1]) for c, s in zip(offsprings, scores)]
         logger.debug(f"offsprings evaluated: {evals}")
 
         # replace the old population
