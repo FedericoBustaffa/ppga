@@ -1,4 +1,4 @@
-from typing import Any, Callable, Iterable, Mapping
+from typing import Any, Iterable, Mapping
 
 import psutil
 import ray
@@ -48,6 +48,7 @@ class Pool:
             for i in range(carry, workers_num, 1)
         ]
 
+        func.options(num_cpus=workers_num)
         results_chunk = ray.get(
             [func.remote(chunk, *args, **kwargs) for chunk in chunks]
         )
