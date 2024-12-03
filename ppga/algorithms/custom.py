@@ -1,3 +1,5 @@
+import psutil
+import ray
 from tqdm import tqdm
 
 from ppga import log
@@ -71,6 +73,10 @@ def pcustom(
 ):
     stats = Statistics()
     logger = log.getCoreLogger()
+
+    cpus = psutil.cpu_count(logical=False)
+    assert cpus is not None
+    batch.reproduce.options(num_cpus=cpus)
 
     # only use the physical cores
     pool = Pool(logical=False)

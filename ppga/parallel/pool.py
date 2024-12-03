@@ -25,48 +25,7 @@ class Pool:
         args: Iterable[Any] = (),
         kwargs: Mapping[str, Any] = {},
     ) -> list[Any]:
-        logger = log.getCoreLogger()
-
-        # dinamically resize the chunksize
-        assert self.cores is not None
-        workers_num = self.cores
-
-        if len(iterable) < self.cores:
-            workers_num = len(iterable)
-            logger.warning(
-                f"workers used: {workers_num} out of {self.cores} cores available"
-            )
-
-        chunksize = len(iterable) // workers_num
-        carry = len(iterable) % workers_num
-
-        # mapping chunks to the workers
-        for i in range(carry):
-            self.workers[i].send(
-                (
-                    func,
-                    iterable[i * chunksize : i * chunksize + chunksize + 1],
-                    args,
-                    kwargs,
-                )
-            )
-
-        for i in range(carry, workers_num, 1):
-            self.workers[i].send(
-                (
-                    func,
-                    iterable[i * chunksize : i * chunksize + chunksize],
-                    args,
-                    kwargs,
-                )
-            )
-
-        # get back the results
-        result = []
-        for i in range(workers_num):
-            result.extend(self.workers[i].recv())
-
-        return result
+        return []
 
     def join(self, timeout: float | None = None) -> None:
         for w in self.workers:
