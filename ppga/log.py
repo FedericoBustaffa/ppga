@@ -32,7 +32,7 @@ class ColorFormatter(logging.Formatter):
             + Fore.CYAN
             + FILE
             + Fore.RESET
-            + " | %(name)s %(processName)s "
+            + " | %(name)s %(threadName)s "
             + FORMATS[record.levelno],
             datefmt=Fore.GREEN + "%d-%m-%Y - %H:%M:%S" + Fore.RESET,
         )
@@ -52,7 +52,7 @@ class JsonFormatter(logging.Formatter):
                     record.created, tz=dt.timezone.utc
                 ).isoformat(),
                 "logger": record.name,
-                "process_name": record.processName,
+                "thread_name": record.threadName,
                 "level": record.levelname,
                 "field": field.removesuffix(":"),
                 "time": elapsed_time,
@@ -63,7 +63,7 @@ class JsonFormatter(logging.Formatter):
                     record.created, tz=dt.timezone.utc
                 ).isoformat(),
                 "logger": record.name,
-                "process_name": record.processName,
+                "thread_name": record.threadName,
                 "level": record.levelname,
                 "message": record.getMessage(),
             }
@@ -78,7 +78,7 @@ def setup():
     # formatters
     color_formatter = ColorFormatter()
     json_formatter = logging.Formatter(
-        fmt="%(asctime)s | %(filename)s:%(lineno)d | %(name)s %(processName)s | [%(levelname)s]: %(message)s",
+        fmt="%(asctime)s | %(filename)s:%(lineno)d | %(name)s %(threadName)s | [%(levelname)s]: %(message)s",
         datefmt="%d-%m-%Y - %H:%M:%S",
     )
 
