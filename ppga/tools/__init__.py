@@ -5,7 +5,7 @@ from .crossover import (
     cx_uniform,
 )
 from .generation import gen_permutation, gen_repetition
-from .mutation import mut_bitflip, mut_gaussian, mut_rotation, mut_swap
+from .mutation import mut_bitflip, mut_normal, mut_rotation, mut_swap
 from .replacement import elitist, total
 from .selection import (
     sel_ranking,
@@ -28,7 +28,7 @@ __all__ = [
     "mut_bitflip",
     "mut_swap",
     "mut_rotation",
-    "mut_gaussian",
+    "mut_normal",
     "total",
     "elitist",
 ]
