@@ -17,7 +17,6 @@ def elitist(
     return custom(
         toolbox,
         population_size,
-        keep,
         cxpb,
         mutpb,
         max_generations,
@@ -39,7 +38,6 @@ def pelitist(
     return pcustom(
         toolbox,
         population_size,
-        keep,
         cxpb,
         mutpb,
         max_generations,
