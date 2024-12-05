@@ -1,18 +1,15 @@
-import random
-
 import numpy as np
+from numpy import random
 
 
-def mut_bitflip(chromosome, indpb: float = 0.5):
-    attr_type = type(chromosome[0])
-    for i, gene in enumerate(chromosome):
-        if random.random() < indpb:
-            chromosome[i] = attr_type(not gene)
+def mut_bitflip(chromosome: np.ndarray, indpb: float = 0.5):
+    probs = random.random(chromosome.shape)
+    chromosome[probs <= indpb] = not chromosome[probs <= indpb]
 
     return chromosome
 
 
-def mut_swap(chromosome, indpb: float = 0.5):
+def mut_swap(chromosome: np.ndarray, indpb: float = 0.5):
     for i, gene in enumerate(chromosome):
         if random.random() < indpb:
             new_pos = random.randint(0, len(chromosome))
@@ -23,8 +20,8 @@ def mut_swap(chromosome, indpb: float = 0.5):
     return chromosome
 
 
-def mut_rotation(chromosome):
-    a, b = random.sample([i for i in range(len(chromosome) + 1)], k=2)
+def mut_rotation(chromosome: np.ndarray):
+    a, b = random.choice([i for i in range(len(chromosome) + 1)], size=2, replace=False)
     if a > b:
         a, b = b, a
     chromosome[a:b] = np.flip(chromosome[a:b])
@@ -32,9 +29,11 @@ def mut_rotation(chromosome):
     return chromosome
 
 
-def mut_gaussian(chromosome, sigma, alpha: float, indpb: float = 0.2):
-    for i, x in enumerate(chromosome):
-        if random.random() <= indpb:
-            chromosome[i] = random.gauss(mu=x, sigma=sigma[i] * alpha)
+def mut_normal(
+    chromosome: np.ndarray, mu: np.ndarray, sigma: np.ndarray, indpb: float = 0.5
+) -> np.ndarray:
+    probs = random.random(chromosome.shape)
+    mutations = random.normal(loc=mu, scale=sigma, size=chromosome.shape)
+    chromosome[probs <= indpb] = mutations[probs <= indpb]
 
     return chromosome
