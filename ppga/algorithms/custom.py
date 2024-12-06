@@ -9,7 +9,6 @@ from ppga.parallel import Pool
 def custom(
     toolbox: ToolBox,
     population_size: int,
-    keep: float = 0.5,
     cxpb: float = 0.8,
     mutpb: float = 0.2,
     max_generations: int = 50,
@@ -63,7 +62,6 @@ def custom(
 def pcustom(
     toolbox: ToolBox,
     population_size: int,
-    keep: float = 0.5,
     cxpb: float = 0.8,
     mutpb: float = 0.2,
     max_generations: int = 50,

@@ -16,7 +16,6 @@ def generational(
     return custom(
         toolbox=toolbox,
         population_size=population_size,
-        keep=0.0,
         cxpb=cxpb,
         mutpb=mutpb,
         max_generations=max_generations,
@@ -37,7 +36,6 @@ def pgenerational(
     return pcustom(
         toolbox=toolbox,
         population_size=population_size,
-        keep=0.0,
         cxpb=cxpb,
         mutpb=mutpb,
         max_generations=max_generations,
