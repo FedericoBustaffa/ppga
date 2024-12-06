@@ -7,8 +7,8 @@ from ppga.parallel.worker import Worker
 
 
 class Pool:
-    def __init__(self, logical: bool = False) -> None:
-        self.cores = psutil.cpu_count(logical)
+    def __init__(self, workers_num: int = 0, logical: bool = False) -> None:
+        self.cores = psutil.cpu_count(logical) if workers_num == 0 else workers_num
         assert self.cores is not None
 
         self.workers = [Worker() for _ in range(self.cores)]

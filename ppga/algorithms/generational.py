@@ -30,6 +30,7 @@ def pgenerational(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | HallOfFame = None,
+    workers_num: int = 0,
 ):
     toolbox.set_replacement(tools.total)
 
@@ -40,4 +41,5 @@ def pgenerational(
         mutpb=mutpb,
         max_generations=max_generations,
         hall_of_fame=hall_of_fame,
+        workers_num=workers_num,
     )

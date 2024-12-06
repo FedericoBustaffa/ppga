@@ -66,12 +66,13 @@ def pcustom(
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: HallOfFame | None = None,
+    workers_num: int = 0,
 ):
     stats = Statistics()
     logger = log.getCoreLogger()
 
     # only use the physical cores
-    pool = Pool(logical=False)
+    pool = Pool(workers_num, logical=False)
 
     # generate the initial population
     population = toolbox.generate(population_size)
