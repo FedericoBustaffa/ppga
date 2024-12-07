@@ -46,12 +46,12 @@ class Pool:
             for i in range(carry, workers_num, 1)
         ]
 
-        results = Parallel(n_jobs=workers_num)(
+        results_chunk = Parallel(n_jobs=workers_num)(
             delayed(func)(chunk, *args, **kwargs) for chunk in chunks
         )
 
         results = []
-        for chunk in results:
+        for chunk in results_chunk:
             results.extend(chunk)
 
         return results
