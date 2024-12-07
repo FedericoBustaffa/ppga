@@ -1,19 +1,15 @@
 from typing import Any, Callable, Iterable, Mapping
 
 import psutil
+from joblib import Parallel, delayed
 
 from ppga import log
-from ppga.parallel.worker import Worker
 
 
 class Pool:
     def __init__(self, workers_num: int = 0, logical: bool = False) -> None:
         self.cores = psutil.cpu_count(logical) if workers_num == 0 else workers_num
         assert self.cores is not None
-
-        self.workers = [Worker() for _ in range(self.cores)]
-        for w in self.workers:
-            w.start()
 
         logger = log.getCoreLogger()
         logger.debug(f"pool started with {self.cores} workers")
@@ -27,7 +23,6 @@ class Pool:
     ) -> list[Any]:
         logger = log.getCoreLogger()
 
-        # dinamically resize the chunksize
         assert self.cores is not None
         workers_num = self.cores
 
@@ -51,19 +46,16 @@ class Pool:
             for i in range(carry, workers_num, 1)
         ]
 
-        for w, c in zip(self.workers, chunks):
-            w.send((func, c, args, kwargs))
+        results = Parallel(n_jobs=workers_num)(
+            delayed(func)(chunk, *args, **kwargs) for chunk in chunks
+        )
 
-        # get back the results
-        result = []
-        for i in range(workers_num):
-            result.extend(self.workers[i].recv())
+        results = []
+        for chunk in results:
+            results.extend(chunk)
 
-        return result
+        return results
 
     def join(self, timeout: float | None = None) -> None:
-        for w in self.workers:
-            w.join(timeout)
-
         logger = log.getCoreLogger()
         logger.debug("pool joined")
