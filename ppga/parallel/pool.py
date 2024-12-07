@@ -1,3 +1,4 @@
+import pickle
 from typing import Any, Callable, Iterable, Mapping
 
 import psutil
@@ -8,6 +9,9 @@ from ppga.parallel.worker import Worker
 
 class Pool:
     def __init__(self, workers_num: int = 0, logical: bool = False) -> None:
+        # faster serialization/deserialization
+        pickle.DEFAULT_PROTOCOL = pickle.HIGHEST_PROTOCOL
+
         self.cores = psutil.cpu_count(logical) if workers_num == 0 else workers_num
         assert self.cores is not None
 
