@@ -4,7 +4,7 @@ from numpy import random
 
 def mut_bitflip(chromosome: np.ndarray, indpb: float = 0.5):
     probs = random.random(chromosome.shape)
-    chromosome[probs <= indpb] = not chromosome[probs <= indpb]
+    chromosome[probs <= indpb] = ~chromosome[probs <= indpb]
 
     return chromosome
 
