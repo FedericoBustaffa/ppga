@@ -1,6 +1,6 @@
 setuptools
+wheel
 colorama
 numpy
 psutil
 tqdm
-pytest
