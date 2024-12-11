@@ -18,7 +18,10 @@ def crossover(couples: np.ndarray, toolbox: ToolBox, cxpb: float) -> np.ndarray:
     for father, mother in couples:
         if random.random() <= cxpb:
             offspring1, offspring2 = toolbox.crossover(father, mother)
-            offsprings.extend([offspring1, offspring2])
+        else:
+            offspring1, offspring2 = toolbox.clone(father), toolbox.clone(mother)
+
+        offsprings.extend([offspring1, offspring2])
 
     return np.asarray(offsprings)
 
