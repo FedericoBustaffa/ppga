@@ -12,8 +12,9 @@ class Pool:
         # faster serialization/deserialization
         pickle.DEFAULT_PROTOCOL = pickle.HIGHEST_PROTOCOL
 
-        self.cores = psutil.cpu_count(logical) if workers_num == 0 else workers_num
-        assert self.cores is not None
+        cores = psutil.cpu_count(logical)
+        assert cores is not None
+        self.cores = cores if workers_num == 0 or workers_num > cores else workers_num
 
         self.workers = [Worker() for _ in range(self.cores)]
         for w in self.workers:
