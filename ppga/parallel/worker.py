@@ -4,10 +4,7 @@ import multiprocessing.queues as mpq
 from ppga import log
 
 
-def compute(
-    send_q: mpq.Queue,
-    recv_q: mpq.Queue,
-):
+def compute(send_q: mpq.Queue, recv_q: mpq.Queue):
     logger = log.getCoreLogger()
     logger.debug("start")
 

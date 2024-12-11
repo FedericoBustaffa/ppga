@@ -41,7 +41,8 @@ def custom(
         # # evaluate offsprings
         scores = batch.evaluation(offsprings, toolbox)
         evals = len(scores)
-        offsprings = [Individual(c, s[0], s[1]) for c, s in zip(offsprings, scores)]
+        offsprings = [Individual(c, s[0], s[1])
+                      for c, s in zip(offsprings, scores)]
         logger.debug(f"offsprings evaluated: {evals}")
 
         # replace the old population
@@ -85,17 +86,27 @@ def pcustom(
         couples = batch.mating(selected)
         logger.debug(f"couples generated: {len(couples)}")
 
+        offsprings = batch.crossover(couples, toolbox, cxpb)
+        offsprings = batch.mutation(offsprings, toolbox, mutpb)
+
+        scores = pool.map(batch.evaluation, offsprings, args=(toolbox,))
+        offsprings = [Individual(c, s[0], s[1])
+                      for c, s in zip(offsprings, scores)]
+
         # pool map
-        offsprings = pool.map(
-            func=batch.cx_mut_eval, iterable=couples, args=(toolbox, cxpb, mutpb)
-        )
-        logger.debug(f"offsprings generated: {len(offsprings)}")
+        # offsprings = pool.map(
+        #     func=batch.cx_mut_eval, iterable=couples, args=(
+        #         toolbox, cxpb, mutpb)
+        # )
+
+        logger.debug(f"{len(offsprings)} new individuals generated")
 
         # perform a total replacement
         population = toolbox.replace(population, offsprings)
         logger.debug(f"population size: {len(population)}")
 
         stats.update(population)
+        stats.update_evals(len(offsprings))
 
         if hall_of_fame is not None:
             hall_of_fame.update(population)
