@@ -29,7 +29,7 @@ class Individual:
 
     def __eq__(self, other) -> bool:
         assert isinstance(other, Individual)
-        return np.array_equal(self.chromosome, other.chromosome)
+        return hash(self) == hash(other)
 
     def __lt__(self, other) -> bool:
         assert isinstance(other, Individual)
