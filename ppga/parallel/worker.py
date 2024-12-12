@@ -15,7 +15,12 @@ def compute(send_q: mpq.Queue, recv_q: mpq.Queue):
             break
 
         func, chunk, args, kwargs = task
-        recv_q.put(func(chunk, *args, **kwargs))
+
+        res = []
+        for i in chunk:
+            res.append(func(i, *args, **kwargs))
+
+        recv_q.put(res)
 
     logger.debug("terminated")
 
@@ -34,9 +39,7 @@ class Worker(mp.Process):
         self.send_q.put(chunk)
 
     def recv(self):
-        result = self.recv_q.get()
-
-        return result
+        return self.recv_q.get()
 
     def join(self, timeout: float | None = None) -> None:
         self.send_q.put(None)

@@ -2,7 +2,7 @@ import random
 
 import numpy as np
 
-from ppga import log, base
+from ppga import base, log
 
 logger = log.getCoreLogger()
 
@@ -10,8 +10,7 @@ logger = log.getCoreLogger()
 def mating(population: list[base.Individual]) -> np.ndarray:
     couples = []
     for i in range(0, len(population), 2):
-        couples.append((population[i].chromosome,
-                       population[i + 1].chromosome))
+        couples.append((population[i].chromosome, population[i + 1].chromosome))
 
     return np.asarray(couples)
 

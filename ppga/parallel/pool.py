@@ -61,8 +61,8 @@ class Pool:
 
         # get back the results
         result = []
-        for i in range(workers_num):
-            result.extend(self.workers[i].recv())
+        for w in self.workers:
+            result.extend(w.recv())
 
         return result
 
