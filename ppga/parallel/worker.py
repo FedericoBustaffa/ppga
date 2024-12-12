@@ -1,12 +1,18 @@
 import multiprocessing as mp
 import multiprocessing.queues as mpq
+import random
+
+import numpy.random as nprnd
 
 from ppga import log
 
 
 def compute(send_q: mpq.Queue, recv_q: mpq.Queue):
     logger = log.getCoreLogger()
-    logger.debug("start")
+    logger.debug(f"start with PID: {mp.current_process().ident}")
+
+    random.seed(mp.current_process().ident)
+    nprnd.seed(mp.current_process().ident)
 
     while True:
         task = send_q.get()
