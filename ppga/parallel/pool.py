@@ -47,12 +47,12 @@ class Pool:
 
         # mapping chunks to the workers
         chunks = [
-            iterable[i * chunksize: i * chunksize + chunksize + 1]
+            iterable[i * chunksize : i * chunksize + chunksize + 1]
             for i in range(carry)
         ]
 
         chunks += [
-            iterable[i * chunksize: i * chunksize + chunksize]
+            iterable[i * chunksize : i * chunksize + chunksize]
             for i in range(carry, workers_num, 1)
         ]
 
@@ -61,8 +61,8 @@ class Pool:
 
         # get back the results
         result = []
-        for i in range(workers_num):
-            result.extend(self.workers[i].recv())
+        for w in self.workers:
+            result.extend(w.recv())
 
         return result
 

@@ -1,3 +1,5 @@
+import multiprocessing as mp
+
 from tqdm import tqdm
 
 from ppga import log
@@ -40,10 +42,8 @@ def custom(
 
         # # evaluate offsprings
         scores = batch.evaluation(offsprings, toolbox)
-        evals = len(scores)
-        offsprings = [Individual(c, s[0], s[1])
-                      for c, s in zip(offsprings, scores)]
-        logger.debug(f"offsprings evaluated: {evals}")
+        offsprings = [Individual(c, s[0], s[1]) for c, s in zip(offsprings, scores)]
+        logger.debug(f"offsprings evaluated: {len(scores)}")
 
         # replace the old population
         population = toolbox.replace(population, offsprings)
@@ -55,7 +55,7 @@ def custom(
 
         # update the stats
         stats.update(population)
-        stats.update_evals(evals)
+        stats.update_evals(len(scores))
 
     return population, stats
 
@@ -89,9 +89,8 @@ def pcustom(
         offsprings = batch.crossover(couples, toolbox, cxpb)
         offsprings = batch.mutation(offsprings, toolbox, mutpb)
 
-        scores = pool.map(batch.evaluation, offsprings, args=(toolbox,))
-        offsprings = [Individual(c, s[0], s[1])
-                      for c, s in zip(offsprings, scores)]
+        scores = pool.map(toolbox.evaluate, offsprings)
+        offsprings = [Individual(c, s[0], s[1]) for c, s in zip(offsprings, scores)]
 
         # pool map
         # offsprings = pool.map(
@@ -105,11 +104,12 @@ def pcustom(
         population = toolbox.replace(population, offsprings)
         logger.debug(f"population size: {len(population)}")
 
+        if hall_of_fame is not None:
+            logger.debug(f"{g} update hall of fame")
+            hall_of_fame.update(offsprings)
+
         stats.update(population)
         stats.update_evals(len(offsprings))
-
-        if hall_of_fame is not None:
-            hall_of_fame.update(population)
 
     pool.join()
 
