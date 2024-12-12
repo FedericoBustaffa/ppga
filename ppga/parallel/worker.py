@@ -7,12 +7,12 @@ import numpy.random as nprnd
 from ppga import log
 
 
-def compute(send_q: mpq.Queue, recv_q: mpq.Queue):
+def compute(id: int, send_q: mpq.Queue, recv_q: mpq.Queue):
     logger = log.getCoreLogger()
     logger.debug(f"start with PID: {mp.current_process().ident}")
 
-    random.seed(mp.current_process().ident)
-    nprnd.seed(mp.current_process().ident)
+    random.seed(id)
+    nprnd.seed(id)
 
     while True:
         task = send_q.get()
@@ -32,13 +32,13 @@ def compute(send_q: mpq.Queue, recv_q: mpq.Queue):
 
 
 class Worker(mp.Process):
-    def __init__(self) -> None:
+    def __init__(self, id: int) -> None:
         self.send_q = mp.Queue()
         self.recv_q = mp.Queue()
 
         super().__init__(
             target=compute,
-            args=[self.send_q, self.recv_q],
+            args=[id, self.send_q, self.recv_q],
         )
 
     def send(self, chunk) -> None:

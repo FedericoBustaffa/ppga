@@ -16,7 +16,7 @@ class Pool:
         assert cores is not None
         self.cores = cores if workers_num == 0 or workers_num > cores else workers_num
 
-        self.workers = [Worker() for _ in range(self.cores)]
+        self.workers = [Worker(i) for i in range(self.cores)]
         for w in self.workers:
             w.start()
 
@@ -47,12 +47,12 @@ class Pool:
 
         # mapping chunks to the workers
         chunks = [
-            iterable[i * chunksize : i * chunksize + chunksize + 1]
+            iterable[i * chunksize: i * chunksize + chunksize + 1]
             for i in range(carry)
         ]
 
         chunks += [
-            iterable[i * chunksize : i * chunksize + chunksize]
+            iterable[i * chunksize: i * chunksize + chunksize]
             for i in range(carry, workers_num, 1)
         ]
 

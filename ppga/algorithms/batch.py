@@ -11,7 +11,8 @@ logger = log.getCoreLogger()
 def mating(population: list[base.Individual]) -> np.ndarray:
     couples = []
     for i in range(0, len(population), 2):
-        couples.append((population[i].chromosome, population[i + 1].chromosome))
+        couples.append((population[i].chromosome,
+                       population[i + 1].chromosome))
 
     return np.asarray(couples)
 
@@ -53,7 +54,6 @@ def evaluation(population: np.ndarray, toolbox: base.ToolBox) -> list:
 def cx_mut_eval(
     couple: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
 ) -> tuple:
-    random.seed(time.perf_counter_ns())
     father, mother = couple
     if random.random() <= cxpb:
         offspring1, offspring2 = toolbox.crossover(father, mother)
