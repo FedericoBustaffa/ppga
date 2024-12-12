@@ -1,5 +1,3 @@
-import multiprocessing as mp
-
 from tqdm import tqdm
 
 from ppga import log
@@ -86,27 +84,24 @@ def pcustom(
         couples = batch.mating(selected)
         logger.debug(f"couples generated: {len(couples)}")
 
-        offsprings = batch.crossover(couples, toolbox, cxpb)
-        offsprings = batch.mutation(offsprings, toolbox, mutpb)
-
-        scores = pool.map(toolbox.evaluate, offsprings)
-        offsprings = [Individual(c, s[0], s[1]) for c, s in zip(offsprings, scores)]
-
         # pool map
-        # offsprings = pool.map(
-        #     func=batch.cx_mut_eval, iterable=couples, args=(
-        #         toolbox, cxpb, mutpb)
-        # )
+        offsprings = pool.map(
+            batch.cx_mut_eval, iterable=couples, args=(toolbox, cxpb, mutpb)
+        )
+        offsprings_copy = []
+        for couple in offsprings:
+            if couple != ():
+                offsprings_copy.extend(couple)
 
         logger.debug(f"{len(offsprings)} new individuals generated")
 
         # perform a total replacement
-        population = toolbox.replace(population, offsprings)
+        population = toolbox.replace(population, offsprings_copy)
         logger.debug(f"population size: {len(population)}")
 
         if hall_of_fame is not None:
             logger.debug(f"{g} update hall of fame")
-            hall_of_fame.update(offsprings)
+            hall_of_fame.update(offsprings_copy)
 
         stats.update(population)
         stats.update_evals(len(offsprings))

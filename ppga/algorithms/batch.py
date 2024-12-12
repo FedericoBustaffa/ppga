@@ -50,16 +50,24 @@ def evaluation(population: np.ndarray, toolbox: base.ToolBox) -> list:
 
 
 def cx_mut_eval(
-    couples: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
-) -> list[base.Individual]:
-    offsprings = crossover(couples, toolbox, cxpb)
+    couple: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
+) -> tuple:
+    father, mother = couple
+    if random.random() <= cxpb:
+        offspring1, offspring2 = toolbox.crossover(father, mother)
 
-    if len(offsprings) == 0:
-        return []
+        if random.random() <= mutpb:
+            offspring1 = toolbox.mutate(offspring1)
 
-    offsprings = mutation(offsprings, toolbox, mutpb)
-    scores = evaluation(offsprings, toolbox)
+        if random.random() <= mutpb:
+            offspring2 = toolbox.mutate(offspring2)
 
-    logger.debug(f"{len(offsprings)} new individuals generated")
+        values1, fitness1 = toolbox.evaluate(offspring1)
+        values2, fitness2 = toolbox.evaluate(offspring2)
 
-    return [base.Individual(i, s[0], s[1]) for i, s in zip(offsprings, scores)]
+        offspring1 = base.Individual(offspring1, values1, fitness1)
+        offspring2 = base.Individual(offspring2, values2, fitness2)
+
+        return offspring1, offspring2
+
+    return ()
