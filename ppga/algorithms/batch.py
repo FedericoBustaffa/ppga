@@ -1,4 +1,5 @@
 import random
+import time
 
 import numpy as np
 
@@ -52,6 +53,7 @@ def evaluation(population: np.ndarray, toolbox: base.ToolBox) -> list:
 def cx_mut_eval(
     couple: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
 ) -> tuple:
+    random.seed(time.perf_counter_ns())
     father, mother = couple
     if random.random() <= cxpb:
         offspring1, offspring2 = toolbox.crossover(father, mother)

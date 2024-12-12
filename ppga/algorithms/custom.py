@@ -93,18 +93,18 @@ def pcustom(
             if couple != ():
                 offsprings_copy.extend(couple)
 
-        logger.debug(f"{len(offsprings)} new individuals generated")
+        logger.debug(f"{len(offsprings_copy)} new individuals generated")
 
         # perform a total replacement
         population = toolbox.replace(population, offsprings_copy)
         logger.debug(f"population size: {len(population)}")
 
         if hall_of_fame is not None:
-            logger.debug(f"{g} update hall of fame")
             hall_of_fame.update(offsprings_copy)
+            logger.debug(f"hall of fame size: {len(hall_of_fame)}")
 
-        stats.update(population)
-        stats.update_evals(len(offsprings))
+    stats.update(population)
+    stats.update_evals(len(offsprings))
 
     pool.join()
 
