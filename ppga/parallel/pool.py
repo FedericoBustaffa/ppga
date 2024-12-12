@@ -47,17 +47,17 @@ class Pool:
 
         # mapping chunks to the workers
         chunks = [
-            iterable[i * chunksize: i * chunksize + chunksize + 1]
+            iterable[i * chunksize : i * chunksize + chunksize + 1]
             for i in range(carry)
         ]
 
         chunks += [
-            iterable[i * chunksize: i * chunksize + chunksize]
+            iterable[i * chunksize : i * chunksize + chunksize]
             for i in range(carry, workers_num, 1)
         ]
 
-        for w, c in zip(self.workers, chunks):
-            w.send((func, c, args, kwargs))
+        for i, c in zip(range(workers_num), chunks):
+            self.workers[i].send((func, c, args, kwargs))
 
         # get back the results
         result = []
