@@ -1,18 +1,14 @@
 import random
-import time
 
 import numpy as np
 
-from ppga import base, log
-
-logger = log.getCoreLogger()
+from ppga import base
 
 
 def mating(population: list[base.Individual]) -> np.ndarray:
     couples = []
     for i in range(0, len(population), 2):
-        couples.append((population[i].chromosome,
-                       population[i + 1].chromosome))
+        couples.append((population[i].chromosome, population[i + 1].chromosome))
 
     return np.asarray(couples)
 
@@ -22,13 +18,8 @@ def crossover(couples: np.ndarray, toolbox: base.ToolBox, cxpb: float) -> np.nda
     for father, mother in couples:
         if random.random() <= cxpb:
             offspring1, offspring2 = toolbox.crossover(father, mother)
-            # else:
-            #     offspring1, offspring2 = toolbox.clone(
-            #         father), toolbox.clone(mother)
 
             offsprings.extend([offspring1, offspring2])
-
-    logger.info(f"{len(offsprings)} offsprings generated")
 
     return np.asarray(offsprings)
 
@@ -45,8 +36,6 @@ def evaluation(population: np.ndarray, toolbox: base.ToolBox) -> list:
     scores = []
     for i, ind in enumerate(population):
         scores.append(toolbox.evaluate(ind))
-
-    logger.info(f"{len(population)} evaluated")
 
     return scores
 
