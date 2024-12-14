@@ -1,4 +1,6 @@
+import math
 import time
+from functools import partial
 
 import psutil
 
@@ -8,7 +10,7 @@ logger = log.getCoreLogger()
 
 
 def opt_workers_num(seq, par, **kwargs):
-    kwargs["max_generations"] = 1
+    kwargs["max_generations"] = 3
     start = time.perf_counter()
     seq(**kwargs)
     end = time.perf_counter()
@@ -17,12 +19,25 @@ def opt_workers_num(seq, par, **kwargs):
 
     max_cores = psutil.cpu_count(logical=False)
     assert max_cores is not None
+    best = 1
     for i in range(2, max_cores + 1):
         kwargs.update({"workers_num": i})
         start = time.perf_counter()
         par(**kwargs)
         end = time.perf_counter()
-        logger.log(15, f"parallel time with {i} workers: {end - start} seconds")
-        logger.log(15, f"speed up: {seq_time / (end - start)}")
+        par_time = end - start
+        speed_up = seq_time / par_time
 
-    return 1
+        # select the best number of workers
+        if math.ceil(speed_up) != i:
+            return math.ceil(speed_up)
+
+        if speed_up > best:
+            best = math.ceil(speed_up)
+        else:
+            return best
+
+        logger.log(15, f"parallel time with {i} workers: {par_time} seconds")
+        logger.log(15, f"speed up: {speed_up}")
+
+    return best

@@ -1,6 +1,5 @@
 import argparse
 import random
-import time
 
 import numpy as np
 
@@ -51,6 +50,8 @@ if __name__ == "__main__":
     workers_num = parallel.opt_workers_num(
         algorithms.elitist, algorithms.pelitist, **arguments
     )
+
+    logger.info(f"ideal workers number: {workers_num}")
 
     # population, stats = algorithms.pelitist(
     #     toolbox=toolbox,
