@@ -29,7 +29,7 @@ def opt_workers_num(seq, par, **kwargs):
         speed_up = seq_time / par_time
 
         # select the best number of workers
-        if math.ceil(speed_up) != i:
+        if math.ceil(speed_up) < i:
             return math.ceil(speed_up)
 
         if speed_up > best:
