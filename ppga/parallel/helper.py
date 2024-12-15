@@ -9,7 +9,7 @@ logger = log.getCoreLogger()
 
 
 def opt_workers_num(seq, par, **kwargs):
-    kwargs["max_generations"] = 3
+    kwargs["max_generations"] = 2
     start = time.perf_counter()
     seq(**kwargs)
     end = time.perf_counter()
