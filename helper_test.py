@@ -39,7 +39,7 @@ if __name__ == "__main__":
     hof = base.HallOfFame(50)
     arguments = {
         "toolbox": toolbox,
-        "population_size": 5000,
+        "population_size": 1000,
         "keep": 0.1,
         "cxpb": 0.7,
         "mutpb": 0.3,
@@ -53,15 +53,15 @@ if __name__ == "__main__":
 
     logger.info(f"ideal workers number: {workers_num}")
 
-    # population, stats = algorithms.pelitist(
-    #     toolbox=toolbox,
-    #     population_size=100,
-    #     keep=0.1,
-    #     cxpb=0.7,
-    #     mutpb=0.3,
-    #     max_generations=100,
-    #     hall_of_fame=hof,
-    #     workers_num=workers_num,
-    # )
+    population, stats = algorithms.pelitist(
+        toolbox=toolbox,
+        population_size=1000,
+        keep=0.1,
+        cxpb=0.7,
+        mutpb=0.3,
+        max_generations=100,
+        hall_of_fame=hof,
+        workers_num=workers_num,
+    )
 
     logger.info(f"best fitness: {hof[0].fitness}")
