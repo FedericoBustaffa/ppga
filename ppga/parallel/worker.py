@@ -7,11 +7,11 @@ from ppga import log
 
 
 class Worker(mp.Process):
-    def __init__(self, id: int, send_q, recv_q) -> None:
+    def __init__(self, id: int) -> None:
         super().__init__()
         self.id = id
-        self.send_q = send_q
-        self.recv_q = recv_q
+        self.send_q = mp.Queue()
+        self.recv_q = mp.Queue()
 
     def run(self) -> None:
         logger = log.getCoreLogger()

@@ -47,13 +47,11 @@ if __name__ == "__main__":
         "hall_of_fame": hof,
     }
 
-    workers_num = parallel.opt_workers_num(
-        algorithms.elitist, algorithms.pelitist, **arguments
-    )
+    workers_num = parallel.opt_workers_num(algorithms.simple, **arguments)
 
     logger.info(f"ideal workers number: {workers_num}")
 
-    population, stats = algorithms.pelitist(
+    population, stats = algorithms.simple(
         toolbox=toolbox,
         population_size=1000,
         keep=0.1,

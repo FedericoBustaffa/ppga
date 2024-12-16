@@ -1,4 +1,3 @@
-import multiprocessing as mp
 import pickle
 from typing import Any, Callable
 
@@ -9,15 +8,15 @@ from ppga.parallel.worker import Worker
 
 
 class Pool:
-    def __init__(self, workers_num: int = 0, logical: bool = False) -> None:
+    def __init__(self, workers_num: int = -1, logical: bool = False) -> None:
         # faster serialization/deserialization
         pickle.DEFAULT_PROTOCOL = pickle.HIGHEST_PROTOCOL
 
         cores = psutil.cpu_count(logical)
         assert cores is not None
-        self.cores = cores if workers_num == 0 or workers_num > cores else workers_num
+        self.cores = cores if workers_num <= 0 or workers_num > cores else workers_num
 
-        self.workers = [Worker(i, mp.Queue(), mp.Queue()) for i in range(self.cores)]
+        self.workers = [Worker(i) for i in range(self.cores)]
         for w in self.workers:
             w.start()
 

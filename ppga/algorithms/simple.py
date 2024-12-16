@@ -23,7 +23,7 @@ def simple(
     cx_mut_eval = partial(batch.cx_mut_eval, toolbox=toolbox, cxpb=cxpb, mutpb=mutpb)
 
     # only use the physical cores
-    pool = parallel.Pool(workers_num) if workers_num > 1 else None
+    pool = parallel.Pool(workers_num) if workers_num > 1 or workers_num < 0 else None
     if pool is not None:
         map_func = pool.map
 

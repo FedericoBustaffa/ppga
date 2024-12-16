@@ -8,10 +8,10 @@ from ppga import log
 logger = log.getCoreLogger()
 
 
-def opt_workers_num(seq, par, **kwargs):
+def opt_workers_num(alg, **kwargs):
     kwargs["max_generations"] = 2
     start = time.perf_counter()
-    seq(**kwargs)
+    alg(**kwargs)
     end = time.perf_counter()
     seq_time = end - start
     logger.log(15, f"sequential time: {seq_time} seconds")
@@ -22,7 +22,7 @@ def opt_workers_num(seq, par, **kwargs):
     for i in range(2, max_cores + 1, 2):
         kwargs.update({"workers_num": i})
         start = time.perf_counter()
-        par(**kwargs)
+        alg(**kwargs)
         end = time.perf_counter()
         par_time = end - start
         speed_up = seq_time / par_time

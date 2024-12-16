@@ -36,7 +36,7 @@ if __name__ == "__main__":
         mutpb=0.3,
         max_generations=100,
         hall_of_fame=hof,
-        workers_num=4,
+        workers_num=-1,
     )
 
     for ind in hof:
