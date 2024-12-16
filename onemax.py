@@ -28,7 +28,7 @@ if __name__ == "__main__":
     toolbox.set_evaluation(evaluate)
 
     hof = base.HallOfFame(10)
-    population, stats = algorithms.elitist(
+    population, stats = algorithms.simple(
         toolbox=toolbox,
         population_size=100,
         keep=0.2,
@@ -36,6 +36,7 @@ if __name__ == "__main__":
         mutpb=0.3,
         max_generations=100,
         hall_of_fame=hof,
+        workers_num=4,
     )
 
     for ind in hof:

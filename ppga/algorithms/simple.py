@@ -1,28 +1,33 @@
+from functools import partial
+
 from tqdm import tqdm
 
-from ppga import log
+from ppga import base, log, parallel, tools
 from ppga.algorithms import batch
-from ppga.base import HallOfFame, Individual, Statistics, ToolBox
-from ppga.parallel import Pool
 
 
-def custom(
-    toolbox: ToolBox,
+def simple(
+    toolbox: base.ToolBox,
     population_size: int,
     keep: float = 0.1,
     cxpb: float = 0.8,
     mutpb: float = 0.2,
     max_generations: int = 50,
-    hall_of_fame: None | HallOfFame = None,
+    hall_of_fame: None | base.HallOfFame = None,
     workers_num: int = 0,
 ):
-    stats = Statistics()
+    stats = base.Statistics()
     logger = log.getCoreLogger()
 
+    map_func = map
+    cx_mut_eval = partial(batch.cx_mut_eval, toolbox=toolbox, cxpb=cxpb, mutpb=mutpb)
+
     # only use the physical cores
-    pool = Pool(workers_num, logical=False) if workers_num != 0 else None
+    pool = parallel.Pool(workers_num) if workers_num > 1 else None
     if pool is not None:
-        toolbox.set_map(pool.map, toolbox, cxpb, mutpb)
+        map_func = pool.map
+
+    toolbox.set_replacement(tools.elitist, keep=keep)
 
     # generate the initial population
     population = toolbox.generate(population_size)
@@ -36,7 +41,7 @@ def custom(
         logger.debug(f"couples generated: {len(couples)}")
 
         # pool map
-        offsprings = toolbox.map(batch.cx_mut_eval, iterable=couples)
+        offsprings = list(map_func(cx_mut_eval, couples))
         offsprings_copy = []
         for couple in offsprings:
             if couple != ():

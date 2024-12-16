@@ -10,19 +10,12 @@ from ppga.base.individual import Individual
 class ToolBox:
     def __init__(self) -> None:
         self.clone_func = copy.deepcopy
-        self.map_func = map
 
     def set_clone(self, func, *args, **kwargs) -> None:
         self.clone_func = partial(func, *args, **kwargs)
 
     def clone(self, individual: Individual) -> Individual:
         return self.clone_func(individual)
-
-    def set_map(self, func, *args, **kwargs) -> None:
-        self.map = partial(func, *args, **kwargs)
-
-    def map(self, func, iterable):
-        return self.map(func, iterable)
 
     def set_weights(self, weights: tuple) -> None:
         self.weights = weights

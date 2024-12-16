@@ -6,7 +6,7 @@ from .crossover import (
 )
 from .generation import gen_permutation, gen_repetition
 from .mutation import mut_bitflip, mut_normal, mut_rotation, mut_swap
-from .replacement import elitist, total
+from .replacement import elitist
 from .selection import (
     sel_ranking,
     sel_roulette,
@@ -29,6 +29,5 @@ __all__ = [
     "mut_swap",
     "mut_rotation",
     "mut_normal",
-    "total",
     "elitist",
 ]
