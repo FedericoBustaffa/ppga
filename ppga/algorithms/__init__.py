@@ -1,6 +1,6 @@
+from .batch import crossover, cx_mut_eval, evaluation, mating, mutation
 from .elitist import elitist, pelitist
 from .generational import generational, pgenerational
-from .batch import crossover, cx_mut_eval, evaluation, mating, mutation
 
 __all__ = [
     "mating",
