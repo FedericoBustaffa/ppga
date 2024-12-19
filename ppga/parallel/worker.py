@@ -27,12 +27,7 @@ class Worker(mp.Process):
                 break
 
             func, chunk, args, kwargs = task
-
-            res = []
-            for i in chunk:
-                res.append(func(i, *args, **kwargs))
-
-            self.recv_q.put(res)
+            self.recv_q.put(func(chunk, *args, **kwargs))
 
         logger.debug("terminated")
 
