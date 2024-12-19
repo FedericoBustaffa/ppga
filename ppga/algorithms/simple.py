@@ -39,7 +39,7 @@ def simple(
         logger.debug(f"selected individuals: {len(selected)}")
 
         couples = batch.mating(selected)
-        logger.debug(f"couples generated: {len(couples)}")
+        logger.debug(f"{len(couples)} couples generated")
 
         # pool map
         offsprings = list(chain(*map_func(cx_mut_eval, couples)))
