@@ -23,7 +23,7 @@ class Worker(mp.Process):
         while True:
             task = self.send_q.get()
             if task is None:
-                # logger.debug("received termination chunk")
+                logger.debug("received termination chunk")
                 break
 
             func, chunk, args, kwargs = task
