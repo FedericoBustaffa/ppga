@@ -1,4 +1,5 @@
 from functools import partial
+from itertools import chain
 
 from tqdm import tqdm
 
@@ -41,20 +42,15 @@ def simple(
         logger.debug(f"couples generated: {len(couples)}")
 
         # pool map
-        offsprings = list(map_func(cx_mut_eval, couples))
-        offsprings_copy = []
-        for couple in offsprings:
-            if couple != ():
-                offsprings_copy.extend(couple)
-
-        logger.debug(f"{len(offsprings_copy)} new individuals generated")
+        offsprings = list(chain(*map_func(cx_mut_eval, couples)))
+        logger.debug(f"{len(offsprings)} new individuals generated")
 
         # perform a total replacement
-        population = toolbox.replace(population, offsprings_copy)
+        population = toolbox.replace(population, offsprings)
         logger.debug(f"population size: {len(population)}")
 
         if hall_of_fame is not None:
-            hall_of_fame.update(offsprings_copy)
+            hall_of_fame.update(offsprings)
             logger.debug(f"hall of fame size: {len(hall_of_fame)}")
 
         stats.update(population)
