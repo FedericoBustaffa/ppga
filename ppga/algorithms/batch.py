@@ -41,9 +41,9 @@ def evaluation(population: np.ndarray, toolbox: base.ToolBox) -> list:
 
 
 def cx_mut_eval(
-    couples: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
+    couple: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
 ) -> tuple:
-    father, mother = couples
+    father, mother = couple
     if random.random() <= cxpb:
         offspring1, offspring2 = toolbox.crossover(father, mother)
 
