@@ -10,6 +10,9 @@ class Statistics:
         self.diversity = []
         self.evals = []
 
+        # keep track of the parallel time
+        self.times = []
+
     def update(self, population: list[Individual]) -> None:
         scores = [i.fitness for i in population]
 
@@ -24,3 +27,7 @@ class Statistics:
 
     def update_evals(self, evals_num: int) -> None:
         self.evals.append(evals_num)
+
+    def update_time(self, time: float) -> None:
+        # TO REMOVE
+        self.times.append(time)

@@ -1,3 +1,6 @@
+import time
+
+import matplotlib.pyplot as plt
 import numpy as np
 
 from ppga import algorithms, base, log, tools
@@ -9,7 +12,7 @@ def evaluate(chromosome: np.ndarray):
 
 if __name__ == "__main__":
     # set the level to debug for all the logs
-    log.setLevel("DEBUG")
+    log.setLevel("INFO")
 
     # different logger
     logger = log.getUserLogger()
@@ -28,6 +31,7 @@ if __name__ == "__main__":
     toolbox.set_evaluation(evaluate)
 
     hof = base.HallOfFame(10)
+    start = time.perf_counter()
     population, stats = algorithms.simple(
         toolbox=toolbox,
         population_size=100,
@@ -38,6 +42,39 @@ if __name__ == "__main__":
         hall_of_fame=hof,
         workers_num=-1,
     )
+    end = time.perf_counter()
 
     for ind in hof:
         logger.info(ind)
+
+    plt.figure(figsize=(16, 9))
+    plt.title("Biodiversity trend")
+    plt.xlabel("Generation")
+    plt.ylabel("Biodiversity")
+    plt.plot([i for i in range(len(stats.diversity))], stats.diversity, c="g")
+    plt.grid()
+    plt.show()
+
+    plt.figure(figsize=(16, 9))
+    plt.title("Fitness trend")
+    plt.xlabel("Generation")
+    plt.ylabel("Fitness")
+    plt.plot(
+        [i for i in range(len(stats.worst))], stats.worst, c="r", label="worst score"
+    )
+    plt.plot([i for i in range(len(stats.mean))], stats.mean, c="b", label="mean score")
+    plt.plot([i for i in range(len(stats.best))], stats.best, c="g", label="best score")
+    plt.grid()
+    plt.legend()
+    plt.show()
+
+    plt.figure(figsize=(16, 9))
+    plt.title("Time trend")
+    plt.xlabel("Generation")
+    plt.ylabel("Time")
+    plt.plot([i for i in range(len(stats.times))], stats.times)
+    plt.grid()
+    plt.show()
+
+    logger.info(f"Total time: {end - start} seconds")
+    logger.info(f"Total time spent in parallel: {np.sum(stats.times)} seconds")
