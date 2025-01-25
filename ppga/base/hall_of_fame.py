@@ -46,5 +46,5 @@ class HallOfFame:
     def clear(self):
         self.hof.clear()
 
-    def to_dict(self) -> dict[str, list]:
-        return {"hall_of_fame": [i.to_dict() for i in self.hof]}
+    def to_list(self) -> list:
+        return [i.to_dict() for i in self.hof]
