@@ -1,4 +1,5 @@
 from .crossover import (
+    cx_blend,
     cx_one_point,
     cx_one_point_ordered,
     cx_two_points,
@@ -25,6 +26,7 @@ __all__ = [
     "cx_one_point_ordered",
     "cx_two_points",
     "cx_uniform",
+    "cx_blend",
     "mut_bitflip",
     "mut_swap",
     "mut_rotation",

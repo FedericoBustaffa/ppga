@@ -34,6 +34,6 @@ def mut_normal(
 ) -> np.ndarray:
     probs = random.random(chromosome.shape)
     mutations = random.normal(loc=mu, scale=sigma, size=chromosome.shape)
-    chromosome[probs <= indpb] = mutations[probs <= indpb]
+    chromosome[probs <= indpb] += mutations[probs <= indpb]
 
     return chromosome
