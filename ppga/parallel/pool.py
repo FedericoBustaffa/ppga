@@ -20,6 +20,10 @@ class Pool:
         for w in self.workers:
             w.start()
 
+        # process monitor and timers
+        self.monitors = [psutil.Process(w.pid) for w in self.workers]
+        self.timers = {w.pid: 0.0 for w in self.workers}
+
         logger = log.getCoreLogger()
         logger.debug(f"pool started with {self.cores} workers")
 
@@ -50,15 +54,22 @@ class Pool:
             for i in range(carry, workers_num, 1)
         ]
 
-        for i, c in zip(range(workers_num), chunks):
-            self.workers[i].send([func, c, args, kwargs])
+        for i, (w, c) in enumerate(zip(self.workers, chunks)):
+            self.timers[w.pid] = self.monitors[i].cpu_times().user
+            w.send([func, c, args, kwargs])
 
         # get back the results
         result = []
-        for i in range(workers_num):
-            result.extend(self.workers[i].recv())
+        for w in self.workers:
+            result.extend(w.recv())
+            self.timers[w.pid] = (
+                self.monitors[i].cpu_times().user - self.timers[w.pid].user
+            )
 
         return result
+
+    def worker_time(self) -> float:
+        return max([t for t in self.timers.values()])
 
     def join(self, timeout: float | None = None) -> None:
         for w in self.workers:
