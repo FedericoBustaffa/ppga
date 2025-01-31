@@ -7,6 +7,9 @@ from ppga import algorithms, base, log, tools
 
 
 def evaluate(chromosome: np.ndarray):
+    for _ in range(100):
+        np.random.random()
+
     return (int(chromosome.sum()),)
 
 
@@ -34,18 +37,17 @@ if __name__ == "__main__":
     start = time.perf_counter()
     population, stats = algorithms.simple(
         toolbox=toolbox,
-        population_size=100,
+        population_size=1000,
         keep=0.2,
         cxpb=0.7,
         mutpb=0.3,
         max_generations=100,
         hall_of_fame=hof,
-        workers_num=-1,
+        workers_num=8,
     )
     end = time.perf_counter()
 
-    for ind in hof:
-        logger.info(ind)
+    logger.info(f"Best solution: {hof[0]}")
 
     plt.figure(figsize=(16, 9))
     plt.title("Biodiversity trend")
@@ -72,7 +74,7 @@ if __name__ == "__main__":
     plt.title("Time trend")
     plt.xlabel("Generation")
     plt.ylabel("Time")
-    plt.plot([i for i in range(len(stats.times))], stats.times)
+    plt.plot([i for i in range(len(stats.times))], stats.times, marker="o")
     plt.grid()
     plt.show()
 

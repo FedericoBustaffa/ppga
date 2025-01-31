@@ -6,6 +6,8 @@ import psutil
 from ppga import log
 from ppga.parallel.worker import Worker
 
+logger = log.getCoreLogger()
+
 
 class Pool:
     def __init__(self, workers_num: int = -1, logical: bool = False) -> None:
@@ -21,15 +23,12 @@ class Pool:
             w.start()
 
         # process monitor and timers
-        self.monitors = [psutil.Process(w.pid) for w in self.workers]
+        self.monitors = {w.pid: psutil.Process(w.pid) for w in self.workers}
         self.timers = {w.pid: 0.0 for w in self.workers}
 
-        logger = log.getCoreLogger()
         logger.debug(f"pool started with {self.cores} workers")
 
     def map(self, func: Callable, iterable, *args, **kwargs) -> list[Any]:
-        logger = log.getCoreLogger()
-
         # dinamically resize the chunksize
         assert self.cores is not None
         workers_num = self.cores
@@ -55,7 +54,7 @@ class Pool:
         ]
 
         for i, (w, c) in enumerate(zip(self.workers, chunks)):
-            self.timers[w.pid] = self.monitors[i].cpu_times().user
+            self.timers[w.pid] = self.monitors[w.pid].cpu_times().user
             w.send([func, c, args, kwargs])
 
         # get back the results
@@ -63,7 +62,7 @@ class Pool:
         for w in self.workers:
             result.extend(w.recv())
             self.timers[w.pid] = (
-                self.monitors[i].cpu_times().user - self.timers[w.pid].user
+                self.monitors[w.pid].cpu_times().user - self.timers[w.pid]
             )
 
         return result
@@ -75,5 +74,4 @@ class Pool:
         for w in self.workers:
             w.join(timeout)
 
-        logger = log.getCoreLogger()
         logger.debug("pool joined")
