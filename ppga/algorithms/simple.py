@@ -1,3 +1,4 @@
+import time
 from functools import partial
 from itertools import chain
 
@@ -42,8 +43,14 @@ def simple(
         logger.debug(f"{len(couples)} couples generated")
 
         # pool map
+        start = time.process_time()
         offsprings = list(chain(*map_func(cx_mut_eval, couples)))
-        stats.update_time(pool.worker_time())
+        end = time.process_time()
+
+        if pool is not None:
+            stats.update_time(pool.worker_time())
+        else:
+            stats.update_time(end - start)
         logger.debug(f"{len(offsprings)} new individuals generated")
 
         # perform a total replacement
