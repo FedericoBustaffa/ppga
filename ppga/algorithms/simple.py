@@ -52,6 +52,8 @@ def simple(
         else:
             stats.update_time(end - start)
         logger.debug(f"{len(offsprings)} new individuals generated")
+        stats.update(offsprings)
+        stats.update_evals(len(offsprings))
 
         # perform a total replacement
         population = toolbox.replace(population, offsprings)
@@ -60,9 +62,6 @@ def simple(
         if hall_of_fame is not None:
             hall_of_fame.update(offsprings)
             logger.debug(f"hall of fame size: {len(hall_of_fame)}")
-
-        stats.update(population)
-        stats.update_evals(len(offsprings))
 
     if pool is not None:
         pool.join()
