@@ -1,3 +1,3 @@
-from . import algorithms, base, log, parallel, tools
+from . import algorithms, base, log, parallel, tools, utility
 
-__all__ = ["algorithms", "base", "log", "parallel", "tools"]
+__all__ = ["algorithms", "base", "log", "parallel", "tools", "utility"]
