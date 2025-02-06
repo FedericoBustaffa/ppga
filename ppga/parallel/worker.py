@@ -1,21 +1,22 @@
-import multiprocessing as mp
+import queue
 import random
+import threading
 
 import numpy.random as nprandom
 
 from ppga import log
 
 
-class Worker(mp.Process):
+class Worker(threading.Thread):
     def __init__(self, id: int) -> None:
         super().__init__()
         self.id = id
-        self.send_q = mp.Queue()
-        self.recv_q = mp.Queue()
+        self.send_q = queue.Queue()
+        self.recv_q = queue.Queue()
 
     def run(self) -> None:
         logger = log.getCoreLogger()
-        logger.debug(f"start with PID: {mp.current_process().ident}")
+        logger.debug(f"start with PID: {threading.current_thread().native_id}")
 
         random.seed(self.id)
         nprandom.seed(self.id)

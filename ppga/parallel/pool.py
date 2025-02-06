@@ -1,4 +1,3 @@
-import pickle
 from typing import Any, Callable
 
 import psutil
@@ -11,9 +10,6 @@ logger = log.getCoreLogger()
 
 class Pool:
     def __init__(self, workers_num: int = -1, logical: bool = False) -> None:
-        # faster serialization/deserialization
-        pickle.DEFAULT_PROTOCOL = pickle.HIGHEST_PROTOCOL
-
         cores = psutil.cpu_count(logical)
         assert cores is not None
         self.cores = cores if workers_num <= 0 or workers_num > cores else workers_num
@@ -21,10 +17,6 @@ class Pool:
         self.workers = [Worker(i) for i in range(self.cores)]
         for w in self.workers:
             w.start()
-
-        # process monitor and timers
-        self.monitors = {w.pid: psutil.Process(w.pid) for w in self.workers}
-        self.timers = {w.pid: 0.0 for w in self.workers}
 
         logger.debug(f"pool started with {self.cores} workers")
 
@@ -54,21 +46,14 @@ class Pool:
         ]
 
         for i, (w, c) in enumerate(zip(self.workers, chunks)):
-            self.timers[w.pid] = self.monitors[w.pid].cpu_times().user
             w.send([func, c, args, kwargs])
 
         # get back the results
         result = []
         for w in self.workers:
             result.extend(w.recv())
-            self.timers[w.pid] = (
-                self.monitors[w.pid].cpu_times().user - self.timers[w.pid]
-            )
 
         return result
-
-    def worker_time(self) -> float:
-        return max([t for t in self.timers.values()])
 
     def join(self, timeout: float | None = None) -> None:
         for w in self.workers:
