@@ -1,13 +1,12 @@
 import time
 
-import matplotlib.pyplot as plt
 import numpy as np
 
-from ppga import algorithms, base, log, tools
+from ppga import algorithms, base, log, tools, utility
 
 
 def evaluate(chromosome: np.ndarray):
-    for _ in range(100):
+    for _ in range(1000):
         np.random.random()
 
     return (int(chromosome.sum()),)
@@ -35,48 +34,32 @@ if __name__ == "__main__":
 
     hof = base.HallOfFame(10)
     start = time.perf_counter()
+    cpu_start = time.process_time()
     population, stats = algorithms.simple(
         toolbox=toolbox,
-        population_size=1000,
+        population_size=100,
         keep=0.2,
         cxpb=0.7,
         mutpb=0.3,
         max_generations=100,
         hall_of_fame=hof,
-        workers_num=8,
+        workers_num=-1,
     )
     end = time.perf_counter()
+    cpu_end = time.process_time()
 
     logger.info(f"Best solution: {hof[0]}")
 
-    plt.figure(figsize=(16, 9))
-    plt.title("Biodiversity trend")
-    plt.xlabel("Generation")
-    plt.ylabel("Biodiversity")
-    plt.plot([i for i in range(len(stats.diversity))], stats.diversity, c="g")
-    plt.grid()
-    plt.show()
-
-    plt.figure(figsize=(16, 9))
-    plt.title("Fitness trend")
-    plt.xlabel("Generation")
-    plt.ylabel("Fitness")
-    plt.plot(
-        [i for i in range(len(stats.worst))], stats.worst, c="r", label="worst score"
+    utility.plot.biodiversity_trend(stats)
+    utility.plot.fitness_trend(stats)
+    utility.plot.timing(
+        {
+            "sequential": (end - start) - sum(stats.times),
+            "parallel": sum(stats.times),
+        }
     )
-    plt.plot([i for i in range(len(stats.mean))], stats.mean, c="b", label="mean score")
-    plt.plot([i for i in range(len(stats.best))], stats.best, c="g", label="best score")
-    plt.grid()
-    plt.legend()
-    plt.show()
-
-    plt.figure(figsize=(16, 9))
-    plt.title("Time trend")
-    plt.xlabel("Generation")
-    plt.ylabel("Time")
-    plt.plot([i for i in range(len(stats.times))], stats.times, marker="o")
-    plt.grid()
-    plt.show()
 
     logger.info(f"Total time: {end - start} seconds")
+    logger.info(f"CPU total time: {(cpu_end - cpu_start) + sum(stats.times)} seconds")
+    logger.info(f"Main process runtime: {cpu_end - cpu_start} seconds")
     logger.info(f"Total time spent in parallel: {np.sum(stats.times)} seconds")

@@ -28,6 +28,7 @@ def biodiversity_trend(stats: Statistics):
 
     plt.figure(figsize=figsize, dpi=dpi)
     plt.title("Biodiversity trend")
+    plt.ylim(0.0, 1.0)
     plt.xlabel("Generation")
     plt.ylabel("Biodiversity percentage")
     plt.plot(generations, stats.diversity, label="Biodiversity", c="g")
