@@ -1,6 +1,7 @@
 import pickle
 from typing import Any, Callable
 
+import numpy as np
 import psutil
 
 from ppga import log
@@ -54,7 +55,10 @@ class Pool:
         ]
 
         for i, (w, c) in enumerate(zip(self.workers, chunks)):
-            self.timers[w.pid] = self.monitors[w.pid].cpu_times().user
+            self.timers[w.pid] = (
+                self.monitors[w.pid].cpu_times().user
+                + self.monitors[w.pid].cpu_times().system
+            )
             w.send([func, c, args, kwargs])
 
         # get back the results
@@ -62,13 +66,14 @@ class Pool:
         for w in self.workers:
             result.extend(w.recv())
             self.timers[w.pid] = (
-                self.monitors[w.pid].cpu_times().user - self.timers[w.pid]
-            )
+                self.monitors[w.pid].cpu_times().user
+                + self.monitors[w.pid].cpu_times().system
+            ) - self.timers[w.pid]
 
         return result
 
     def worker_time(self) -> float:
-        return max([t for t in self.timers.values()])
+        return np.mean([t for t in self.timers.values()])
 
     def join(self, timeout: float | None = None) -> None:
         for w in self.workers:
