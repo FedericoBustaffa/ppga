@@ -1,7 +1,6 @@
 import pickle
 from typing import Any, Callable
 
-import numpy as np
 import psutil
 
 from ppga import log
@@ -73,7 +72,7 @@ class Pool:
         return result
 
     def worker_time(self) -> float:
-        return np.mean([t for t in self.timers.values()])
+        return max([t for t in self.timers.values()])
 
     def join(self, timeout: float | None = None) -> None:
         for w in self.workers:
