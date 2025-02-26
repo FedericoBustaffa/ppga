@@ -79,35 +79,30 @@ def simple(
 
     # only use the physical cores
     pool = parallel.Pool(workers_num)
-    map_func = pool.map
 
     # generate the initial population
     population = toolbox.generate(population_size)
-    mem = parallel.create(population)
-    logger.debug(f"generated individuals: {len(population)}")
+    parallel.create(population)
+    logger.debug(f"generated individuals: {population.size}")
 
     for g in tqdm(range(max_generations), ncols=80, ascii=True):
         population = toolbox.select(population, population_size)
-        logger.debug(f"selected individuals: {len(population)}")
+        logger.debug(f"selected individuals: {population.size}")
 
-        mem = parallel.create(population)
+        parallel.copy_to_shm(population)
 
         # pool map
         start = time.perf_counter()
-        offsprings = list(chain(*map_func(cx_mut_eval, population)))
+        population = pool.cx_mut_eval(population)
         end = time.perf_counter()
 
         stats.update_time(end - start)
-        logger.debug(f"{len(offsprings)} new individuals generated")
-        stats.update(offsprings)
-        stats.update_evals(len(offsprings))
-
-        # perform a total replacement
-        population = toolbox.replace(population, offsprings)
-        logger.debug(f"population size: {len(population)}")
+        logger.debug(f"{len(population)} new individuals generated")
+        stats.update(population)
+        stats.update_evals(len(population))
 
         if hall_of_fame is not None:
-            hall_of_fame.update(offsprings)
+            hall_of_fame.update(population)
             logger.debug(f"hall of fame size: {len(hall_of_fame)}")
 
     if pool is not None:

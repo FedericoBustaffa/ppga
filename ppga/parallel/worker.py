@@ -1,4 +1,5 @@
 import multiprocessing as mp
+import multiprocessing.synchronize as sync
 import random
 
 import numpy.random as nprandom
@@ -7,11 +8,10 @@ from ppga import log
 
 
 class Worker(mp.Process):
-    def __init__(self, id: int) -> None:
+    def __init__(self, id: int, barrier: sync.Barrier) -> None:
         super().__init__()
         self.id = id
-        self.send_q = mp.Queue()
-        self.recv_q = mp.Queue()
+        self.barrier = barrier
 
     def run(self) -> None:
         logger = log.getCoreLogger()

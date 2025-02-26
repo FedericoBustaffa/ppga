@@ -2,16 +2,39 @@ from multiprocessing import shared_memory as shm
 
 import numpy as np
 
-
-def create(population):
-    return shm.SharedMemory(create=True, size=population.nbytes, name="population")
+from ppga import base
 
 
-def copy_to_shm(population, mem: shm.SharedMemory):
-    temp = np.ndarray(population.shape, dtype=population.dtype, buffer=mem.buf)
-    temp[:] = population[:]
+def create(population: base.Population):
+    shm.SharedMemory(
+        create=True, size=population.chromosomes.nbytes, name="chromosomes"
+    )
+    shm.SharedMemory(create=True, size=population.scores.nbytes, name="scores")
 
 
-def copy_from_shm(population, mem: shm.SharedMemory):
-    temp = np.ndarray(population.shape, dtype=population.dtype, buffer=mem.buf)
-    population[:] = temp[:]
+def copy_to_shm(population: base.Population):
+    mem = shm.SharedMemory(create=False, name="chromosomes")
+    temp = np.ndarray(
+        population.chromosomes.shape, dtype=population.chromosomes.dtype, buffer=mem.buf
+    )
+    temp[:] = population.chromosomes[:]
+
+    mem = shm.SharedMemory(create=False, name="scores")
+    temp = np.ndarray(
+        population.scores.shape, dtype=population.scores.dtype, buffer=mem.buf
+    )
+    temp[:] = population.scores[:]
+
+
+def copy_from_shm(population):
+    mem = shm.SharedMemory(create=False, name="chromosomes")
+    temp = np.ndarray(
+        population.chromosomes.shape, dtype=population.chromosomes.dtype, buffer=mem.buf
+    )
+    population.chromosomes[:] = temp[:]
+
+    mem = shm.SharedMemory(create=False, name="scores")
+    temp = np.ndarray(
+        population.scores.shape, dtype=population.scores.dtype, buffer=mem.buf
+    )
+    population.scores[:] = temp[:]

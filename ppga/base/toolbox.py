@@ -4,7 +4,7 @@ from typing import Callable
 
 import numpy as np
 
-from ppga.base.individual import Individual
+from ppga import base
 
 
 class ToolBox:
@@ -14,7 +14,7 @@ class ToolBox:
     def set_clone(self, func, *args, **kwargs) -> None:
         self.clone_func = partial(func, *args, **kwargs)
 
-    def clone(self, individual: Individual) -> Individual:
+    def clone(self, individual: base.Individual) -> base.Individual:
         return self.clone_func(individual)
 
     def set_weights(self, weights: tuple) -> None:
@@ -23,9 +23,9 @@ class ToolBox:
     def set_generation(self, func: Callable, *args, **kwargs) -> None:
         self.generation_func = partial(func, *args, **kwargs)
 
-    def generate(self, population_size: int) -> list[Individual]:
-        population = [self.generation_func() for _ in range(population_size)]
-        return [Individual(i) for i in population]
+    def generate(self, population_size: int) -> base.Population:
+        chromosomes = np.array([self.generation_func() for _ in range(population_size)])
+        return base.Population(chromosomes)
 
     def set_selection(self, func: Callable, *args, **kwargs) -> None:
         self.selection_func = func
@@ -33,10 +33,13 @@ class ToolBox:
         self.selection_kwargs = kwargs
 
     def select(
-        self, population: list[Individual], population_size: int
-    ) -> list[Individual]:
+        self, population: base.Population, population_size: int
+    ) -> base.Population:
         return self.selection_func(
-            population, population_size, *self.selection_args, **self.selection_kwargs
+            population.individuals,
+            population_size,
+            *self.selection_args,
+            **self.selection_kwargs,
         )
 
     def set_crossover(self, func: Callable, *args, **kwargs) -> None:
