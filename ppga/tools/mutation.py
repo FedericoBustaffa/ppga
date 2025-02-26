@@ -4,7 +4,11 @@ from numpy import random
 
 def mut_bitflip(chromosome: np.ndarray, indpb: float = 0.5):
     probs = random.random(chromosome.shape)
+<<<<<<< HEAD
     chromosome[probs <= indpb] = ~chromosome[probs <= indpb]
+=======
+    chromosome[probs <= indpb] = (chromosome[probs <= indpb] + 1) % 2
+>>>>>>> refs/remotes/origin/thread
 
     return chromosome
 
@@ -34,6 +38,6 @@ def mut_normal(
 ) -> np.ndarray:
     probs = random.random(chromosome.shape)
     mutations = random.normal(loc=mu, scale=sigma, size=chromosome.shape)
-    chromosome[probs <= indpb] = mutations[probs <= indpb]
+    chromosome[probs <= indpb] += mutations[probs <= indpb]
 
     return chromosome

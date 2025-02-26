@@ -13,13 +13,3 @@ def elitist(
     to_keep = sorted(population, reverse=True)[:n]
 
     return to_keep + offsprings
-
-
-def total(
-    population: list[Individual], offsprings: list[Individual]
-) -> list[Individual]:
-    """
-    Replace completely the old population with the new individuals.
-    Equal to call the `partial` replacement with `keep` parameter equal to 0.0.
-    """
-    return offsprings

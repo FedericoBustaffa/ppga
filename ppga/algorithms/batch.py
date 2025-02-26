@@ -2,10 +2,10 @@ import random
 
 import numpy as np
 
-from ppga.base import Individual, ToolBox
+from ppga import base
 
 
-def mating(population: list[Individual]) -> np.ndarray:
+def mating(population: list[base.Individual]) -> np.ndarray:
     couples = []
     for i in range(0, len(population), 2):
         couples.append((population[i].chromosome, population[i + 1].chromosome))
@@ -13,17 +13,18 @@ def mating(population: list[Individual]) -> np.ndarray:
     return np.asarray(couples)
 
 
-def crossover(couples: np.ndarray, toolbox: ToolBox, cxpb: float) -> np.ndarray:
+def crossover(couples: np.ndarray, toolbox: base.ToolBox, cxpb: float) -> np.ndarray:
     offsprings = []
     for father, mother in couples:
         if random.random() <= cxpb:
             offspring1, offspring2 = toolbox.crossover(father, mother)
+
             offsprings.extend([offspring1, offspring2])
 
     return np.asarray(offsprings)
 
 
-def mutation(population: np.ndarray, toolbox: ToolBox, mutpb: float) -> np.ndarray:
+def mutation(population: np.ndarray, toolbox: base.ToolBox, mutpb: float) -> np.ndarray:
     for i, ind in enumerate(population):
         if random.random() <= mutpb:
             population[i] = toolbox.mutate(ind)
@@ -31,7 +32,7 @@ def mutation(population: np.ndarray, toolbox: ToolBox, mutpb: float) -> np.ndarr
     return population
 
 
-def evaluation(population: np.ndarray, toolbox: ToolBox) -> list:
+def evaluation(population: np.ndarray, toolbox: base.ToolBox) -> list:
     scores = []
     for i, ind in enumerate(population):
         scores.append(toolbox.evaluate(ind))
@@ -40,11 +41,24 @@ def evaluation(population: np.ndarray, toolbox: ToolBox) -> list:
 
 
 def cx_mut_eval(
-    couples: np.ndarray, toolbox: ToolBox, cxpb: float, mutpb: float
-) -> list[Individual]:
-    offsprings = crossover(couples, toolbox, cxpb)
-    offsprings = mutation(offsprings, toolbox, mutpb)
-    evaluations = evaluation(offsprings, toolbox)
-    values, scores = [i[0] for i in evaluations], [i[1] for i in evaluations]
+    couple: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
+) -> tuple:
+    father, mother = couple
+    if random.random() <= cxpb:
+        offspring1, offspring2 = toolbox.crossover(father, mother)
 
-    return [Individual(i, v, s) for i, v, s in zip(offsprings, values, scores)]
+        if random.random() <= mutpb:
+            offspring1 = toolbox.mutate(offspring1)
+
+        if random.random() <= mutpb:
+            offspring2 = toolbox.mutate(offspring2)
+
+        values1, fitness1 = toolbox.evaluate(offspring1)
+        values2, fitness2 = toolbox.evaluate(offspring2)
+
+        return (
+            base.Individual(offspring1, values1, fitness1),
+            base.Individual(offspring2, values2, fitness2),
+        )
+
+    return ()

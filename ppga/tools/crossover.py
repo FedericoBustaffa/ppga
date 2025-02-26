@@ -54,3 +54,17 @@ def cx_uniform(father, mother, indpb: float = 0.5) -> tuple:
             offspring2[i] = father[i]
 
     return offspring1, offspring2
+
+
+def cx_blend(father, mother, alpha: float = 0.5) -> tuple:
+    g_min = np.minimum(father, mother)
+    g_max = np.maximum(father, mother)
+    interval = g_max - g_min
+
+    lower_bound = g_min - alpha * interval
+    upper_bound = g_max + alpha * interval
+
+    offspring1 = np.random.uniform(lower_bound, upper_bound)
+    offspring2 = np.random.uniform(lower_bound, upper_bound)
+
+    return offspring1, offspring2

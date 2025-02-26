@@ -1,32 +1,26 @@
-from typing import Any, Callable, Iterable, Mapping
+from typing import Any, Callable
 
 import psutil
 
 from ppga import log
 from ppga.parallel.worker import Worker
 
+logger = log.getCoreLogger()
+
 
 class Pool:
-    def __init__(self, logical: bool = False) -> None:
-        self.cores = psutil.cpu_count(logical)
-        assert self.cores is not None
+    def __init__(self, workers_num: int = -1, logical: bool = False) -> None:
+        cores = psutil.cpu_count(logical)
+        assert cores is not None
+        self.cores = cores if workers_num <= 0 or workers_num > cores else workers_num
 
-        self.workers = [Worker() for _ in range(self.cores)]
+        self.workers = [Worker(i) for i in range(self.cores)]
         for w in self.workers:
             w.start()
 
-        logger = log.getCoreLogger()
         logger.debug(f"pool started with {self.cores} workers")
 
-    def map(
-        self,
-        func: Callable,
-        iterable,
-        args: Iterable[Any] = (),
-        kwargs: Mapping[str, Any] = {},
-    ) -> list[Any]:
-        logger = log.getCoreLogger()
-
+    def map(self, func: Callable, iterable, *args, **kwargs) -> list[Any]:
         # dinamically resize the chunksize
         assert self.cores is not None
         workers_num = self.cores
@@ -51,13 +45,13 @@ class Pool:
             for i in range(carry, workers_num, 1)
         ]
 
-        for w, c in zip(self.workers, chunks):
-            w.send((func, c, args, kwargs))
+        for i, (w, c) in enumerate(zip(self.workers, chunks)):
+            w.send([func, c, args, kwargs])
 
         # get back the results
         result = []
-        for i in range(workers_num):
-            result.extend(self.workers[i].recv())
+        for w in self.workers:
+            result.extend(w.recv())
 
         return result
 
@@ -65,5 +59,4 @@ class Pool:
         for w in self.workers:
             w.join(timeout)
 
-        logger = log.getCoreLogger()
         logger.debug("pool joined")

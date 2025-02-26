@@ -35,11 +35,16 @@ class HallOfFame:
 
     def update(self, population: list[Individual]):
         self.hof = sorted(
-            [i for i in set(self.hof + population) if i.fitness != np.nan], reverse=True
+            [
+                i
+                for i in set(self.hof + population)
+                if i.fitness != np.nan and i.fitness != 0.0
+            ],
+            reverse=True,
         )[: self.size]
 
     def clear(self):
         self.hof.clear()
 
-    def to_dict(self) -> dict[str, list]:
-        return {"hall_of_fame": [i.to_dict() for i in self.hof]}
+    def to_list(self) -> list:
+        return [i.to_dict() for i in self.hof]

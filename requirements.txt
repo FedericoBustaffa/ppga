@@ -1,7 +1,12 @@
 setuptools
+wheel
 colorama
 numpy
+matplotlib
 psutil
 tqdm
+<<<<<<< HEAD
 pytest
 cython
+=======
+>>>>>>> refs/remotes/origin/thread
