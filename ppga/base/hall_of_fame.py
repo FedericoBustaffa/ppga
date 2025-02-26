@@ -35,11 +35,7 @@ class HallOfFame:
 
     def update(self, population: list[Individual]):
         self.hof = sorted(
-            [
-                i
-                for i in set(self.hof + population)
-                if i.fitness != np.nan and i.fitness != 0.0
-            ],
+            [i for i in set(self.hof + population) if i.fitness != np.nan],
             reverse=True,
         )[: self.size]
 

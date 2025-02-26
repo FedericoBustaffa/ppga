@@ -6,19 +6,16 @@ from ppga import algorithms, base, log, tools, utility
 
 
 def evaluate(chromosome: np.ndarray):
-    for _ in range(1000):
-        np.random.random()
-
     return (int(chromosome.sum()),)
 
 
 if __name__ == "__main__":
     # set the level to debug for all the logs
-    log.setLevel("INFO")
+    log.setLevel("DEBUG")
 
     # different logger
     logger = log.getUserLogger()
-    logger.setLevel("INFO")
+    logger.setLevel("DEBUG")
 
     toolbox = base.ToolBox()
 
@@ -36,7 +33,7 @@ if __name__ == "__main__":
     start = time.perf_counter()
     population, stats = algorithms.simple(
         toolbox=toolbox,
-        population_size=100,
+        population_size=400,
         cxpb=0.7,
         mutpb=0.3,
         max_generations=100,

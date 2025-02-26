@@ -8,11 +8,15 @@ class Population:
         self.chromosomes = chromosomes
         self.scores = np.array([0.0 for _ in range(len(chromosomes))])
         self.individuals = [
-            base.Individual(chromosomes) for _ in range(len(chromosomes))
+            base.Individual(chromosomes[i], fitness=self.scores[i])
+            for i in range(len(chromosomes))
         ]
 
-    @property
-    def size(self) -> int:
+    def update(self):
+        for i, ind in enumerate(self.individuals):
+            ind.fitness = self.scores[i]
+
+    def __len__(self) -> int:
         return len(self.scores)
 
     def __iter__(self):

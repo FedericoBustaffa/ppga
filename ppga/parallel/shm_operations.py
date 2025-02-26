@@ -5,7 +5,7 @@ import numpy as np
 from ppga import base
 
 
-def create(population: base.Population):
+def create_shm(population: base.Population):
     shm.SharedMemory(
         create=True, size=population.chromosomes.nbytes, name="chromosomes"
     )
@@ -38,3 +38,13 @@ def copy_from_shm(population):
         population.scores.shape, dtype=population.scores.dtype, buffer=mem.buf
     )
     population.scores[:] = temp[:]
+
+
+def free_shm():
+    mem = shm.SharedMemory(create=False, name="chromosomes")
+    mem.close()
+    mem.unlink()
+
+    mem = shm.SharedMemory(create=False, name="scores")
+    mem.close()
+    mem.unlink()

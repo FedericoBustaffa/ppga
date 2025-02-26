@@ -4,7 +4,7 @@ from itertools import chain
 
 from tqdm import tqdm
 
-from ppga import base, log, parallel, tools
+from ppga import base, log, parallel
 from ppga.algorithms import batch
 
 
@@ -43,7 +43,7 @@ def sequential_simple(
         stats.update_evals(len(offsprings))
 
         # perform a total replacement
-        population = toolbox.replace(population, offsprings)
+        population = offsprings
         logger.debug(f"population size: {len(population)}")
 
         if hall_of_fame is not None:
@@ -61,8 +61,7 @@ def simple(
     max_generations: int = 50,
     hall_of_fame: None | base.HallOfFame = None,
     workers_num: int = 0,
-):
-    toolbox.set_replacement(tools.elitist, keep=0.0)
+) -> tuple[base.Population, base.Statistics]:
     if workers_num == 0 or workers_num == 1:
         return sequential_simple(
             toolbox,
@@ -75,37 +74,36 @@ def simple(
 
     logger = log.getCoreLogger()
     stats = base.Statistics()
-    cx_mut_eval = partial(batch.cx_mut_eval, toolbox=toolbox, cxpb=cxpb, mutpb=mutpb)
-
-    # only use the physical cores
-    pool = parallel.Pool(workers_num)
 
     # generate the initial population
     population = toolbox.generate(population_size)
-    parallel.create(population)
-    logger.debug(f"generated individuals: {population.size}")
+    logger.debug(f"generated individuals: {len(population)}")
+
+    parallel.create_shm(population)
+    pool = parallel.Pool(population, toolbox, cxpb, mutpb, workers_num)
 
     for g in tqdm(range(max_generations), ncols=80, ascii=True):
         population = toolbox.select(population, population_size)
-        logger.debug(f"selected individuals: {population.size}")
+        logger.debug(f"selected individuals: {len(population)}")
 
-        parallel.copy_to_shm(population)
-
-        # pool map
+        # parallel work
         start = time.perf_counter()
-        population = pool.cx_mut_eval(population)
+        parallel.copy_to_shm(population)
+        pool.cx_mut_eval(population)
+        parallel.copy_from_shm(population)
         end = time.perf_counter()
-
-        stats.update_time(end - start)
         logger.debug(f"{len(population)} new individuals generated")
-        stats.update(population)
+
+        population.update()
+        stats.update_time(end - start)
+        stats.update(population.individuals)
         stats.update_evals(len(population))
 
         if hall_of_fame is not None:
-            hall_of_fame.update(population)
+            hall_of_fame.update(population.individuals)
             logger.debug(f"hall of fame size: {len(hall_of_fame)}")
 
-    if pool is not None:
-        pool.join()
+    parallel.free_shm()
+    pool.join()
 
     return population, stats

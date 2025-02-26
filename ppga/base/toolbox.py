@@ -35,12 +35,15 @@ class ToolBox:
     def select(
         self, population: base.Population, population_size: int
     ) -> base.Population:
-        return self.selection_func(
+        selected = self.selection_func(
             population.individuals,
             population_size,
             *self.selection_args,
             **self.selection_kwargs,
         )
+
+        population.individuals[:] = selected[:]
+        return population
 
     def set_crossover(self, func: Callable, *args, **kwargs) -> None:
         self.crossover_func = func
@@ -76,23 +79,11 @@ class ToolBox:
         self.evaluation_args = args
         self.evaluation_kwargs = kwargs
 
-    def evaluate(self, chromosome: np.ndarray) -> tuple[tuple, float]:
+    def evaluate(self, chromosome: np.ndarray) -> float:
         values = self.evaluation_func(
             chromosome, *self.evaluation_args, **self.evaluation_kwargs
         )
 
         fitness = sum([v * w for v, w in zip(values, self.weights)])
 
-        return (values, fitness)
-
-    def set_replacement(self, func: Callable, *args, **kwargs) -> None:
-        self.replacement_func = func
-        self.replacement_args = args
-        self.replacement_kwargs = kwargs
-
-    def replace(
-        self, population: list[Individual], offsprings: list[Individual]
-    ) -> list[Individual]:
-        return self.replacement_func(
-            population, offsprings, *self.replacement_args, **self.replacement_kwargs
-        )
+        return fitness

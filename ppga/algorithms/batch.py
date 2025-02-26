@@ -13,52 +13,20 @@ def mating(population: list[base.Individual]) -> np.ndarray:
     return np.asarray(couples)
 
 
-def crossover(couples: np.ndarray, toolbox: base.ToolBox, cxpb: float) -> np.ndarray:
-    offsprings = []
-    for father, mother in couples:
+def crossover(chromosomes: np.ndarray, toolbox: base.ToolBox, cxpb: float):
+    for i in range(0, len(chromosomes) - 1, 2):
         if random.random() <= cxpb:
-            offspring1, offspring2 = toolbox.crossover(father, mother)
-
-            offsprings.extend([offspring1, offspring2])
-
-    return np.asarray(offsprings)
+            chromosomes[i][:], chromosomes[i + 1][:] = toolbox.crossover(
+                chromosomes[i], chromosomes[i + 1]
+            )
 
 
-def mutation(population: np.ndarray, toolbox: base.ToolBox, mutpb: float) -> np.ndarray:
+def mutation(chromosomes: np.ndarray, toolbox: base.ToolBox, mutpb: float):
+    for i, ind in enumerate(chromosomes):
+        if random.random() <= mutpb:
+            chromosomes[i][:] = toolbox.mutate(ind)
+
+
+def evaluation(population: np.ndarray, scores: np.ndarray, toolbox: base.ToolBox):
     for i, ind in enumerate(population):
-        if random.random() <= mutpb:
-            population[i] = toolbox.mutate(ind)
-
-    return population
-
-
-def evaluation(population: np.ndarray, toolbox: base.ToolBox) -> list:
-    scores = []
-    for i, ind in enumerate(population):
-        scores.append(toolbox.evaluate(ind))
-
-    return scores
-
-
-def cx_mut_eval(
-    couple: np.ndarray, toolbox: base.ToolBox, cxpb: float, mutpb: float
-) -> tuple:
-    father, mother = couple
-    if random.random() <= cxpb:
-        offspring1, offspring2 = toolbox.crossover(father, mother)
-
-        if random.random() <= mutpb:
-            offspring1 = toolbox.mutate(offspring1)
-
-        if random.random() <= mutpb:
-            offspring2 = toolbox.mutate(offspring2)
-
-        values1, fitness1 = toolbox.evaluate(offspring1)
-        values2, fitness2 = toolbox.evaluate(offspring2)
-
-        return (
-            base.Individual(offspring1, values1, fitness1),
-            base.Individual(offspring2, values2, fitness2),
-        )
-
-    return ()
+        scores[i] = toolbox.evaluate(ind)
