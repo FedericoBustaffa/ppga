@@ -8,28 +8,18 @@ from ppga import base, log, parallel, tools
 from ppga.algorithms import batch
 
 
-def simple(
+def sequential_simple(
     toolbox: base.ToolBox,
     population_size: int,
-    keep: float = 0.1,
     cxpb: float = 0.8,
     mutpb: float = 0.2,
     max_generations: int = 50,
     hall_of_fame: None | base.HallOfFame = None,
-    workers_num: int = 0,
 ):
-    stats = base.Statistics()
     logger = log.getCoreLogger()
-
+    stats = base.Statistics()
     map_func = map
     cx_mut_eval = partial(batch.cx_mut_eval, toolbox=toolbox, cxpb=cxpb, mutpb=mutpb)
-
-    # only use the physical cores
-    pool = parallel.Pool(workers_num) if workers_num > 1 or workers_num < 0 else None
-    if pool is not None:
-        map_func = pool.map
-
-    toolbox.set_replacement(tools.elitist, keep=keep)
 
     # generate the initial population
     population = toolbox.generate(population_size)
@@ -47,10 +37,67 @@ def simple(
         offsprings = list(chain(*map_func(cx_mut_eval, couples)))
         end = time.process_time()
 
-        if pool is not None:
-            stats.update_time(pool.worker_time())
-        else:
-            stats.update_time(end - start)
+        stats.update_time(end - start)
+        logger.debug(f"{len(offsprings)} new individuals generated")
+        stats.update(offsprings)
+        stats.update_evals(len(offsprings))
+
+        # perform a total replacement
+        population = toolbox.replace(population, offsprings)
+        logger.debug(f"population size: {len(population)}")
+
+        if hall_of_fame is not None:
+            hall_of_fame.update(offsprings)
+            logger.debug(f"hall of fame size: {len(hall_of_fame)}")
+
+    return population, stats
+
+
+def simple(
+    toolbox: base.ToolBox,
+    population_size: int,
+    cxpb: float = 0.8,
+    mutpb: float = 0.2,
+    max_generations: int = 50,
+    hall_of_fame: None | base.HallOfFame = None,
+    workers_num: int = 0,
+):
+    toolbox.set_replacement(tools.elitist, keep=0.0)
+    if workers_num == 0 or workers_num == 1:
+        return sequential_simple(
+            toolbox,
+            population_size,
+            cxpb,
+            mutpb,
+            max_generations,
+            hall_of_fame,
+        )
+
+    logger = log.getCoreLogger()
+    stats = base.Statistics()
+    cx_mut_eval = partial(batch.cx_mut_eval, toolbox=toolbox, cxpb=cxpb, mutpb=mutpb)
+
+    # only use the physical cores
+    pool = parallel.Pool(workers_num)
+    map_func = pool.map
+
+    # generate the initial population
+    population = toolbox.generate(population_size)
+    mem = parallel.create(population)
+    logger.debug(f"generated individuals: {len(population)}")
+
+    for g in tqdm(range(max_generations), ncols=80, ascii=True):
+        population = toolbox.select(population, population_size)
+        logger.debug(f"selected individuals: {len(population)}")
+
+        mem = parallel.create(population)
+
+        # pool map
+        start = time.perf_counter()
+        offsprings = list(chain(*map_func(cx_mut_eval, population)))
+        end = time.perf_counter()
+
+        stats.update_time(end - start)
         logger.debug(f"{len(offsprings)} new individuals generated")
         stats.update(offsprings)
         stats.update_evals(len(offsprings))
