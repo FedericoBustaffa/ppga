@@ -1,6 +1,7 @@
 import multiprocessing as mp
 import multiprocessing.synchronize as sync
 import random
+import time
 from multiprocessing import shared_memory as shm
 
 import numpy as np
@@ -68,22 +69,21 @@ class Worker(mp.Process):
             if self.stop.is_set():
                 break
 
-            for i in range(chunksize):
-                algorithms.batch.crossover(
-                    chromosomes[i * chunksize : i * chunksize + chunksize],
-                    self.toolbox,
-                    self.cxpb,
-                )
-                algorithms.batch.mutation(
-                    chromosomes[i * chunksize : i * chunksize + chunksize],
-                    self.toolbox,
-                    self.mutpb,
-                )
-                algorithms.batch.evaluation(
-                    chromosomes[i * chunksize : i * chunksize + chunksize],
-                    scores[i * chunksize : i * chunksize + chunksize],
-                    self.toolbox,
-                )
+            algorithms.batch.crossover(
+                chromosomes[self.id * chunksize : self.id * chunksize + chunksize],
+                self.toolbox,
+                self.cxpb,
+            )
+            algorithms.batch.mutation(
+                chromosomes[self.id * chunksize : self.id * chunksize + chunksize],
+                self.toolbox,
+                self.mutpb,
+            )
+            algorithms.batch.evaluation(
+                chromosomes[self.id * chunksize : self.id * chunksize + chunksize],
+                scores[self.id * chunksize : self.id * chunksize + chunksize],
+                self.toolbox,
+            )
 
             self.barrier.wait()
 

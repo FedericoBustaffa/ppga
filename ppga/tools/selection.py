@@ -3,13 +3,13 @@ import random
 from ppga import base
 
 
-def sel_truncation(population: base.Population, k: int) -> base.Population:
-    return sorted(population, reverse=True)[:k]
+def sel_truncation(population: base.Population, k: int) -> list[base.Individual]:
+    return list(sorted(population.individuals, reverse=True))[:k]
 
 
 def sel_tournament(
-    population: base.Population, k: int, tournsize: int = 2
-) -> base.Population:
+    population: list[base.Individual], k: int, tournsize: int = 2
+) -> list[base.Individual]:
     selected = []
     for _ in range(k):
         winner = max(random.sample(population, k=tournsize))

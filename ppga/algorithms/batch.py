@@ -16,9 +16,12 @@ def mating(population: list[base.Individual]) -> np.ndarray:
 def crossover(chromosomes: np.ndarray, toolbox: base.ToolBox, cxpb: float):
     for i in range(0, len(chromosomes) - 1, 2):
         if random.random() <= cxpb:
-            chromosomes[i][:], chromosomes[i + 1][:] = toolbox.crossover(
+            offspring1, offspring2 = toolbox.crossover(
                 chromosomes[i], chromosomes[i + 1]
             )
+
+            chromosomes[i][:] = offspring1
+            chromosomes[i + 1][:] = offspring2
 
 
 def mutation(chromosomes: np.ndarray, toolbox: base.ToolBox, mutpb: float):
