@@ -35,14 +35,13 @@ class ToolBox:
     def select(
         self, population: base.Population, population_size: int
     ) -> base.Population:
-        selected = self.selection_func(
+        population.individuals = self.selection_func(
             population.individuals,
             population_size,
             *self.selection_args,
             **self.selection_kwargs,
         )
 
-        population.individuals[:] = selected[:]
         return population
 
     def set_crossover(self, func: Callable, *args, **kwargs) -> None:

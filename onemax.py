@@ -33,16 +33,16 @@ if __name__ == "__main__":
     start = time.perf_counter()
     population, stats = algorithms.simple(
         toolbox=toolbox,
-        population_size=400,
+        population_size=10,
         cxpb=0.7,
         mutpb=0.3,
-        max_generations=100,
+        max_generations=10,
         hall_of_fame=hof,
         workers_num=4,
     )
     end = time.perf_counter()
 
-    logger.info(f"Best solution: {hof[0]}")
+    logger.info(f"Best solution: {hof[0].chromosome}")
 
     utility.plot.biodiversity_trend(stats)
     utility.plot.fitness_trend(stats)

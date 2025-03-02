@@ -78,12 +78,16 @@ def simple(
     # generate the initial population
     population = toolbox.generate(population_size)
     logger.debug(f"generated individuals: {len(population)}")
+    for ind in population:
+        logger.debug(f"{ind.chromosome}")
 
     parallel.create_shm(population)
     pool = parallel.Pool(population, toolbox, cxpb, mutpb, workers_num)
 
     for g in tqdm(range(max_generations), ncols=80, ascii=True):
         population = toolbox.select(population, population_size)
+        for ind in population:
+            logger.debug(f"{ind.chromosome}")
         logger.debug(f"selected individuals: {len(population)}")
 
         # parallel work

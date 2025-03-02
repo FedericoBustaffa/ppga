@@ -1,26 +1,24 @@
 import random
 
-from ppga.base.individual import Individual
+from ppga import base
 
 
-def sel_truncation(population: list[Individual], k: int) -> list[Individual]:
+def sel_truncation(population: base.Population, k: int) -> base.Population:
     return sorted(population, reverse=True)[:k]
 
 
 def sel_tournament(
-    population: list[Individual], k: int, tournsize: int = 2
-) -> list[Individual]:
+    population: base.Population, k: int, tournsize: int = 2
+) -> base.Population:
     selected = []
-
     for _ in range(k):
-        aspirants = random.sample(population, k=tournsize)
-        winner = max(aspirants)
+        winner = max(random.sample(population, k=tournsize))
         selected.append(winner)
 
     return selected
 
 
-def sel_roulette(population: list[Individual], k: int) -> list[Individual]:
+def sel_roulette(population: base.Population, k: int) -> base.Population:
     total = 0.0
     for i in population:
         if i.fitness < 0.0:
@@ -41,7 +39,7 @@ def sel_roulette(population: list[Individual], k: int) -> list[Individual]:
         return random.choices(population, k=k, weights=normalized_scores)
 
 
-def sel_ranking(population: list[Individual], k: int) -> list[Individual]:
+def sel_ranking(population: base.Population, k: int) -> base.Population:
     population = sorted(population)
     total = sum([i for i in range(len(population))])
     ranks = [i / total for i in range(len(population))]
