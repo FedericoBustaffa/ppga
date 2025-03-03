@@ -1,7 +1,7 @@
+import math
 import multiprocessing as mp
 import multiprocessing.synchronize as sync
 import random
-import time
 from multiprocessing import shared_memory as shm
 
 import numpy as np
@@ -62,7 +62,7 @@ class Worker(mp.Process):
             buffer=scores_mem.buf,
         )
 
-        chunksize = len(scores) // (self.barrier.parties - 1)
+        chunksize = math.ceil(len(scores) / (self.barrier.parties - 1))
 
         while True:
             self.barrier.wait()
@@ -83,6 +83,10 @@ class Worker(mp.Process):
                 chromosomes[self.id * chunksize : self.id * chunksize + chunksize],
                 scores[self.id * chunksize : self.id * chunksize + chunksize],
                 self.toolbox,
+            )
+
+            logger.debug(
+                f"scores: {scores[self.id * chunksize : self.id * chunksize + chunksize]}"
             )
 
             self.barrier.wait()

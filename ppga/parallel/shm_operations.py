@@ -17,7 +17,8 @@ def copy_to_shm(population: base.Population):
     temp = np.ndarray(
         population.chromosomes.shape, dtype=population.chromosomes.dtype, buffer=mem.buf
     )
-    temp[:] = population.chromosomes[:]
+    for i in range(len(temp)):
+        temp[i][:] = population.chromosomes[i][:]
 
     mem = shm.SharedMemory(create=False, name="scores")
     temp = np.ndarray(
@@ -31,7 +32,8 @@ def copy_from_shm(population):
     temp = np.ndarray(
         population.chromosomes.shape, dtype=population.chromosomes.dtype, buffer=mem.buf
     )
-    population.chromosomes[:] = temp[:]
+    for i in range(len(temp)):
+        population.chromosomes[i][:] = temp[i][:]
 
     mem = shm.SharedMemory(create=False, name="scores")
     temp = np.ndarray(

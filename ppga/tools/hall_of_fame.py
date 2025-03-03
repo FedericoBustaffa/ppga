@@ -1,4 +1,5 @@
 import json
+from copy import deepcopy
 
 import numpy as np
 
@@ -35,7 +36,11 @@ class HallOfFame:
 
     def update(self, population: list[Individual]):
         self.hof = sorted(
-            [i for i in set(self.hof + population) if i.fitness != np.nan],
+            [
+                deepcopy(i)
+                for i in set(self.hof + population)
+                if i.fitness != 0.0 and i.fitness != np.nan
+            ],
             reverse=True,
         )[: self.size]
 

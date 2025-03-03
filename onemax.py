@@ -29,14 +29,14 @@ if __name__ == "__main__":
     toolbox.set_mutation(tools.mut_bitflip, indpb=0.5)
     toolbox.set_evaluation(evaluate)
 
-    hof = base.HallOfFame(10)
+    hof = tools.HallOfFame(10)
     start = time.perf_counter()
     population, stats = algorithms.simple(
         toolbox=toolbox,
         population_size=100,
         cxpb=0.7,
         mutpb=0.3,
-        max_generations=100,
+        max_generations=50,
         hall_of_fame=hof,
         workers_num=4,
     )

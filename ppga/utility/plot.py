@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from ppga.base.statistics import Statistics
+from ppga.tools.statistics import Statistics
 
 figsize = (16, 10)
 dpi = 200

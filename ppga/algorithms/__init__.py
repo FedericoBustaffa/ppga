@@ -1,4 +1,4 @@
-from .batch import crossover, evaluation, mating, mutation
+from .batch import crossover, evaluation, mutation
 from .simple import simple
 
-__all__ = ["mating", "crossover", "mutation", "evaluation", "simple"]
+__all__ = ["crossover", "mutation", "evaluation", "simple"]

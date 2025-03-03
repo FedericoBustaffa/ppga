@@ -6,16 +6,15 @@ from .crossover import (
     cx_uniform,
 )
 from .generation import gen_permutation, gen_repetition
+from .hall_of_fame import HallOfFame
 from .mutation import mut_bitflip, mut_normal, mut_rotation, mut_swap
 from .replacement import elitist
-from .selection import (
-    sel_ranking,
-    sel_roulette,
-    sel_tournament,
-    sel_truncation,
-)
+from .selection import sel_ranking, sel_roulette, sel_tournament, sel_truncation
+from .statistics import Statistics
 
 __all__ = [
+    "HallOfFame",
+    "Statistics",
     "gen_repetition",
     "gen_permutation",
     "sel_ranking",

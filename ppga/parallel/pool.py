@@ -41,9 +41,9 @@ class Pool:
         logger.debug(f"pool started with {self.cores} workers")
 
     def cx_mut_eval(self, population):
+        parallel.copy_to_shm(population)
         self.barrier.wait()
         self.barrier.wait()
-
         parallel.copy_from_shm(population)
 
     def join(self, timeout: float | None = None) -> None:

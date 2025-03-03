@@ -35,12 +35,13 @@ class ToolBox:
     def select(
         self, population: base.Population, population_size: int
     ) -> base.Population:
-        population.individuals = self.selection_func(
+        selected = self.selection_func(
             population.individuals,
             population_size,
             *self.selection_args,
             **self.selection_kwargs,
         )
+        population.subst(selected)
 
         return population
 
