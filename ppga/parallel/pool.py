@@ -50,26 +50,12 @@ class Pool:
         ]
 
         for i, (w, c) in enumerate(zip(self.workers, chunks)):
-<<<<<<< HEAD
-            self.timers[w.pid] = (
-                self.monitors[w.pid].cpu_times().user
-                + self.monitors[w.pid].cpu_times().system
-            )
-=======
->>>>>>> dev
             w.send([func, c, args, kwargs])
 
         # get back the results
         result = []
         for w in self.workers:
             result.extend(w.recv())
-<<<<<<< HEAD
-            self.timers[w.pid] = (
-                self.monitors[w.pid].cpu_times().user
-                + self.monitors[w.pid].cpu_times().system
-            ) - self.timers[w.pid]
-=======
->>>>>>> dev
 
         return result
 
