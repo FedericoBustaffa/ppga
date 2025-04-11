@@ -34,7 +34,6 @@ if __name__ == "__main__":
 
     hof = base.HallOfFame(10)
     start = time.perf_counter()
-    cpu_start = time.process_time()
     population, stats = algorithms.simple(
         toolbox=toolbox,
         population_size=100,
@@ -46,7 +45,6 @@ if __name__ == "__main__":
         workers_num=-1,
     )
     end = time.perf_counter()
-    cpu_end = time.process_time()
 
     logger.info(f"Best solution: {hof[0]}")
 
@@ -60,6 +58,4 @@ if __name__ == "__main__":
     )
 
     logger.info(f"Total time: {end - start} seconds")
-    logger.info(f"CPU total time: {(cpu_end - cpu_start) + sum(stats.times)} seconds")
-    logger.info(f"Main process runtime: {cpu_end - cpu_start} seconds")
     logger.info(f"Total time spent in parallel: {np.sum(stats.times)} seconds")
