@@ -43,17 +43,14 @@ def simple(
         logger.debug(f"{len(couples)} couples generated")
 
         # pool map
-        start = time.process_time()
+        start = time.perf_counter()
         offsprings = list(chain(*map_func(cx_mut_eval, couples)))
-        end = time.process_time()
+        end = time.perf_counter()
+        stats.update_time(end - start)
 
-        if pool is not None:
-            stats.update_time(pool.worker_time())
-        else:
-            stats.update_time(end - start)
-        logger.debug(f"{len(offsprings)} new individuals generated")
         stats.update(offsprings)
         stats.update_evals(len(offsprings))
+        logger.debug(f"{len(offsprings)} new individuals generated")
 
         # perform a total replacement
         population = toolbox.replace(population, offsprings)

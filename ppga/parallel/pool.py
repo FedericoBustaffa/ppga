@@ -22,10 +22,6 @@ class Pool:
         for w in self.workers:
             w.start()
 
-        # process monitor and timers
-        self.monitors = {w.pid: psutil.Process(w.pid) for w in self.workers}
-        self.timers = {w.pid: 0.0 for w in self.workers}
-
         logger.debug(f"pool started with {self.cores} workers")
 
     def map(self, func: Callable, iterable, *args, **kwargs) -> list[Any]:
@@ -54,21 +50,14 @@ class Pool:
         ]
 
         for i, (w, c) in enumerate(zip(self.workers, chunks)):
-            self.timers[w.pid] = self.monitors[w.pid].cpu_times().user
             w.send([func, c, args, kwargs])
 
         # get back the results
         result = []
         for w in self.workers:
             result.extend(w.recv())
-            self.timers[w.pid] = (
-                self.monitors[w.pid].cpu_times().user - self.timers[w.pid]
-            )
 
         return result
-
-    def worker_time(self) -> float:
-        return max([t for t in self.timers.values()])
 
     def join(self, timeout: float | None = None) -> None:
         for w in self.workers:
