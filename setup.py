@@ -6,5 +6,6 @@ setup(
     packages=find_packages(),
     url="https://github.com/FedericoBustaffa/ppga",
     author="FedericoBustaffa",
-    install_requires=["setuptools", "wheel", "psutil", "colorama", "numpy", "tqdm"],
+    requires=["setuptool", "wheel"],
+    install_requires=["psutil", "colorama", "numpy", "tqdm"],
 )
