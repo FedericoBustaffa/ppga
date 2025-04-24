@@ -17,6 +17,7 @@ class Worker(mp.Process):
         logger = log.getCoreLogger()
         logger.debug(f"start with PID: {mp.current_process().ident}")
 
+        # seeding stdlib and numpy random engines
         random.seed(self.id)
         nprandom.seed(self.id)
 
@@ -26,6 +27,7 @@ class Worker(mp.Process):
                 logger.debug("received termination chunk")
                 break
 
+            # unpack the message tuple
             func, chunk, args, kwargs = task
             res = []
             for i in chunk:

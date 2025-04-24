@@ -11,7 +11,7 @@ logger = log.getCoreLogger()
 
 class Pool:
     def __init__(self, workers_num: int = -1, logical: bool = False) -> None:
-        # faster serialization/deserialization
+        # faster serialization/deserialization (sometimes)
         pickle.DEFAULT_PROTOCOL = pickle.HIGHEST_PROTOCOL
 
         cores = psutil.cpu_count(logical)
